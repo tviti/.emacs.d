@@ -1,4 +1,3 @@
-(add-to-list 'load-path "~/.emacs.d/elpa/undo-tree-20140509.522")
 (require 'undo-tree)
 (global-undo-tree-mode)
 
