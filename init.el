@@ -1,5 +1,4 @@
 (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
-			 ("marmalade" . "http://marmalade-repo.org/packages/")
 			 ("melpa" . "http://melpa.milkbox.net/packages/")))
 
 (package-initialize)
@@ -22,23 +21,24 @@
 
 ;; Load custom configuration files
 (if (string-equal system-type "darwin")
-    (load-file "~/.emacs.d/config/osx_config.el"))
-(load-file "~/.emacs.d/config/ESS_config.el")
-(load-file "~/.emacs.d/config/global_keys.el")
-(load-file "~/.emacs.d/config/evil_config.el")
-;;(load-file "~/.emacs.d/config/matlab_config.el")
-(load-file "~/.emacs.d/config/tramp_config.el")
-;;(load-file "~/.emacs.d/config/org_config.el")
-(load-file "~/.emacs.d/config/python_config.el")
-;; (load-file "~/.emacs.d/config/popwin_config.el")
-(load-file "~/.emacs.d/config/linum-relative_config.el")
-;; (load-file "~/.emacs.d/config/idlwave_config.el")
-;; (load-file "~/.emacs.d/config/company-mode_config.el")
-;; (load-file "~/.emacs.d/config/org-mode_config.el")
-;; (load-file "~/.emacs.d/config/latex-mode_config.el")
-;; (load-file "~/.emacs.d/config/polymode-config.el")
-;; (load-file "~/.emacs.d/config/ein-config.el")
-;; (load-file "~/.emacs.d/config/ess-config.el")
+    (load-file ".emacs.d/config/osx_config.el"))
+(load-file ".emacs.d/config/ESS_config.el")
+(load-file ".emacs.d/config/global_keys.el")
+(load-file ".emacs.d/config/evil_config.el")
+(load-file ".emacs.d/config/magit_config.el")
+(load-file ".emacs.d/config/tramp_config.el")
+(load-file ".emacs.d/config/python_config.el")
+(load-file ".emacs.d/config/linum-relative_config.el")
+;;(load-file "./config/matlab_config.el")
+;;(load-file "./config/org_config.el")
+;; (load-file "./config/popwin_config.el")
+;; (load-file "./config/idlwave_config.el")
+;; (load-file "./config/company-mode_config.el")
+;; (load-file "./config/org-mode_config.el")
+;; (load-file "./config/latex-mode_config.el")
+;; (load-file "./config/polymode-config.el")
+;; (load-file "./config/ein-config.el")
+;; (load-file "./config/ess-config.el")
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -81,7 +81,7 @@
  '(org-icalendar-use-scheduled (quote (event-if-not-todo event-if-todo todo-start)))
  '(package-selected-packages
    (quote
-    (elpy org pdf-tools evil-collection ein stan-mode markdown-mode polymode ess arduino-mode zenburn-theme request-deferred python-environment popwin nzenburn-theme magit linum-relative goto-last-change evil epc company-quickhelp alert ac-ispell)))
+    (evil-magit elpy org pdf-tools evil-collection ein stan-mode markdown-mode polymode ess arduino-mode zenburn-theme request-deferred python-environment popwin nzenburn-theme magit linum-relative goto-last-change evil epc company-quickhelp alert ac-ispell)))
  '(pdf-view-midnight-colors (quote ("#DCDCCC" . "#383838")))
  '(tool-bar-mode nil)
  '(tramp-default-method "ssh" nil (tramp))

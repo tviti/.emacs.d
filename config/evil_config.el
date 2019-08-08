@@ -4,6 +4,10 @@
 (require 'evil)
 (evil-mode 1)
 
-;; move all elements of evil-emacs-state-modes to evil-motion-state-modes
+;; Move all elements of evil-emacs-state-modes to evil-motion-state-modes
 (setq evil-motion-state-modes (append evil-emacs-state-modes evil-motion-state-modes))
 (setq evil-emacs-state-modes nil)
+
+;; Enable evil where it normally wouldn't be enabled
+(evil-collection-init 'ediff)
+(evil-collection-init 'ibuffer)
