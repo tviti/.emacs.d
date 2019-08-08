@@ -11,3 +11,5 @@
 ;; Enable evil where it normally wouldn't be enabled
 (evil-collection-init 'ediff)
 (evil-collection-init 'ibuffer)
+(evil-collection-init 'package-menu)
+(evil-collection-init 'dired)
