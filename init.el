@@ -41,6 +41,10 @@
 ;; (load-file "./config/ein-config.el")
 ;; (load-file "./config/ess-config.el")
 
+;; Set the fill-column width for use in ruler-mode.
+;; 80 column IBM punch card. How retro...
+(setq fill-column 80)
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -82,7 +86,7 @@
  '(org-icalendar-use-scheduled (quote (event-if-not-todo event-if-todo todo-start)))
  '(package-selected-packages
    (quote
-    (flycheck-julia flycheck julia-repl bash-completion elpy org pdf-tools evil-collection ein stan-mode markdown-mode polymode ess arduino-mode zenburn-theme request-deferred python-environment popwin nzenburn-theme linum-relative goto-last-change evil epc company-quickhelp alert ac-ispell)))
+    (julia-repl bash-completion elpy org pdf-tools evil-collection ein stan-mode markdown-mode polymode ess arduino-mode zenburn-theme request-deferred python-environment popwin nzenburn-theme linum-relative goto-last-change evil epc company-quickhelp alert ac-ispell)))
  '(pdf-view-midnight-colors (quote ("#DCDCCC" . "#383838")))
  '(tool-bar-mode nil)
  '(tramp-default-method "ssh" nil (tramp))
