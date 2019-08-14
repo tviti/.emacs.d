@@ -8,8 +8,8 @@
 (evil-mode 1)
 
 ;; Move all elements of evil-emacs-state-modes to evil-motion-state-modes
-(setq evil-motion-state-modes (append evil-emacs-state-modes evil-motion-state-modes))
-(setq evil-emacs-state-modes nil)
+;; (setq evil-motion-state-modes (append evil-emacs-state-modes evil-motion-state-modes))
+;; (setq evil-emacs-state-modes nil)
 
 ;; Enable evil where it normally wouldn't be enabled
 (evil-collection-init 'ediff)
