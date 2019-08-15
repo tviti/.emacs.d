@@ -15,17 +15,6 @@
 ;; (load-theme 'solarized-dark t)
 (load-theme 'spacemacs-dark t)
 
-;; SyncTex integration w/ Skim. This is specific to my laptop, hence the check
-;; against host OS
-(if (string-equal system-type "darwin")
-    (lambda ()
-      '((server-start) ; Start the Emacs editor service
-	;; Auto-raise Emacs on activation 
-	(defun raise-emacs-on-aqua() 
-	  (shell-command "osascript -e 'tell application \"Emacs\" to activate' &"))
-	(add-hook 'server-switch-hook 'raise-emacs-on-aqua))))
-
-
 ;; Hide the tool bar and scroll bar
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
@@ -40,13 +29,13 @@
 	   ".emacs.d/config/magit_config.el"
 	   ".emacs.d/config/tramp_config.el"
 	   ".emacs.d/config/python_config.el"
-	   ".emacs.d/config/linum-relative_config.el"))
-;; These are old and I think don'
+	   ".emacs.d/config/linum-relative_config.el"
+	   ".emacs.d/config/latex-mode_config.el"))
+;; These are old and might not even work anymore
 ;; (load-file "./config/matlab_config.el")
 ;; (load-file "./config/org_config.el")
 ;; (load-file "./config/popwin_config.el")
 ;; (load-file "./config/idlwave_config.el")
-;; (load-file "./config/latex-mode_config.el")
 
 ;; Make the font a little bit bigger, for my old and shitty eyes
 (set-face-attribute 'default nil :height 160)
