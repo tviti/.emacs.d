@@ -1,3 +1,4 @@
+;; Package manager configuration
 (setq package-archives '(("gnu" . "https://elpa.gnu.org/packages/")
 			 ("melpa" . "https://melpa.org/packages/")
 			 ("melpa-stable" . "https://stable.melpa.org/packages/")))
@@ -8,57 +9,44 @@
 ;; You may delete these explanatory comments.
 (package-initialize)
 
-;; Load a theme
+;; Load a theme. This seems to be broken, and only gives a "partial-load" of the
+;; theme (certain elements will still be themed based on whatever was last set
+;; in the custom-theme gui menu)
 ;; (load-theme 'solarized-dark t)
 (load-theme 'spacemacs-dark t)
 
-;; Starts the Emacs server
-;; (necessary for SyncTex integration w/ Skim)
-(server-start)
+;; SyncTex integration w/ Skim. This is specific to my laptop, hence the check
+;; against host OS
+(if (string-equal system-type "darwin")
+    (lambda ()
+      '((server-start) ; Start the Emacs editor service
+	;; Auto-raise Emacs on activation 
+	(defun raise-emacs-on-aqua() 
+	  (shell-command "osascript -e 'tell application \"Emacs\" to activate' &"))
+	(add-hook 'server-switch-hook 'raise-emacs-on-aqua))))
 
-;; Auto-raise Emacs on activation (also for SyncTex + Skim)
-(defun raise-emacs-on-aqua() 
-    (shell-command "osascript -e 'tell application \"Emacs\" to activate' &"))
-(add-hook 'server-switch-hook 'raise-emacs-on-aqua)
 
-;; Hide the tool bar and scroll bar, also the bell?
+;; Hide the tool bar and scroll bar
 (tool-bar-mode -1)
-(setq ring-bell-function 1)
 (scroll-bar-mode -1)
-
-(defalias 'bclose 'kill-buffer)
-(defalias 'bc 'bclose)
-
-;; Experimental spacemacs theme stuff
-;; (use-package spacemacs-theme
-;;   :ensure t
-;;   :init
-;;   (load-theme 'spacemacs-dark t)
-;;   (setq spacemacs-theme-org-agenda-height nil)
-;;   (setq spacemacs-theme-org-height nil))
 
 ;; Load custom configuration files
 (if (string-equal system-type "darwin")
     (load-file ".emacs.d/config/osx_config.el"))
-(load-file ".emacs.d/config/ESS_config.el")
-(load-file ".emacs.d/config/julia_config.el")
-(load-file ".emacs.d/config/global_keys.el")
-(load-file ".emacs.d/config/evil_config.el")
-(load-file ".emacs.d/config/magit_config.el")
-(load-file ".emacs.d/config/tramp_config.el")
-(load-file ".emacs.d/config/python_config.el")
-(load-file ".emacs.d/config/linum-relative_config.el")
-;;(load-file "./config/matlab_config.el")
-;;(load-file "./config/org_config.el")
+(mapc 'load-file '(".emacs.d/config/ESS_config.el"
+	   ".emacs.d/config/julia_config.el"
+	   ".emacs.d/config/global_keys.el"
+	   ".emacs.d/config/evil_config.el"
+	   ".emacs.d/config/magit_config.el"
+	   ".emacs.d/config/tramp_config.el"
+	   ".emacs.d/config/python_config.el"
+	   ".emacs.d/config/linum-relative_config.el"))
+;; These are old and I think don'
+;; (load-file "./config/matlab_config.el")
+;; (load-file "./config/org_config.el")
 ;; (load-file "./config/popwin_config.el")
 ;; (load-file "./config/idlwave_config.el")
-;; (load-file "./config/company-mode_config.el")
-;; (load-file "./config/org-mode_config.el")
 ;; (load-file "./config/latex-mode_config.el")
-;; (load-file "./config/polymode-config.el")
-;; (load-file "./config/ein-config.el")
-;; (load-file "./config/ess-config.el")
-
 
 ;; Make the font a little bit bigger, for my old and shitty eyes
 (set-face-attribute 'default nil :height 160)
@@ -66,16 +54,17 @@
 
 ;; Settings for custom mode-line
 (require 'spaceline-config)
-(setq powerline-default-separator 'wave)
+(setq powerline-default-separator 'slant)
 ;; On my laptop, the mode-line height needs to be finagled a little bit,
-;; but this looks like crap on my office computer
+;; but this looks like crap on my office computer (which runs Centos-7)
 (if (string-equal system-type "darwin")
     (setq powerline-height 20))
 (spaceline-spacemacs-theme)
 
 ;; Set the fill-column width for use in ruler-mode.
 ;; 80 column IBM punch card. How retro...
-(add-hook 'ruler-mode-hook '(setq fill-column 80))
+(add-hook 'ruler-mode-hook
+	  (lambda () (setq fill-column 80)))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
