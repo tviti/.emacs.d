@@ -1,9 +1,9 @@
+;; Fix related to https://github.com/emacs-evil/evil-collection/issues/60
+(setq evil-want-keybinding nil)
+
 (require 'undo-tree)
 (global-undo-tree-mode)
 
-
-;; Fix related to https://github.com/emacs-evil/evil-collection/issues/60
-(setq evil-want-keybinding nil)
 (require 'evil)
 (evil-mode 1)
 
@@ -16,3 +16,4 @@
 (evil-collection-init 'ibuffer)
 (evil-collection-init 'package-menu)
 (evil-collection-init 'dired)
+(evil-collection-init 'magit)
