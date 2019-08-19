@@ -21,6 +21,9 @@
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
 
+;; Enable the eyebrowse-mode "window manager"
+(eyebrowse-mode t)
+
 ;; Load custom configuration files
 (if (string-equal system-type "darwin")
     (load-file ".emacs.d/config/osx_config.el"))

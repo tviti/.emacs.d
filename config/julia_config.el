@@ -2,6 +2,10 @@
 (require 'julia-repl)
 (add-hook 'julia-mode-hook 'julia-repl-mode) ;; always use minor mode
 
+;; Fix for https://github.com/JuliaEditorSupport/julia-emacs/issues/5
+;; I.e. the mysterious "why the fuck is everything suddenly flush left"
+(setq julia-max-block-lookback 20000)
+
 ;; I don't think this helps much, but load the term-mode evil-collection so that
 ;; we can get "better" evil integration with julia-repl (which uses term-mode)
 (require 'evil-collection)
