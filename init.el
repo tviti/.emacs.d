@@ -43,7 +43,7 @@
 ;; (load-file "./config/idlwave_config.el")
 
 ;; Make the font a little bit bigger, for my old and shitty eyes
-(set-face-attribute 'default nil :height 160)
+(set-face-attribute 'default nil :height 180)
 (set-face-attribute 'default nil :family "Inconsolata")
 
 ;; Settings for custom mode-line

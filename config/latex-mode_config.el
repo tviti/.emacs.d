@@ -20,3 +20,12 @@ a shift-cmd-click from within Skim to jump to the associated line in emacs"
 	  (lambda ()
 	    (add-to-list 'tex-compile-commands
 			 '("lualatex %r.tex" nil "%r.pdf") t)))
+
+;; Highlight certain key words in code (this would actually be super
+;; useful for other modes as well...)
+;; Taken from http://emacs-fu.blogspot.com/2008/12/highlighting-todo-fixme-and-friends.html
+(add-hook 'tex-mode-hook
+	  (lambda ()
+	    (font-lock-add-keywords
+	     nil
+	     '(("\\<\\(FIXME\\|TODO\\|BUG\\):" 1 font-lock-warning-face t)))))
