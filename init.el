@@ -9,6 +9,14 @@
 ;; You may delete these explanatory comments.
 (package-initialize)
 
+;; Fix for https://debbugs.gnu.org/cgi/bugreport.cgi?bug=34341
+(warn "You have a bandaid fix for
+https://debbugs.gnu.org/cgi/bugreport.cgi?bug=34341 implemented. This
+bug should be fixed come Emacs 26.3. Once the newer version is
+released, you should install it, and disable this fix in your
+.init.el")
+(setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
+
 ;; Load a theme. For some reason, on a "partial-theme-load" if we
 ;; don't want until the entire init.el is finished running, hence
 ;; the after-init-hook
@@ -23,6 +31,11 @@
 
 ;; Enable the eyebrowse-mode "window manager"
 (eyebrowse-mode t)
+
+;; osx_config.el also has laptop-specific font-attribute settings,
+;; so this has to happen first
+(set-face-attribute 'default nil :height 160)
+(set-face-attribute 'default nil :family "Inconsolata")
 
 ;; Load custom configuration files
 (if (string-equal system-type "darwin")
@@ -41,10 +54,6 @@
 ;; (load-file "./config/org_config.el")
 ;; (load-file "./config/popwin_config.el")
 ;; (load-file "./config/idlwave_config.el")
-
-;; osx_config.el also has laptop-specific font-attribute settings
-(set-face-attribute 'default nil :height 160)
-(set-face-attribute 'default nil :family "Inconsolata")
 
 ;; Settings for custom mode-line
 (require 'spaceline-config)

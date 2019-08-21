@@ -1,4 +1,3 @@
-
 (defun raise-emacs-on-aqua ()
   "Auto-raise emacs on activation"
   (shell-command "osascript -e 'tell application \"Emacs\" to activate' &"))
@@ -17,13 +16,13 @@ a shift-cmd-click from within Skim to jump to the associated line in emacs"
 
 ;; Use lualatex for compilation, since this has much bettter unicode support
 ;; than pdflatex. NOTE: This is only works for the emacs built in tex-mode!
-(add-hook 'tex-mode-hook
-	  (lambda ()
-	    (add-to-list 'tex-compile-commands
-			 '("lualatex %r.tex" nil "%r.pdf") t)))
+;; (add-hook 'tex-mode-hook
+;; 	  (lambda ()
+;; 	    (add-to-list 'tex-compile-commands
+;; 			 '("lualatex %r.tex" nil "%r.pdf") t)))
 
 ;; The following are all AUCtex specific
-(require 'auctex)
+(require 'tex-site)  ; Weird that it's not 'auctex...
 
 ;; Enable synctex correlation
 ;; (tex-source-correlation-mode t)
@@ -36,5 +35,15 @@ a shift-cmd-click from within Skim to jump to the associated line in emacs"
 	     nil
 	     '(("\\<\\(FIXME\\|TODO\\|BUG\\):" 1 font-lock-warning-face t)))))
 
-;; Use lualatex for compilation
+;; Tell auctex to use lualatex for compilation
 (setq-default TeX-engine 'luatex)
+
+;; Default to using Skim displayline for pdf view when we're on OS X Doing C-v
+;; from emacs will take you to the corresponding line in Skim Doing cmd-click
+;; from Skim will take you to the corresponding line in Emacs
+(if (eq system-type 'darwin)
+    (setq TeX-view-program-selection
+	  '((output-dvi "open")
+	    (output-pdf "displayline")
+	    (output-html "open"))))
+(setq TeX-source-correlate-mode t) ;; Enable synctex doc correlation
