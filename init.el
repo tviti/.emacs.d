@@ -42,8 +42,8 @@
 ;; (load-file "./config/popwin_config.el")
 ;; (load-file "./config/idlwave_config.el")
 
-;; Make the font a little bit bigger, for my old and shitty eyes
-(set-face-attribute 'default nil :height 180)
+;; osx_config.el also has laptop-specific font-attribute settings
+(set-face-attribute 'default nil :height 160)
 (set-face-attribute 'default nil :family "Inconsolata")
 
 ;; Settings for custom mode-line
@@ -147,7 +147,7 @@
  '(org-icalendar-use-scheduled (quote (event-if-not-todo event-if-todo todo-start)))
  '(package-selected-packages
    (quote
-    (eyebrowse solarized-theme rebecca-theme spaceline powerline spacemacs-theme julia-repl bash-completion elpy org pdf-tools evil-collection ein stan-mode markdown-mode polymode ess arduino-mode zenburn-theme request-deferred python-environment popwin nzenburn-theme linum-relative goto-last-change evil epc company-quickhelp alert ac-ispell)))
+    (auctex eyebrowse solarized-theme rebecca-theme spaceline powerline spacemacs-theme julia-repl bash-completion elpy org pdf-tools evil-collection ein stan-mode markdown-mode polymode ess arduino-mode zenburn-theme request-deferred python-environment popwin nzenburn-theme linum-relative goto-last-change evil epc company-quickhelp alert ac-ispell)))
  '(pdf-view-midnight-colors (quote ("#DCDCCC" . "#383838")))
  '(pos-tip-background-color "#073642")
  '(pos-tip-foreground-color "#93a1a1")
