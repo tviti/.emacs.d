@@ -11,6 +11,16 @@
 (require 'evil-collection)
 (evil-collection-init 'term)
 
+;; Highlight certain key words. Taken from
+;; http://emacs-fu.blogspot.com/2008/12/highlighting-todo-fixme-and-friends.html
+(add-hook 'julia-mode-hook
+	  (lambda ()
+	    (font-lock-add-keywords
+	     nil
+	     '(("\\<\\(FIXME\\|TODO\\|BUG\\):"
+		1
+		font-lock-warning-face t)))))
+
 (defun julia-repl-mini ()
   "Split the current window horizontally into 2/3 & 1/3 portions, then create a
 julia-repl in the bottom portion"
@@ -24,6 +34,7 @@ julia-repl in the bottom portion"
    (julia-repl--start-and-setup (julia-repl--get-executable-key)
 				julia-repl-inferior-buffer-name-suffix)))
 
+;; Keybindings
 (add-hook 'julia-mode-hook
 	  (lambda ()
 	    (local-set-key (kbd "\C-c z") 'julia-repl-mini)))

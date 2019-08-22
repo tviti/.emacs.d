@@ -20,9 +20,13 @@ released, you should install it, and disable this fix in your
 ;; Load a theme. For some reason, on a "partial-theme-load" if we
 ;; don't want until the entire init.el is finished running, hence
 ;; the after-init-hook
-(add-hook 'after-init-hook
-	  (lambda ()
-	    (load-theme 'spacemacs-dark t)))
+;; FIXME: Best way to do this is still to use custom-theme picker gui. We still
+;; fire off load-theme over here though so that the theme faces are also
+;; available throughout this script.
+(load-theme 'spacemacs-dark t)
+;; (add-hook 'after-init-hook
+;; 	  (lambda ()
+;; 	    (load-theme 'spacemacs-dark t)))
 ;; (load-theme 'solarized-dark t)
 
 ;; Hide the tool bar and scroll bar
@@ -66,8 +70,29 @@ released, you should install it, and disable this fix in your
 
 ;; Set the fill-column width for use in ruler-mode.
 ;; 80 column IBM punch card. How retro...
-(add-hook 'ruler-mode-hook
-	  (lambda () (setq fill-column 80)))
+(require 'ruler-mode)
+(add-hook 'ruler-mode-hook (lambda () (setq fill-column 80)))
+
+;; Turn on ruler-mode in buffers associated w/ files
+(add-hook 'find-file-hook (lambda () (ruler-mode 1)))
+
+;; Try not to make ruler-mode stick out like such a sore thumb
+(set-face-attribute 'ruler-mode-default nil :background
+		    (face-attribute 'default :background))
+(set-face-attribute 'ruler-mode-default nil :foreground
+		    (face-attribute 'line-number :foreground))
+(set-face-attribute 'ruler-mode-default nil :box
+		    (face-attribute 'vertical-border :foreground))
+
+(set-face-attribute 'ruler-mode-column-number nil :foreground
+		    (face-attribute 'line-number :foreground))
+(set-face-attribute 'ruler-mode-fill-column nil :foreground
+		    (face-attribute 'mode-line-buffer-id :foreground))
+(set-face-attribute 'ruler-mode-comment-column nil :foreground
+		    (face-attribute 'font-lock-comment-face :foreground))
+(set-face-attribute 'ruler-mode-current-column nil :foreground
+		    (face-attribute 'font-lock-warning-face :foreground))
+
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
