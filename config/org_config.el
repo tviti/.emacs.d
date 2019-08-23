@@ -1,4 +1,5 @@
 (require 'org)
+;; (require 'ox-bibtex) ; For bibtex citations
 
 ;; (add-hook 'org-babel-after-execute-hook
 ;; 	  (lambda () (org-redisplay-inline-images)))
@@ -19,4 +20,6 @@
  '((sh . t)))
 
 ;; Get syntax highlighting in code blocks
-(setq org-src-fontify-natively t)
+(setq org-src-fontify-natively t
+    org-src-tab-acts-natively t
+    org-edit-src-content-indentation 0)

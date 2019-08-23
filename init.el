@@ -9,14 +9,6 @@
 ;; You may delete these explanatory comments.
 (package-initialize)
 
-;; Fix for https://debbugs.gnu.org/cgi/bugreport.cgi?bug=34341
-(warn "You have a bandaid fix for
-https://debbugs.gnu.org/cgi/bugreport.cgi?bug=34341 implemented. This
-bug should be fixed come Emacs 26.3. Once the newer version is
-released, you should install it, and disable this fix in your
-.init.el")
-(setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
-
 ;; Load a theme. For some reason, on a "partial-theme-load" if we
 ;; don't want until the entire init.el is finished running, hence
 ;; the after-init-hook
@@ -77,21 +69,25 @@ released, you should install it, and disable this fix in your
 (add-hook 'find-file-hook (lambda () (ruler-mode 1)))
 
 ;; Try not to make ruler-mode stick out like such a sore thumb
-(set-face-attribute 'ruler-mode-default nil :background
-		    (face-attribute 'default :background))
-(set-face-attribute 'ruler-mode-default nil :foreground
-		    (face-attribute 'line-number :foreground))
-(set-face-attribute 'ruler-mode-default nil :box
-		    (face-attribute 'vertical-border :foreground))
+;; FIXME: This is fragile, and only works if all the used face-attributes are
+;; already set
+(add-hook 'after-init-hook
+	  (lambda ()
+	    (set-face-attribute 'ruler-mode-default nil :background
+				(face-attribute 'default :background))
+	    (set-face-attribute 'ruler-mode-default nil :foreground
+				(face-attribute 'linum :foreground))
+	    (set-face-attribute 'ruler-mode-default nil :box
+				(face-attribute 'vertical-border :foreground))
 
-(set-face-attribute 'ruler-mode-column-number nil :foreground
-		    (face-attribute 'line-number :foreground))
-(set-face-attribute 'ruler-mode-fill-column nil :foreground
-		    (face-attribute 'mode-line-buffer-id :foreground))
-(set-face-attribute 'ruler-mode-comment-column nil :foreground
-		    (face-attribute 'font-lock-comment-face :foreground))
-(set-face-attribute 'ruler-mode-current-column nil :foreground
-		    (face-attribute 'font-lock-warning-face :foreground))
+	    (set-face-attribute 'ruler-mode-column-number nil :foreground
+				(face-attribute 'linum :foreground))
+	    (set-face-attribute 'ruler-mode-fill-column nil :foreground
+				(face-attribute 'mode-line-buffer-id :foreground))
+	    (set-face-attribute 'ruler-mode-comment-column nil :foreground
+				(face-attribute 'font-lock-comment-face :foreground))
+	    (set-face-attribute 'ruler-mode-current-column nil :foreground
+				(face-attribute 'font-lock-warning-face :foreground))))
 
 
 (custom-set-variables
