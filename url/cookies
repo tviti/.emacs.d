@@ -1,15 +1,0 @@
-;; Emacs-W3 HTTP cookies file
-;; Automatically generated file!!! DO NOT EDIT!!!
-
-(setq url-cookie-storage
- '((".4chan.org"
-  [url-cookie "__cfduid" "d76119ef8797592b394cdf6589eba33171427871672" "31 Mar 16 07:01:12 [GMT]" "/" ".4chan.org" nil]
-  [url-cookie "HttpOnly" nil "31 Mar 16 07:01:12 [GMT]" "/" ".4chan.org" nil]))
-)
-(setq url-cookie-secure-storage
- 'nil)
-
-;; Local Variables:
-;; version-control: never
-;; no-byte-compile: t
-;; End:
