@@ -1,12 +1,5 @@
-;; Matlab support
-;; You don't need this line if you placed it in prelude/personal
-(add-to-list 'load-path "~/.emacs.d/matlab-emacs")
-(load-library "matlab-load")
-(load-library "matlab")
+(require 'matlab)
 (matlab-cedet-setup)
-
-;;(setq matlab-mode-install-path "/home/tviti/.emacs.d/matlab-emacs")
-(setq matlab-mode-install-path "~/.emacs.d/matlab-emacs")
 
 ;; Uncomment these two lines to run a remote MATLAB session from MBP
 ;; (setq matlab-shell-command "/Applications/MATLAB_R2015a.app/bin/matlab")
