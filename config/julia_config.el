@@ -33,19 +33,17 @@
 (require 'jupyter)
 
 ;; Make emacs aware of the Jupyter kernel installed by Conda.jl
-(setenv "PATH"
-          (concat "~/.julia/conda/3/bin:" 
-                  (getenv "PATH")))
+(add-to-list 'exec-path "~/.julia/conda/3/bin")
 
 ;; Highlight certain key words. Taken from
 ;; http://emacs-fu.blogspot.com/2008/12/highlighting-todo-fixme-and-friends.html
 (add-hook 'julia-mode-hook
-	  (lambda ()
-	    (font-lock-add-keywords
-	     nil
-	     '(("\\<\\(FIXME\\|TODO\\|BUG\\):"
-		1
-		font-lock-warning-face t)))))
+(lambda ()
+  (font-lock-add-keywords
+   nil
+   '(("\\<\\(FIXME\\|TODO\\|BUG\\):"
+      1
+      font-lock-warning-face t)))))
 
 ;; Display output from a connected buffer in the repl
 (setq jupyter-repl-echo-eval-p t)

@@ -44,7 +44,6 @@
 (if (string-equal system-type "darwin")
     (load-file ".emacs.d/config/osx_config.el"))
 (mapc 'load-file '(".emacs.d/config/ESS_config.el"
-	   ".emacs.d/config/julia_config.el"
 	   ".emacs.d/config/global_keys.el"
 	   ".emacs.d/config/evil_config.el"
 	   ".emacs.d/config/magit_config.el"
@@ -52,7 +51,8 @@
 	   ".emacs.d/config/python_config.el"
 	   ".emacs.d/config/linum-relative_config.el"
 	   ".emacs.d/config/latex-mode_config.el"
-	   ".emacs.d/config/matlab_config.el"))
+	   ".emacs.d/config/matlab_config.el"
+	   ".emacs.d/config/julia_config.el"))
 ;; These are old and might not even work anymore
 ;; (load-file "./config/org_config.el")
 ;; (load-file "./config/popwin_config.el")
@@ -184,7 +184,7 @@
  '(org-icalendar-use-scheduled (quote (event-if-not-todo event-if-todo todo-start)))
  '(package-selected-packages
    (quote
-    (jupyter matlab-mode auctex eyebrowse solarized-theme rebecca-theme spaceline powerline spacemacs-theme julia-repl bash-completion elpy org pdf-tools evil-collection ein stan-mode markdown-mode polymode ess arduino-mode zenburn-theme request-deferred python-environment popwin nzenburn-theme linum-relative goto-last-change evil epc company-quickhelp alert ac-ispell)))
+    (matlab-mode auctex eyebrowse solarized-theme rebecca-theme spaceline powerline spacemacs-theme julia-repl bash-completion elpy org pdf-tools evil-collection ein stan-mode markdown-mode polymode ess arduino-mode zenburn-theme request-deferred python-environment popwin nzenburn-theme linum-relative goto-last-change evil epc company-quickhelp alert ac-ispell)))
  '(pdf-view-midnight-colors (quote ("#b2b2b2" . "#292b2e")))
  '(pos-tip-background-color "#073642")
  '(pos-tip-foreground-color "#93a1a1")
