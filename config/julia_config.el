@@ -33,9 +33,10 @@
 (require 'jupyter)
 
 ;; Make emacs aware of the Jupyter kernel installed by Conda.jl
-(setenv "PATH"
-          (concat "~/.julia/conda/3/bin:" 
-                  (getenv "PATH")))
+;; (setenv "PATH"
+;;           (concat "~/.julia/conda/3/bin:" 
+;;                   (getenv "PATH")))
+(add-to-list 'exec-path "~/.julia/conda/3/bin")
 
 ;; Highlight certain key words. Taken from
 ;; http://emacs-fu.blogspot.com/2008/12/highlighting-todo-fixme-and-friends.html
