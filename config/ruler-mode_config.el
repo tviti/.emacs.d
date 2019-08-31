@@ -1,12 +1,3 @@
-;; Settings for custom mode-line
-(require 'spaceline-config)
-(setq powerline-default-separator 'slant)
-;; On my laptop, the mode-line height needs to be finagled a little bit,
-;; but this looks like crap on my office computer (which runs Centos-7)
-(if (string-equal system-type "darwin")
-    (setq powerline-height 20))
-(spaceline-spacemacs-theme)
-
 ;; Set the fill-column width for use in ruler-mode.
 ;; 80 column IBM punch card. How retro...
 (require 'ruler-mode)
