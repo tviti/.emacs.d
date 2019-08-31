@@ -5,7 +5,8 @@
 
 ;; Enable/disable specific packages
 (setq package-load-list '(all
-                          (julia-repl nil)))
+                          (jupyter nil)
+			  (ess nil)))
 
 ;; Added by Package.el.  This must come before configurations of
 ;; installed packages.  Don't delete this line.  If you don't want it,
@@ -43,7 +44,7 @@
 ;; Load custom configuration files
 (if (string-equal system-type "darwin")
     (load-file ".emacs.d/config/osx_config.el"))
-(mapc 'load-file '(".emacs.d/config/ESS_config.el"
+(mapc 'load-file '(; ".emacs.d/config/ESS_config.el"
 	   ".emacs.d/config/global_keys.el"
 	   ".emacs.d/config/evil_config.el"
 	   ".emacs.d/config/magit_config.el"
@@ -52,49 +53,15 @@
 	   ".emacs.d/config/linum-relative_config.el"
 	   ".emacs.d/config/latex-mode_config.el"
 	   ".emacs.d/config/matlab_config.el"
-	   ".emacs.d/config/julia_config.el"))
+	   ".emacs.d/config/julia_config.el"
+	   ".emacs.d/config/org_config.el"
+	   ".emacs.d/config/ruler-mode_config.el"
+	   ".emacs.d/config/spacelike_config.el"
+	   ".emacs.d/config/lsp_config.el"))
 ;; These are old and might not even work anymore
 ;; (load-file "./config/org_config.el")
 ;; (load-file "./config/popwin_config.el")
 ;; (load-file "./config/idlwave_config.el")
-
-;; Settings for custom mode-line
-(require 'spaceline-config)
-(setq powerline-default-separator 'slant)
-;; On my laptop, the mode-line height needs to be finagled a little bit,
-;; but this looks like crap on my office computer (which runs Centos-7)
-(if (string-equal system-type "darwin")
-    (setq powerline-height 20))
-(spaceline-spacemacs-theme)
-
-;; Set the fill-column width for use in ruler-mode.
-;; 80 column IBM punch card. How retro...
-(require 'ruler-mode)
-(add-hook 'ruler-mode-hook (lambda () (setq fill-column 80)))
-
-;; Turn on ruler-mode in buffers associated w/ files
-(add-hook 'find-file-hook (lambda () (ruler-mode 1)))
-
-;; Try not to make ruler-mode stick out like such a sore thumb
-;; FIXME: This is fragile, and only works if all the used face-attributes are
-;; already set
-(add-hook 'after-init-hook
-	  (lambda ()
-	    (set-face-attribute 'ruler-mode-default nil :background
-				(face-attribute 'default :background))
-	    (set-face-attribute 'ruler-mode-default nil :foreground
-				(face-attribute 'linum :foreground))
-	    (set-face-attribute 'ruler-mode-default nil :box
-				(face-attribute 'vertical-border :foreground))
-
-	    (set-face-attribute 'ruler-mode-column-number nil :foreground
-				(face-attribute 'linum :foreground))
-	    (set-face-attribute 'ruler-mode-fill-column nil :foreground
-				(face-attribute 'mode-line-buffer-id :foreground))
-	    (set-face-attribute 'ruler-mode-comment-column nil :foreground
-				(face-attribute 'font-lock-comment-face :foreground))
-	    (set-face-attribute 'ruler-mode-current-column nil :foreground
-				(face-attribute 'font-lock-warning-face :foreground))))
 
 
 (custom-set-variables
@@ -165,6 +132,7 @@
      ("XXX+" . "#dc752f")
      ("\\?\\?\\?+" . "#dc752f"))))
  '(linum-relative-mode t t)
+ '(lsp-julia-default-environment "~/julia-vscode/scripts/languageserver/packages")
  '(matlab-fill-code t)
  '(matlab-show-mlint-warnings t)
  '(nrepl-message-colors
@@ -184,7 +152,7 @@
  '(org-icalendar-use-scheduled (quote (event-if-not-todo event-if-todo todo-start)))
  '(package-selected-packages
    (quote
-    (matlab-mode auctex eyebrowse solarized-theme rebecca-theme spaceline powerline spacemacs-theme julia-repl bash-completion elpy org pdf-tools evil-collection ein stan-mode markdown-mode polymode ess arduino-mode zenburn-theme request-deferred python-environment popwin nzenburn-theme linum-relative goto-last-change evil epc company-quickhelp alert ac-ispell)))
+    (lsp-mode rainbow-delimiters highlight-numbers which-key helm quelpa matlab-mode auctex eyebrowse solarized-theme rebecca-theme spaceline powerline spacemacs-theme julia-repl bash-completion elpy org pdf-tools evil-collection ein stan-mode markdown-mode polymode ess arduino-mode zenburn-theme request-deferred python-environment popwin nzenburn-theme linum-relative goto-last-change evil epc company-quickhelp alert ac-ispell)))
  '(pdf-view-midnight-colors (quote ("#b2b2b2" . "#292b2e")))
  '(pos-tip-background-color "#073642")
  '(pos-tip-foreground-color "#93a1a1")
