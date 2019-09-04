@@ -63,6 +63,23 @@
 ;; (load-file "./config/popwin_config.el")
 ;; (load-file "./config/idlwave_config.el")
 
+;; User defined functions
+(defun kill-all-buffers ()
+  "Kill all buffers, save for a few \"special\" ones."
+  (interactive)
+  (let ((save-list '("*scratch*"
+		     "*Warnings*"
+		     "*Messages*"))
+      (blist (buffer-list)))
+      (mapc (lambda (b)
+	      (unless  (member (buffer-name b) save-list)
+		(kill-buffer b)))
+	    blist)))
+
+(defun copy-buffer-string ()
+  "Copy the entire curren't buffer to the \"kill-ring\" (i.e. clipboard)."
+  (interactive)
+  (kill-new (buffer-string)))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
