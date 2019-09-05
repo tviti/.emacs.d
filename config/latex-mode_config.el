@@ -56,3 +56,15 @@ a shift-cmd-click from within Skim to jump to the associated line in emacs"
 	  (lambda ()
 	    (define-key LaTeX-mode-map (kbd "\C-c ;") 'comment-region)
 	    (define-key LaTeX-mode-map (kbd "\C-u \C-c ;") 'uncomment-region)))
+
+;; User defined functions
+(defun vec-at-point ()
+  "Wrap an evil-visual block in a latex \\vec command"
+  (interactive)
+  (if (evil-visual-state-p)
+      (let ((start evil-visual-mark)
+	    (end evil-visual-end))
+	(kill-region start end)
+	(goto-char start)
+	(insert (concat "\\vec{" (buffer-substring start end) "\}")))
+    (message "An evil-visual block must be selected for this function to work!")))
