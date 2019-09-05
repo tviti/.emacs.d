@@ -52,5 +52,7 @@ a shift-cmd-click from within Skim to jump to the associated line in emacs"
 
 ;; Auctext uses just a single key to toggle comment-uncomment, which throws me
 ;; off (since I'm used to pre-fixed bindings for uncomment).
-(define-key LaTeX-mode-map (kbd "\C-c ;") 'comment-region)
-(define-key LaTeX-mode-map (kbd "\C-u \C-c ;") 'uncomment-region)
+(add-hook 'LaTeX-mode-hook
+	  (lambda ()
+	    (define-key LaTeX-mode-map (kbd "\C-c ;") 'comment-region)
+	    (define-key LaTeX-mode-map (kbd "\C-u \C-c ;") 'uncomment-region)))
