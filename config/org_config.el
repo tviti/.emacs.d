@@ -20,7 +20,7 @@
 
 (org-babel-do-load-languages
  'org-babel-load-languages
- '((sh . t)))
+ '((shell . t)))
 
 ;; Get syntax highlighting in code blocks
 (setq org-src-fontify-natively t
