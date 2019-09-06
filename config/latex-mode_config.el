@@ -59,7 +59,7 @@ a shift-cmd-click from within Skim to jump to the associated line in emacs"
 
 ;; User defined functions
 (defun vec-at-point ()
-  "Wrap an evil-visual block in a latex \\vec command"
+  "Wrap an evil-visual block in a latex \\vec command."
   (interactive)
   (if (evil-visual-state-p)
       (let ((start evil-visual-mark)
@@ -68,3 +68,17 @@ a shift-cmd-click from within Skim to jump to the associated line in emacs"
 	(goto-char start)
 	(insert (concat "\\vec{" (buffer-substring start end) "\}")))
     (message "An evil-visual block must be selected for this function to work!")))
+
+(defun vec-at-point ()
+  "Wrap an evil-visual block in a latex \\vec command."
+  (interactive)
+  (if (evil-visual-state-p)
+      (let ((start evil-visual-mark)
+	    (end evil-visual-end)
+	    (str (buffer-substring evil-visual-mark evil-visual-end)))
+	(kill-region start end)
+	(goto-char start)
+	(insert (concat "\\vec{" str "\}"))
+	(goto-char (+ start 10)))
+    (message "An evil-visual block must be selected for this
+    function to work!")))
