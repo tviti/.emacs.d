@@ -11,7 +11,10 @@
 
 ;; Configure lsp + flycheck via lsp-ui
 (require 'flycheck)
-(global-flycheck-mode)
+
+;; Don't just go willy-nilly w/ flycheck
+(global-flycheck-mode -1)
+
 (require 'lsp-ui)
 (add-hook 'lsp-mode-hook 'lsp-ui-mode)
 (add-hook 'julia-mode-hook 'flycheck-mode)
