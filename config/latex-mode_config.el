@@ -1,3 +1,12 @@
+;; Enable line number
+(add-hook 'LaTeX-mode-hook
+	  (lambda () (linum-mode 1))
+
+;; Use flycheck for tex-file linting
+(require 'flycheck)
+(add-hook 'LaTeX-mode-hook
+	  (lambda () (flycheck-mode 1)))
+
 (defun raise-emacs-on-aqua ()
   "Auto-raise emacs on activation"
   (shell-command "osascript -e 'tell application \"Emacs\" to activate' &"))
@@ -25,7 +34,7 @@ a shift-cmd-click from within Skim to jump to the associated line in emacs"
 (require 'tex-site)  ; Weird that it's not 'auctex...
 
 ;; Enable synctex correlation
-;; (tex-source-correlation-mode t)
+(tex-source-correlation-mode t)
 
 ;; Highlight certain key words. Taken from
 ;; http://emacs-fu.blogspot.com/2008/12/highlighting-todo-fixme-and-friends.html
@@ -37,6 +46,7 @@ a shift-cmd-click from within Skim to jump to the associated line in emacs"
 
 ;; Tell auctex to use lualatex for compilation
 (setq-default TeX-engine 'luatex)
+
 
 ;; Enable synctex doc correlation
 (setq TeX-source-correlate-mode t)

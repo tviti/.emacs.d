@@ -57,7 +57,8 @@
 	   ".emacs.d/config/org_config.el"
 	   ".emacs.d/config/ruler-mode_config.el"
 	   ".emacs.d/config/spacelike_config.el"
-	   ".emacs.d/config/lsp_config.el"))
+	   ".emacs.d/config/lsp_config.el"
+	   ".emacs.d/config/slime_config.el"))
 ;; These are old and might not even work anymore
 ;; (load-file "./config/org_config.el")
 ;; (load-file "./config/popwin_config.el")
