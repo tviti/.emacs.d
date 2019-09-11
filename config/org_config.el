@@ -24,5 +24,4 @@
 
 ;; Get syntax highlighting in code blocks
 (setq org-src-fontify-natively t
-    org-src-tab-acts-natively t
-    org-edit-src-content-indentation 0)
+      org-src-tab-acts-natively t)
