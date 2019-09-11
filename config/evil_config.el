@@ -17,4 +17,3 @@
 (evil-collection-init 'package-menu)
 (evil-collection-init 'dired)
 (evil-collection-init 'magit)
-(evil-collection-init 'helm)
