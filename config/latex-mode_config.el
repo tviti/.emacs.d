@@ -1,6 +1,6 @@
 ;; Enable line number
 (add-hook 'LaTeX-mode-hook
-	  (lambda () (linum-mode 1))
+	  (lambda () (linum-mode 1)))
 
 ;; Use flycheck for tex-file linting
 (require 'flycheck)
@@ -34,7 +34,7 @@ a shift-cmd-click from within Skim to jump to the associated line in emacs"
 (require 'tex-site)  ; Weird that it's not 'auctex...
 
 ;; Enable synctex correlation
-(tex-source-correlation-mode t)
+;; (tex-source-correlation-mode t)
 
 ;; Highlight certain key words. Taken from
 ;; http://emacs-fu.blogspot.com/2008/12/highlighting-todo-fixme-and-friends.html
@@ -45,7 +45,8 @@ a shift-cmd-click from within Skim to jump to the associated line in emacs"
 	     '(("\\<\\(FIXME\\|TODO\\|BUG\\):" 1 font-lock-warning-face t)))))
 
 ;; Tell auctex to use lualatex for compilation
-(setq-default TeX-engine 'luatex)
+;; (setq-default TeX-engine 'luatex)
+(setq-default TeX-engine 'xetex) ;; luatex + synctex + evince are problematic
 
 
 ;; Enable synctex doc correlation
