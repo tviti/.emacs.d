@@ -59,8 +59,6 @@
 	   ".emacs.d/config/spacelike_config.el"
 	   ".emacs.d/config/lsp_config.el"
 	   ".emacs.d/config/slime_config.el"))
-;; These are old and might not even work anymore
-;; (load-file "./config/idlwave_config.el")
 
 ;; User defined functions
 (defun kill-all-buffers ()
