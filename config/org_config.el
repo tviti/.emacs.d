@@ -25,3 +25,6 @@
 ;; Get syntax highlighting in code blocks
 (setq org-src-fontify-natively t
       org-src-tab-acts-natively t)
+
+(if (string-equal (system-name) "R-Daneel.local")
+    (setq org-agenda-files "~/.emacs.d/R-Daneel-agenda-files.txt"))
