@@ -31,7 +31,9 @@ a shift-cmd-click from within Skim to jump to the associated line in emacs"
 ;; 			 '("lualatex %r.tex" nil "%r.pdf") t)))
 
 ;; The following are all AUCtex specific
-(require 'tex-site)  ; Weird that it's not 'auctex...
+(require 'tex-site)  ; Weird that it's not called 'auctex...
+
+(add-hook 'LaTeX-mode-hook 'turn-on-auto-fill)
 
 ;; Enable synctex correlation
 ;; (tex-source-correlation-mode t)
