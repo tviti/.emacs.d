@@ -36,6 +36,19 @@
 ;; Make dired report human-readable file sizes
 (setq dired-listing-switches "-alh")
 
+;; Use flyspell mode in text-mode buffers (e.g. org-mode), but NOT in
+;; change-log-mode or log-edit-mode. Taken from
+;; https://www.emacswiki.org/emacs/FlySpell
+(dolist (hook '(text-mode-hook))
+  (add-hook hook (lambda () (flyspell-mode 1))))
+(dolist (hook '(change-log-mode-hook log-edit-mode-hook))
+  (add-hook hook (lambda () (flyspell-mode -1))))
+
+;; Spell check comments in .el files using
+(add-hook 'emacs-lisp-mode-hook
+          (lambda ()
+            (flyspell-prog-mode)))
+
 ;; osx_config.el also has laptop-specific font-attribute settings,
 ;; so this has to happen first
 (set-face-attribute 'default nil :height 160)
@@ -75,7 +88,7 @@
 	      blist))))
 
 (defun copy-buffer-string ()
-  "Copy the entire curren't buffer to the \"kill-ring\" (i.e. clipboard)."
+  "Copy the entire current buffer to the \"kill-ring\" (i.e. clipboard)."
   (interactive)
   (kill-new (buffer-string)))
 
