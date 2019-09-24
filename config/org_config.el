@@ -18,6 +18,8 @@
 ;; (setq inferior-julia-program-name "/usr/local/bin/julia")
 ;; (load-file (concat (file-name-directory load-file-name) "./ob-julia.el"))
 
+(add-hook 'org-mode-hook 'turn-on-auto-fill)
+
 (org-babel-do-load-languages
  'org-babel-load-languages
  '((shell . t)))
