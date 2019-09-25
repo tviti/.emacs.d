@@ -54,6 +54,10 @@
 (set-face-attribute 'default nil :height 160)
 (set-face-attribute 'default nil :family "Inconsolata")
 
+;; Enable line number and relative line numbering using the new built in system
+;; (requires Emacs >= 26.1)
+(add-hook 'prog-mode-hook (setq display-line-numbers 'relative))
+
 ;; Load custom configuration files
 (if (string-equal system-type "darwin")
     (load-file ".emacs.d/config/osx_config.el"))
@@ -63,7 +67,6 @@
 	   ".emacs.d/config/magit_config.el"
 	   ".emacs.d/config/tramp_config.el"
 	   ".emacs.d/config/python_config.el"
-	   ".emacs.d/config/linum-relative_config.el"
 	   ".emacs.d/config/latex-mode_config.el"
 	   ".emacs.d/config/matlab_config.el"
 	   ".emacs.d/config/julia_config.el"
