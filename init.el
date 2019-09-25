@@ -44,7 +44,7 @@
 (dolist (hook '(change-log-mode-hook log-edit-mode-hook))
   (add-hook hook (lambda () (flyspell-mode -1))))
 
-;; Spell check comments in .el files using
+;; Spell check comments in .el files using flyspell
 (add-hook 'emacs-lisp-mode-hook
           (lambda ()
             (flyspell-prog-mode)))
