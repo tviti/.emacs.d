@@ -1,6 +1,8 @@
-;; Enable line number
+;; ;; Enable line number
 (add-hook 'LaTeX-mode-hook
-	  (lambda () (linum-mode 1)))
+	  (lambda ()
+	    (display-line-numbers-mode)
+	    (setq display-line-numbers 'relative)))
 
 ;; Use flycheck for tex-file linting
 (require 'flycheck)

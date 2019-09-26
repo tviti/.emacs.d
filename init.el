@@ -5,8 +5,7 @@
 
 ;; Enable/disable specific packages
 (setq package-load-list '(all
-                          (jupyter nil)
-			  (ess nil)))
+                          (jupyter nil)))
 
 ;; Added by Package.el.  This must come before configurations of
 ;; installed packages.  Don't delete this line.  If you don't want it,
@@ -56,25 +55,28 @@
 
 ;; Enable line number and relative line numbering using the new built in system
 ;; (requires Emacs >= 26.1)
-(add-hook 'prog-mode-hook (setq display-line-numbers 'relative))
+(add-hook 'prog-mode-hook
+	  (lambda ()
+	    (display-line-numbers-mode)
+	    (setq display-line-numbers 'relative)))
 
 ;; Load custom configuration files
 (if (string-equal system-type "darwin")
     (load-file ".emacs.d/config/osx_config.el"))
-(mapc 'load-file '(; ".emacs.d/config/ESS_config.el"
-	   ".emacs.d/config/global_keys.el"
-	   ".emacs.d/config/evil_config.el"
-	   ".emacs.d/config/magit_config.el"
-	   ".emacs.d/config/tramp_config.el"
-	   ".emacs.d/config/python_config.el"
-	   ".emacs.d/config/latex-mode_config.el"
-	   ".emacs.d/config/matlab_config.el"
-	   ".emacs.d/config/julia_config.el"
-	   ".emacs.d/config/org_config.el"
-	   ".emacs.d/config/ruler-mode_config.el"
-	   ".emacs.d/config/spacelike_config.el"
-	   ".emacs.d/config/lsp_config.el"
-	   ".emacs.d/config/slime_config.el"))
+(mapc 'load-file '(".emacs.d/config/ESS_config.el"
+		   ".emacs.d/config/ruler-mode_config.el"
+		   ".emacs.d/config/global_keys.el"
+		   ".emacs.d/config/evil_config.el"
+		   ".emacs.d/config/magit_config.el"
+		   ".emacs.d/config/tramp_config.el"
+		   ".emacs.d/config/python_config.el"
+		   ".emacs.d/config/latex-mode_config.el"
+		   ".emacs.d/config/matlab_config.el"
+		   ".emacs.d/config/julia_config.el"
+		   ".emacs.d/config/org_config.el"
+		   ".emacs.d/config/spacelike_config.el"
+		   ".emacs.d/config/lsp_config.el"
+		   ".emacs.d/config/slime_config.el"))
 
 ;; User defined functions
 (defun kill-all-buffers ()
