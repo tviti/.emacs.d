@@ -7,15 +7,14 @@
 (setq package-load-list '(all
                           (jupyter nil)))
 
-;; Added by Package.el.  This must come before configurations of
-;; installed packages.  Don't delete this line.  If you don't want it,
-;; just comment it out by adding a semicolon to the start of the line.
-;; You may delete these explanatory comments.
+;; Added by Package.el.  This must come before configurations of installed
+;; packages.  Don't delete this line.  If you don't want it, just comment it out
+;; by adding a semicolon to the start of the line.  You may delete these
+;; explanatory comments.
 (package-initialize)
 
-;; Load a theme. For some reason, on a "partial-theme-load" if we
-;; don't want until the entire init.el is finished running, hence
-;; the after-init-hook
+;; Load a theme. For some reason, on a "partial-theme-load" if we don't want
+;; until the entire init.el is finished running, hence the after-init-hook
 ;; FIXME: Best way to do this is still to use custom-theme picker gui. We still
 ;; fire off load-theme over here though so that the theme faces are also
 ;; available throughout this script.
