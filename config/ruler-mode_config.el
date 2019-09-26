@@ -3,12 +3,15 @@
 (require 'ruler-mode)
 (add-hook 'ruler-mode-hook (lambda () (setq fill-column 80)))
 
+;; Turn on ruler-mode in all code buffers
+(add-hook 'prog-mode-hook (lambda () (ruler-mode 1)))
 ;; Turn on ruler-mode in buffers associated w/ files
 (add-hook 'find-file-hook (lambda () (ruler-mode 1)))
 
 ;; Try not to make ruler-mode stick out like such a sore thumb
 ;; FIXME: This is fragile, and only works if all the used face-attributes are
 ;; already set
+(require 'linum)
 (add-hook 'after-init-hook
 	  (lambda ()
 	    (set-face-attribute 'ruler-mode-default nil :background
@@ -26,4 +29,3 @@
 				(face-attribute 'font-lock-comment-face :foreground))
 	    (set-face-attribute 'ruler-mode-current-column nil :foreground
 				(face-attribute 'font-lock-warning-face :foreground))))
-
