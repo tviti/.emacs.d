@@ -32,3 +32,9 @@
 ;; indicator location in the matlab gui editor
 (add-hook 'matlab-mode-hook
 	  (lambda () (setq-default fill-column 75)))
+
+;; Line numbers don't work by default for some reason. Turn them on.
+(add-hook 'matlab-mode-hook
+	  (lambda ()
+	    (display-line-numbers-mode)
+	    (setq display-line-numbers 'relative)))
