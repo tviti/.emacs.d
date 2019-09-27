@@ -27,3 +27,8 @@
 
 ;; change comment string to be compatible with matlab IDE
 (setq matlab-comment-region-s "% ")
+
+;; Set the fill-column in emacs to be consistent with the default text limit
+;; indicator location in the matlab gui editor
+(add-hook 'matlab-mode-hook
+	  (lambda () (setq-default fill-column 75)))
