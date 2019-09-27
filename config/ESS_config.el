@@ -15,3 +15,4 @@
 	    (display-line-numbers-mode)
 	    (setq display-line-numbers 'relative)))
 
+(add-hook 'markdown-mode-hook 'turn-on-auto-fill)
