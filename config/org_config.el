@@ -28,6 +28,9 @@
 (setq org-src-fontify-natively t
       org-src-tab-acts-natively t)
 
+;; Make sure markdown shows up in the export menu
+(require 'ox-md nil t)
+
 ;; Load agenda file lists
 (if (string-equal (system-name) "R-Daneel.local")
     (setq org-agenda-files "~/.emacs.d/R-Daneel-agenda-files.txt"))
