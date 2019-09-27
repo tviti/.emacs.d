@@ -7,3 +7,11 @@
 (require 'polymode)
 (require 'poly-markdown)
 (require 'poly-R)
+
+;; Turn on line-numbering in markdown-mode so that we can get line numbers when
+;; editing .Rmd files
+(add-hook 'markdown-mode-hook
+	  (lambda ()
+	    (display-line-numbers-mode)
+	    (setq display-line-numbers 'relative)))
+
