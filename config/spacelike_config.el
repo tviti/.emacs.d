@@ -20,3 +20,8 @@
 (if (string-equal system-type "darwin")
     (setq powerline-height 20))
 (spaceline-spacemacs-theme)
+
+;; Change the color of the mode line based on the input mode (insert, normal, or
+;; Emacs). Spacemacs doesn't do this, but I'm placing it in this file anyways
+;; because it's a spaceline config option.
+(setq spaceline-highlight-face-func #'spaceline-highlight-face-evil-state)
