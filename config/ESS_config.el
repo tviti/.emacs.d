@@ -8,6 +8,9 @@
 (require 'poly-markdown)
 (require 'poly-R)
 
+;; Re-def to 'nil so that polymode doesn't open export results.
+(defun pm--display-file (ofile) '())
+
 ;; Turn on line-numbering in markdown-mode so that we can get line numbers when
 ;; editing .Rmd files
 (add-hook 'markdown-mode-hook
