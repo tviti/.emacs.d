@@ -1,4 +1,11 @@
 (require 'org)
+
+;; Configure the export backends
+(eval-after-load "org"
+  (progn
+    '(require 'ox-md nil t)
+    '(require 'ox-gfm nil t)))
+
 ;; (require 'ox-bibtex) ; For bibtex citations
 
 ;; (add-hook 'org-babel-after-execute-hook
@@ -27,9 +34,6 @@
 ;; Get syntax highlighting in code blocks
 (setq org-src-fontify-natively t
       org-src-tab-acts-natively t)
-
-;; Make sure markdown shows up in the export menu
-(require 'ox-md nil t)
 
 ;; Load agenda file lists
 (if (string-equal (system-name) "R-Daneel.local")
