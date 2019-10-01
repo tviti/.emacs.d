@@ -102,3 +102,9 @@
 ;; Don't pollute this file with vars set using the customization interface
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file)
+
+(defun copy-buffer-name ()
+  "Copy the name of the active buffer to the kill-ring. Useful for swapping
+  buffers between eyebrowse workspaces."
+  (interactive)
+  (kill-new (buffer-name)))
