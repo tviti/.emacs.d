@@ -54,10 +54,8 @@
 
 ;; Enable line number and relative line numbering using the new built in system
 ;; (requires Emacs >= 26.1)
-(add-hook 'prog-mode-hook
-	  (lambda ()
-	    (display-line-numbers-mode)
-	    (setq display-line-numbers 'relative)))
+(add-hook 'prog-mode-hook (lambda () (display-line-numbers-mode)
+			    (setq display-line-numbers 'relative)))
 
 ;; Load custom configuration files
 (if (string-equal system-type "darwin")
@@ -81,13 +79,11 @@
 (defun kill-all-buffers ()
   "Kill all buffers, save for a few \"special\" ones."
   (interactive)
-  (let ((save-list '("*scratch*"
-		     "*Warnings*"
-		     "*Messages*"))
+  (let ((save-list '("*scratch*" "*Warnings*" "*Messages*"))
 	(blist (buffer-list)))
     (if (y-or-n-p "Are you sure you want to kill all buffers?")
 	(mapc (lambda (b)
-		(unless  (member (buffer-name b) save-list)
+		(unless (member (buffer-name b) save-list)
 		  (kill-buffer b)))
 	      blist))))
 
@@ -96,15 +92,15 @@
   (interactive)
   (kill-new (buffer-string)))
 
+(defun copy-buffer-name ()
+  "Copy the name of the active buffer to the kill-ring. Useful for swapping
+  buffers between eyebrowse workspaces."
+  (interactive)
+  (kill-new (buffer-name)))
+
 (desktop-save-mode 1)
 (setq ring-bell-function 'ignore)
 
 ;; Don't pollute this file with vars set using the customization interface
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file)
-
-(defun copy-buffer-name ()
-  "Copy the name of the active buffer to the kill-ring. Useful for swapping
-  buffers between eyebrowse workspaces."
-  (interactive)
-  (kill-new (buffer-name)))

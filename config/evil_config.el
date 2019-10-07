@@ -17,6 +17,7 @@
 (evil-collection-init 'package-menu)
 (evil-collection-init 'dired)
 (evil-collection-init 'magit)
+(evil-collection-init 'bookmark)
 
 ;; Make org-mode more evil. Config is per the README.md
 (require 'evil-org)
