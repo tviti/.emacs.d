@@ -36,7 +36,29 @@
       org-src-tab-acts-natively t)
 
 ;; Load agenda file lists
-(if (string-equal (system-name) "R-Daneel.local")
-    (setq org-agenda-files "~/.emacs.d/R-Daneel-agenda-files.txt"))
-(if (string-equal (system-name) "magneto")
-    (setq org-agenda-files "~/.emacs.d/magneto-agenda-files.txt"))
+(cond
+ ((string-equal (system-name) "R-Daneel.local")
+  (setq org-agenda-files "~/.emacs.d/R-Daneel-agenda-files.txt"))
+ ((string-equal (system-name) "magneto")
+  (setq org-agenda-files "~/.emacs.d/magneto-agenda-files.txt")))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Appointments and reminders ;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; Automatically create timers when calling `org-agenda'
+(add-hook 'org-agenda-mode-hook
+	  (lambda () (org-agenda-to-appt)))
+
+;; Define a notification function for creating GUI notifications
+(if (string= system-type "darwin")
+    (setq appt-disp-window-function
+	  (lambda (min-to-app new-time appt-msg)
+	    ;; Retain original functionality
+	    (appt-disp-window min-to-app new-time appt-msg)
+	    ;; Create a native macOS desktop notification via applescript
+	    (let ((title "SOMETHING IS HAPPENING!?!?")
+		  (sound-name "Ring"))
+	      (async-shell-command
+	       (format "osascript -e 'display notification \"%s\" with title \"%s\" sound name \"%s\"'"
+		       appt-msg title sound-name))))))
