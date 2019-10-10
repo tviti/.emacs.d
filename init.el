@@ -57,6 +57,9 @@
 (add-hook 'prog-mode-hook (lambda () (display-line-numbers-mode)
 			    (setq display-line-numbers 'relative)))
 
+;; Store bookmarks in a different directory
+(setq bookmark-file "~/Sync/bookmarks")
+
 ;; Load custom configuration files
 (if (string-equal system-type "darwin")
     (load-file ".emacs.d/config/osx_config.el"))
