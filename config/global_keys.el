@@ -17,6 +17,7 @@
 
 (require 'org)
 (global-set-key (kbd "C-c o a") #'org-agenda)
+(global-set-key (kbd "C-c o C-a d") #'org-agenda-day-view)
 (global-set-key (kbd "C-c o C-a w") #'org-agenda-week-view)
 (global-set-key (kbd "C-c o C-a m") #'org-agenda-month-view)
 (global-set-key (kbd "C-c o C-a y") #'org-agenda-year-view)
