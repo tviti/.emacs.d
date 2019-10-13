@@ -68,6 +68,11 @@
 (add-hook 'ibuffer-mode-hook
 	  (lambda ()
 	    (ibuffer-switch-to-saved-filter-groups "default")))
+
+;; Tell Ediff to NOT create a whole frame for the control window (this will fuck
+;; us completely if we are using a tiling window manager like yabai).
+(setq ediff-window-setup-function 'ediff-setup-windows-plain)
+
 ;; Load custom configuration files
 (if (string-equal system-type "darwin")
     (load-file ".emacs.d/config/osx_config.el"))
