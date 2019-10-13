@@ -77,7 +77,6 @@
 (if (string-equal system-type "darwin")
     (load-file ".emacs.d/config/osx_config.el"))
 (mapc 'load-file '(".emacs.d/config/ESS_config.el"
-		   ".emacs.d/config/ruler-mode_config.el"
 		   ".emacs.d/config/global_keys.el"
 		   ".emacs.d/config/evil_config.el"
 		   ".emacs.d/config/magit_config.el"
@@ -89,7 +88,8 @@
 		   ".emacs.d/config/org_config.el"
 		   ".emacs.d/config/spacelike_config.el"
 		   ".emacs.d/config/lsp_config.el"
-		   ".emacs.d/config/slime_config.el"))
+		   ".emacs.d/config/slime_config.el"
+		   ".emacs.d/config/ruler-mode_config.el"))
 
 ;; User defined functions
 (defun kill-all-buffers ()
