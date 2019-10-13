@@ -12,3 +12,6 @@
 ;; Make the font a little bit bigger for my laptop
 (set-face-attribute 'default nil :height 180)
 (set-face-attribute 'default nil :family "Inconsolata")
+
+;; Necessary to make yabai play nicely with Emacs
+(menu-bar-mode t)
