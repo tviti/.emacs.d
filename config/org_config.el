@@ -59,6 +59,6 @@
 	    ;; Create a native macOS desktop notification via applescript
 	    (let ((title "SOMETHING IS HAPPENING!?!?")
 		  (sound-name "Ring"))
-	      (async-shell-command
+	      (shell-command
 	       (format "osascript -e 'display notification \"%s\" with title \"%s\" sound name \"%s\"'"
 		       appt-msg title sound-name))))))
