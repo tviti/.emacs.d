@@ -60,6 +60,14 @@
 ;; Store bookmarks in a different directory
 (setq bookmark-file "~/Sync/bookmarks")
 
+;; Setup groupings for ibuffer
+(setq ibuffer-saved-filter-groups
+      '(("default"
+	 ("dired" (mode . dired-mode))
+	 ("org-mode" (mode . org-mode)))))
+(add-hook 'ibuffer-mode-hook
+	  (lambda ()
+	    (ibuffer-switch-to-saved-filter-groups "default")))
 ;; Load custom configuration files
 (if (string-equal system-type "darwin")
     (load-file ".emacs.d/config/osx_config.el"))
