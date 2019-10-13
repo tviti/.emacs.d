@@ -1,3 +1,9 @@
+;; Prettification of `ruler-mode' ruler. So far, this is only tested using the
+;; Spacemacs theme, and so may look like shit with other themes.
+
+;; FIXME: This breaks for some reason if there is a `matlab-mode' buffer open
+;; during startup.
+
 ;; Set the fill-column width for use in ruler-mode.
 ;; 80 column IBM punch card. How retro...
 (require 'ruler-mode)
