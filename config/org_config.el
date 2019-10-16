@@ -62,3 +62,28 @@
 	      (shell-command
 	       (format "osascript -e 'display notification \"%s\" with title \"%s\" sound name \"%s\"'"
 		       appt-msg title sound-name))))))
+
+;; Custom easy templates
+;; Latex "fragments"
+(add-to-list 'org-structure-template-alist
+	     '("lf" "#+BEGIN_LaTeX latex
+?
+#+END_LaTeX"))
+
+;; Latex fragment w/ un-numbered equation
+(add-to-list 'org-structure-template-alist
+	     '("lfe" "#+BEGIN_LaTeX latex
+\\begin{equation}
+?
+\\end{equation}
+#+END_LaTeX"))
+
+(add-to-list 'org-structure-template-alist
+	     '("lfE" "#+BEGIN_LaTeX latex
+\\begin{equation*}
+?
+\\end{equation*}
+#+END_LaTeX"))
+
+
+
