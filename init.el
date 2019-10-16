@@ -73,6 +73,24 @@
 ;; us completely if we are using a tiling window manager like yabai).
 (setq ediff-window-setup-function 'ediff-setup-windows-plain)
 
+;; Configuration for the ivy/counsel/swiper trifecta
+(ivy-mode 1)
+
+;; Customizations suggested by the *info* page
+(setq ivy-use-virtual-buffers t)
+(setq ivy-count-format "(%d/%d) ")
+
+(define-key org-mode-map (kbd "C-c C-j") nil)
+(define-key org-mode-map (kbd "C-c C-j") #'counsel-org-goto)
+
+;; Keybindings
+
+;; ido-mode
+;; (require 'ido)
+;; (setq ido-enable-flex-matching t)
+;; (setq ido-everywhere t)
+;; (ido-mode t)
+
 ;; Load custom configuration files
 (if (string-equal system-type "darwin")
     (load-file ".emacs.d/config/osx_config.el"))
