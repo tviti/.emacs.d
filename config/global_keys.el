@@ -22,6 +22,10 @@
 (global-set-key (kbd "C-c o C-a m") #'org-agenda-month-view)
 (global-set-key (kbd "C-c o C-a y") #'org-agenda-year-view)
 
+(global-set-key (kbd "C-c o o") #'org-insert-heading-after-current)
+(global-set-key (kbd "C-c o n") #'org-next-block)
+(global-set-key (kbd "C-c o p") #'org-previous-block)
+
 (require 'dired)
 (global-set-key (kbd "C-c d c") #'dired-do-copy)
 (global-set-key (kbd "C-c d r") #'dired-do-rename)
