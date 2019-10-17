@@ -8,6 +8,9 @@
 (global-set-key (kbd "<f8>") #'ispell-word)
 (global-set-key (kbd "C-M-<f8>") #'flyspell-buffer)
 
+;; Default to using ibuffer
+(global-set-key (kbd "C-x C-b") #'ibuffer)
+
 ;;;;;;;;;;;;;;;;;;;;;;;
 ;; Custom key-chords ;;
 ;;;;;;;;;;;;;;;;;;;;;;;
