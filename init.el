@@ -49,7 +49,7 @@
 
 ;; osx_config.el also has laptop-specific font-attribute settings,
 ;; so this has to happen first
-(set-face-attribute 'default nil :height 160)
+(set-face-attribute 'default nil :height 140)
 (set-face-attribute 'default nil :family "Inconsolata")
 
 ;; Enable line number and relative line numbering using the new built in system
