@@ -1,6 +1,6 @@
 ;; key rebindings
-(setq mac-option-modifier   'meta
-      mac-command-modifier  'super
+(setq mac-option-modifier   'super
+      mac-command-modifier  'meta
       mac-function-modifier 'hyper)
 
 ;; Fix for "unknown/untrusted cert signing authority" error from
