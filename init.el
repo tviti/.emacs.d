@@ -64,7 +64,8 @@
 (setq ibuffer-saved-filter-groups
       '(("default"
 	 ("dired" (mode . dired-mode))
-	 ("org-mode" (mode . org-mode)))))
+	 ("org-mode" (mode . org-mode))
+	 ("magit" (mode . magit-status-mode)))))
 (add-hook 'ibuffer-mode-hook
 	  (lambda ()
 	    (ibuffer-switch-to-saved-filter-groups "default")))
