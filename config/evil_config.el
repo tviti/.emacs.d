@@ -18,7 +18,8 @@
 (evil-collection-init 'dired)
 (evil-collection-init 'magit)
 (evil-collection-init 'bookmark)
-
+(evil-collection-init 'slime)
+ 
 ;; Make org-mode more evil. Config is per the README.md
 (require 'evil-org)
 (add-hook 'org-mode-hook 'evil-org-mode)
