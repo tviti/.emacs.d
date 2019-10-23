@@ -96,6 +96,13 @@
 
 (setq browse-url-browser-function #'browse-url-next-browser)
 
+;;
+;; Newsticker setup
+;;
+
+;; Load the list of feeds
+(load-file "~/Sync/newsticker_feeds.el")
+
 ;; Load custom configuration files
 (if (string-equal system-type "darwin")
     (load-file ".emacs.d/config/osx_config.el"))
