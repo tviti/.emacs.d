@@ -47,10 +47,15 @@
           (lambda ()
             (flyspell-prog-mode)))
 
-;; osx_config.el also has laptop-specific font-attribute settings,
-;; so this has to happen first
-(set-face-attribute 'default nil :height 140)
-(set-face-attribute 'default nil :family "Inconsolata")
+;; Pick a font + size
+(cond ((string= (system-name) "R-Daneel.local")
+       ;; Make the font a little bit bigger for my laptop
+       (progn
+	 (set-face-attribute 'default nil :height 180)
+	 (set-face-attribute 'default nil :family "Inconsolata")))
+      (t
+       (set-face-attribute 'default nil :height 140)
+       (set-face-attribute 'default nil :family "Inconsolata")))
 
 ;; Enable line number and relative line numbering using the new built in system
 ;; (requires Emacs >= 26.1)
