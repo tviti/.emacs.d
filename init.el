@@ -92,7 +92,9 @@
 (setq *next-browser-command*
       (cond
        ((string= (system-name) "R-Daneel.local")
-	"/Applications/Next.app/Contents/MacOS/next")))
+	"/Applications/Next.app/Contents/MacOS/next")
+       (t
+	"next")))
 
 (setq browse-url-browser-function #'browse-url-next-browser)
 
