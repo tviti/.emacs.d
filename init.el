@@ -81,6 +81,21 @@
 ;; us completely if we are using a tiling window manager like yabai).
 (setq ediff-window-setup-function 'ediff-setup-windows-plain)
 
+;; Use next-browser for `browse-url' functionality
+(defvar *next-browser-command* ""
+  "Path to next-browser, used by `browse-url-next-browser'")
+
+(defun browse-url-next-browser (url &rest args)
+  (start-process "next-browser"
+		 nil *next-browser-command* url))
+
+(setq *next-browser-command*
+      (cond
+       ((string= (system-name) "R-Daneel.local")
+	"/Applications/Next.app/Contents/MacOS/next")))
+
+(setq browse-url-browser-function #'browse-url-next-browser)
+
 ;; Load custom configuration files
 (if (string-equal system-type "darwin")
     (load-file ".emacs.d/config/osx_config.el"))
