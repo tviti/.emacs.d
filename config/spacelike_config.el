@@ -17,7 +17,7 @@
 (setq powerline-default-separator 'slant)
 ;; On my laptop, the mode-line height needs to be finagled a little bit,
 ;; but this looks like crap on my office computer (which runs Centos-7)
-(if (string-equal system-type "darwin")
+(if (string-equal (system-name) "R-Daneel.local")
     (setq powerline-height 20))
 (spaceline-spacemacs-theme)
 
