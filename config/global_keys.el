@@ -32,3 +32,5 @@
 (require 'dired)
 (global-set-key (kbd "C-c d c") #'dired-do-copy)
 (global-set-key (kbd "C-c d r") #'dired-do-rename)
+
+(global-set-key (kbd "C-c i") #'imenu)
