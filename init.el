@@ -107,6 +107,10 @@
 
 ;; Save the feed data in a synchronized dir
 (setq newsticker-dir "~/Sync/newsticker/")
+
+;; Make the UI a little more tollerable
+(setq newsticker-treeview-listwindow-height 20)
+
 ;; Load custom configuration files
 (if (string-equal system-type "darwin")
     (load-file ".emacs.d/config/osx_config.el"))
