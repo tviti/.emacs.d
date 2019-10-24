@@ -105,6 +105,8 @@
 ;; Load the list of feeds
 (load-file "~/Sync/newsticker_feeds.el")
 
+;; Save the feed data in a synchronized dir
+(setq newsticker-dir "~/Sync/newsticker/")
 ;; Load custom configuration files
 (if (string-equal system-type "darwin")
     (load-file ".emacs.d/config/osx_config.el"))
