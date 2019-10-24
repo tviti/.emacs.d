@@ -18,8 +18,8 @@
 ;; FIXME: Best way to do this is still to use custom-theme picker gui. We still
 ;; fire off load-theme over here though so that the theme faces are also
 ;; available throughout this script.
-
-;; (load-theme 'spacemacs-dark t)
+;; (load-theme 'solarized-light t)
+(load-theme 'spacemacs-dark t)
 
 ;; (add-hook 'after-init-hook
 ;; 	  (lambda ()
