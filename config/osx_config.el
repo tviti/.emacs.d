@@ -11,3 +11,6 @@
 
 ;; Necessary to make yabai play nicely with Emacs
 (menu-bar-mode t)
+
+;; Instruct Emacs to consume Apple-key events (e.g. cmd-Q and cmd-H)
+(setq mac-pass-command-to-system nil)
