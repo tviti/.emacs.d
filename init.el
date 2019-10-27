@@ -82,21 +82,20 @@
 (setq ediff-window-setup-function 'ediff-setup-windows-plain)
 
 ;; Use next-browser for `browse-url' functionality
-(defvar *next-browser-command* ""
-  "Path to next-browser, used by `browse-url-next-browser'")
+(defvar tviti/next-browser-command ""
+  "Path to next-browser, used by `tviti/browse-url-next-browser'")
 
-(defun browse-url-next-browser (url &rest args)
+(defun tviti/browse-url-next-browser (url &rest args)
   (start-process "next-browser"
-		 nil *next-browser-command* url))
+		 nil tviti/next-browser-command url))
 
-(setq *next-browser-command*
+(setq tviti/next-browser-command
       (cond
        ((string= (system-name) "R-Daneel.local")
 	"/Applications/Next.app/Contents/MacOS/next")
        (t
 	"next")))
 
-(setq browse-url-browser-function #'browse-url-next-browser)
 
 ;;
 ;; Newsticker setup
@@ -110,10 +109,13 @@
 
 ;; Make the UI a little more tollerable
 (setq newsticker-treeview-listwindow-height 20)
+(setq browse-url-browser-function #'tviti/browse-url-next-browser)
 
 ;; Load custom configuration files
 (if (string-equal system-type "darwin")
     (load-file ".emacs.d/config/osx_config.el"))
+;; TODO: Change this to dolist
+;; TODO: Use proper relative paths
 (mapc 'load-file '(".emacs.d/config/completion_config.el"
 		   ".emacs.d/config/ESS_config.el"
 		   ".emacs.d/config/global_keys.el"
@@ -130,24 +132,27 @@
 		   ".emacs.d/config/slime_config.el"
 		   ".emacs.d/config/ruler-mode_config.el"))
 
+;;
 ;; User defined functions
-(defun kill-all-buffers ()
+;;
+(defun tviti/kill-all-buffers ()
   "Kill all buffers, save for a few \"special\" ones."
   (interactive)
   (let ((save-list '("*scratch*" "*Warnings*" "*Messages*"))
 	(blist (buffer-list)))
-    (if (y-or-n-p "Are you sure you want to kill all buffers?")
-	(mapc (lambda (b)
-		(unless (member (buffer-name b) save-list)
-		  (kill-buffer b)))
-	      blist))))
+    (when (y-or-n-p "Are you sure you want to kill all buffers?")
+      ;; TODO: Use dolist instead of mapc
+      (mapc (lambda (b)
+	      (unless (member (buffer-name b) save-list)
+		(kill-buffer b)))
+	    blist))))
 
-(defun copy-buffer-string ()
+(defun tviti/copy-buffer-string ()
   "Copy the entire current buffer to the \"kill-ring\" (i.e. clipboard)."
   (interactive)
   (kill-new (buffer-string)))
 
-(defun copy-buffer-name ()
+(defun tviti/copy-buffer-name ()
   "Copy the name of the active buffer to the kill-ring. Useful for swapping
   buffers between eyebrowse workspaces."
   (interactive)
