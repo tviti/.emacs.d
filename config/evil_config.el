@@ -12,6 +12,7 @@
 ;; (setq evil-emacs-state-modes nil)
 
 ;; Enable evil where it normally wouldn't be enabled
+(require 'evil-collection)
 (evil-collection-init 'ediff)
 (evil-collection-init 'ibuffer)
 (evil-collection-init 'package-menu)

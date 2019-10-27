@@ -96,19 +96,6 @@
        (t
 	"next")))
 
-
-;;
-;; Newsticker setup
-;;
-
-;; Load the list of feeds
-(load-file "~/Sync/newsticker_feeds.el")
-
-;; Save the feed data in a synchronized dir
-(setq newsticker-dir "~/Sync/newsticker/")
-
-;; Make the UI a little more tollerable
-(setq newsticker-treeview-listwindow-height 20)
 (setq browse-url-browser-function #'tviti/browse-url-next-browser)
 
 ;; Load custom configuration files
@@ -130,6 +117,7 @@
 		   ".emacs.d/config/spacelike_config.el"
 		   ".emacs.d/config/lsp_config.el"
 		   ".emacs.d/config/slime_config.el"
+		   ".emacs.d/config/feeds_config.el"
 		   ".emacs.d/config/ruler-mode_config.el"))
 
 ;;
