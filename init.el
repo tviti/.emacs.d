@@ -21,18 +21,24 @@
 ;; explanatory comments.
 (package-initialize)
 
-;; Load a theme. For some reason, on a "partial-theme-load" if we don't want
-;; until the entire init.el is finished running, hence the after-init-hook
-;; FIXME: Best way to do this is still to use custom-theme picker gui. We still
-;; fire off load-theme over here though so that the theme faces are also
-;; available throughout this script.
+;;
+;; Load a theme.
+;;
+;; TODO: The following note may no longer be an issue (setting the theme to nil
+;; in custom.el seems like it may have fixed this).
+;; For some reason, on a "partial-theme-load" if we don't want until the entire
+;; init.el is finished running, hence the after-init-hook FIXME: Best way to do
+;; this is still to use custom-theme picker gui. We still fire off load-theme
+;; over here though so that the theme faces are also available throughout this
+;; script.
 ;; (load-theme 'solarized-light t)
-(load-theme 'spacemacs-dark t)
-
-;; (add-hook 'after-init-hook
-;; 	  (lambda ()
-;; 	    (load-theme 'spacemacs-dark t)))
+(load-theme 'spacemacs-light t)
+;; (load-theme 'spacemacs-dark t)
 ;; (load-theme 'solarized-dark t)
+
+(add-hook 'after-init-hook
+	  (lambda ()
+	    (load-theme 'spacemacs-light t)))
 
 ;; User specific globals
 ;; TODO: Some of my config files depend on these values being defined! It may be
