@@ -25,8 +25,8 @@
 
 ;; Keybindings
 (require 'org)
-(define-key org-mode-map (kbd "C-c C-j") nil)
-(define-key org-mode-map (kbd "C-c C-j") #'counsel-org-goto)
+(define-key org-mode-map [remap org-goto] #'counsel-org-goto)
+(define-key org-mode-map [remap org-set-tags-command] #'counsel-org-tag)
 
 ;;;;;;;;;;;;;;
 ;; ido-mode ;;
