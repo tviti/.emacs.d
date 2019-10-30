@@ -27,3 +27,16 @@
 (evil-org-set-key-theme '(navigation insert textobjects additional calendar))
 (require 'evil-org-agenda)
 (evil-org-agenda-set-keys)
+
+;; Make Info mode more evil
+(defun tviti/evil-Info-mode-setup ()
+  "Evil keybindings for `Info-mode'"
+  (evil-define-key 'normal Info-mode-map
+    "h" #'evil-backward-char
+    "l" #'evil-forward-char
+    "u" #'Info-history-back)
+
+  (evil-set-initial-state 'Info-mode 'normal))
+
+(eval-after-load 'evil-mode
+  (tviti/evil-Info-mode-setup))
