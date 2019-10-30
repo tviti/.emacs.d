@@ -1,3 +1,11 @@
+;; Trendy mode: Make the first window borderless
+;; (setq initial-frame-alist '((undecorated . t)))
+
+;; Hide the tool bar and scroll bar
+(tool-bar-mode -1)
+(scroll-bar-mode -1)
+(horizontal-scroll-bar-mode -1)
+
 ;; Package manager configuration
 (setq package-archives '(("gnu" . "https://elpa.gnu.org/packages/")
 			 ("melpa" . "https://melpa.org/packages/")
@@ -26,9 +34,6 @@
 ;; 	    (load-theme 'spacemacs-dark t)))
 ;; (load-theme 'solarized-dark t)
 
-;; Hide the tool bar and scroll bar
-(tool-bar-mode -1)
-(scroll-bar-mode -1)
 
 ;; Enable the eyebrowse-mode "window manager"
 (eyebrowse-mode t)
