@@ -17,7 +17,6 @@
  '(cua-normal-cursor-color "#839496")
  '(cua-overwrite-cursor-color "#b58900")
  '(cua-read-only-cursor-color "#859900")
- ;; '(custom-enabled-themes nil)
  '(custom-safe-themes
    (quote
     ("cdb4ffdecc682978da78700a461cdc77456c3a6df1c1803ae2dd55c59fa703e3" "d91ef4e714f05fff2070da7ca452980999f5361209e679ee988e3c432df24347" "a7051d761a713aaf5b893c90eaba27463c791cd75d7257d3a8e66b0c8c346e77" "0598c6a29e13e7112cfbc2f523e31927ab7dce56ebb2016b567e1eff6dc1fd4f" "f633d825e380caaaefca46483f7243ae9a663f6df66c5fad66d4cab91f731c86" "fa2b58bb98b62c3b8cf3b6f02f058ef7827a8e497125de0254f56e373abee088" "bffa9739ce0752a37d9b1eee78fc00ba159748f50dc328af4be661484848e476" "c82d24bfba431e8104219bfd8e90d47f1ad6b80a504a7900cbee002a8f04392f" "89dd0329d536d389753111378f2425bd4e4652f892ae8a170841c3396f5ba2dd" "cdfc5c44f19211cfff5994221078d7d5549eeb9feda4f595a2fd8ca40467776c" "f5512c02e0a6887e987a816918b7a684d558716262ac7ee2dd0437ab913eaec6" "2997ecd20f07b99259bddba648555335ffb7a7d908d8d3e6660ecbec415f6b95" "cdbd0a803de328a4986659d799659939d13ec01da1f482d838b68038c1bb35e8" "20e359ef1818a838aff271a72f0f689f5551a27704bf1c9469a5c2657b417e6c" "f5eb916f6bd4e743206913e6f28051249de8ccfd070eae47b5bde31ee813d55f" "11636897679ca534f0dec6f5e3cb12f28bf217a527755f6b9e744bd240ed47e1" "19352d62ea0395879be564fc36bc0b4780d9768a964d26dfae8aad218062858d" "6a9606327ecca6e772fba6ef46137d129e6d1888dcfc65d0b9b27a7a00a4af20" "282606e51ef2811142af5068bd6694b7cf643b27d63666868bc97d04422318c1" "e80932ca56b0f109f8545576531d3fc79487ca35a9a9693b62bf30d6d08c9aaf" "4c9ba94db23a0a3dea88ee80f41d9478c151b07cb6640b33bfc38be7c2415cc4" "1e7e097ec8cb1f8c3a912d7e1e0331caeed49fef6cff220be63bd2a6ba4cc365" "fc5fcb6f1f1c1bc01305694c59a1a861b008c534cae8d0e48e4d5e81ad718bc6" default)))
@@ -86,7 +85,7 @@
  '(org-icalendar-use-scheduled (quote (event-if-not-todo event-if-todo todo-start)))
  '(package-selected-packages
    (quote
-    (counsel ox-gfm poly-R poly-markdown ess evil-org slime lsp-ui flycheck lsp-mode rainbow-delimiters highlight-numbers which-key helm quelpa matlab-mode auctex eyebrowse solarized-theme rebecca-theme spaceline powerline spacemacs-theme julia-repl bash-completion elpy pdf-tools evil-collection ein stan-mode markdown-mode polymode arduino-mode zenburn-theme request-deferred python-environment popwin nzenburn-theme goto-last-change evil epc company-quickhelp alert ac-ispell)))
+    (elfeed counsel ox-gfm poly-R poly-markdown ess evil-org slime lsp-ui flycheck lsp-mode rainbow-delimiters highlight-numbers which-key helm quelpa matlab-mode auctex eyebrowse solarized-theme rebecca-theme spaceline powerline spacemacs-theme julia-repl bash-completion elpy pdf-tools evil-collection ein stan-mode markdown-mode polymode arduino-mode zenburn-theme request-deferred python-environment popwin nzenburn-theme goto-last-change evil epc company-quickhelp alert ac-ispell)))
  '(pdf-view-midnight-colors (quote ("#b2b2b2" . "#292b2e")))
  '(pos-tip-background-color "#073642")
  '(pos-tip-foreground-color "#93a1a1")

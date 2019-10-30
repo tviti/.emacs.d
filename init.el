@@ -41,6 +41,10 @@
 (defvar tviti/sync-dir "~/Sync"
   "A synchronized directory.")
 
+(defvar tviti/emacs-dir "~/.emacs.d"
+  "The directory to use as/instead of .emacs.d")
+
+
 ;; Enable the eyebrowse-mode "window manager"
 (eyebrowse-mode t)
 
@@ -111,25 +115,29 @@
 
 ;; Load custom configuration files
 (if (string-equal system-type "darwin")
-    (load-file ".emacs.d/config/osx_config.el"))
-;; TODO: Change this to dolist
-;; TODO: Use proper relative paths
-(mapc 'load-file '(".emacs.d/config/completion_config.el"
-		   ".emacs.d/config/ESS_config.el"
-		   ".emacs.d/config/global_keys.el"
-		   ".emacs.d/config/evil_config.el"
-		   ".emacs.d/config/magit_config.el"
-		   ".emacs.d/config/tramp_config.el"
-		   ".emacs.d/config/python_config.el"
-		   ".emacs.d/config/latex-mode_config.el"
-		   ".emacs.d/config/matlab_config.el"
-		   ".emacs.d/config/julia_config.el"
-		   ".emacs.d/config/org_config.el"
-		   ".emacs.d/config/spacelike_config.el"
-		   ".emacs.d/config/lsp_config.el"
-		   ".emacs.d/config/slime_config.el"
-		   ".emacs.d/config/feeds_config.el"
-		   ".emacs.d/config/ruler-mode_config.el"))
+    (load-file (concat tviti/emacs-dir "/config/osx_config.el")))
+
+(defvar tviti/config-files '("completion_config.el"
+			     "ESS_config.el"
+			     "global_keys.el"
+			     "evil_config.el"
+			     "magit_config.el"
+			     "tramp_config.el"
+			     "python_config.el"
+			     "latex-mode_config.el"
+			     "matlab_config.el"
+			     "julia_config.el"
+			     "org_config.el"
+			     "spacelike_config.el"
+			     "lsp_config.el"
+			     "slime_config.el"
+			     "feeds_config.el"
+			     "ruler-mode_config.el")
+  "List of user config files to be loaded from located in
+  <TVITI/EMACS-DIR>/config")
+
+(dolist (fn tviti/config-files)
+  (load-file (format "%s/config/%s" tviti/emacs-dir fn)))
 
 ;;
 ;; User defined functions
@@ -168,5 +176,5 @@
 (setq ring-bell-function 'ignore)
 
 ;; Don't pollute this file with vars set using the customization interface
-(setq custom-file "~/.emacs.d/custom.el")
+(setq custom-file (concat tviti/emacs-dir "/custom.el"))
 (load custom-file)
