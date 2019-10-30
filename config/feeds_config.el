@@ -4,10 +4,10 @@
 (require 'elfeed)
 (require 'ivy)
 
-(setq elfeed-db-directory "~/Sync/elfeed/")
+(setq elfeed-db-directory (concat tviti/sync-dir "/elfeed/"))
 
 ;; Load the list of feeds
-(let ((fn "~/Sync/elfeed-feeds.el"))
+(let ((fn (concat tviti/sync-dir "/elfeed-feeds.el")))
   (with-temp-buffer
     (insert-file-contents-literally fn)
     (setq elfeed-feeds (read (buffer-string)))))

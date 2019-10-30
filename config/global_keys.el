@@ -20,6 +20,8 @@
 
 (require 'org)
 (global-set-key (kbd "C-c o a") #'org-agenda)
+(global-set-key (kbd "C-c o c") #'org-capture)
+(global-set-key (kbd "C-c o r") #'org-refile)
 (global-set-key (kbd "C-c o C-a d") #'org-agenda-day-view)
 (global-set-key (kbd "C-c o C-a w") #'org-agenda-week-view)
 (global-set-key (kbd "C-c o C-a m") #'org-agenda-month-view)
@@ -29,7 +31,11 @@
 (global-set-key (kbd "C-c o n") #'org-next-block)
 (global-set-key (kbd "C-c o p") #'org-previous-block)
 
+(require 'counsel)
+(global-set-key (kbd "C-c o j") #'counsel-org-goto-all)
+
 (require 'dired)
+;; TODO: These were made before I realized that there were builtins.
 (global-set-key (kbd "C-c d c") #'dired-do-copy)
 (global-set-key (kbd "C-c d r") #'dired-do-rename)
 

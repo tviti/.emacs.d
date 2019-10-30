@@ -34,6 +34,12 @@
 ;; 	    (load-theme 'spacemacs-dark t)))
 ;; (load-theme 'solarized-dark t)
 
+;; User specific globals
+;; TODO: Some of my config files depend on these values being defined! It may be
+;; better to lump these into a separate, and then use the (require ...)
+;; mechanism in my config files to ensure they exist!
+(defvar tviti/sync-dir "~/Sync"
+  "A synchronized directory.")
 
 ;; Enable the eyebrowse-mode "window manager"
 (eyebrowse-mode t)

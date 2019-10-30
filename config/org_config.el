@@ -1,5 +1,13 @@
 (require 'org)
 
+;; Enable inline todo items
+(require 'org-inlinetask)
+
+;; Configure the languages for source blocks
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '((shell . t)))
+
 ;; Configure the export backends
 (eval-after-load "org"
   (progn
@@ -26,10 +34,6 @@
 ;; (load-file (concat (file-name-directory load-file-name) "./ob-julia.el"))
 
 (add-hook 'org-mode-hook 'turn-on-auto-fill)
-
-(org-babel-do-load-languages
- 'org-babel-load-languages
- '((shell . t)))
 
 ;; Get syntax highlighting in code blocks
 (setq org-src-fontify-natively t
@@ -63,7 +67,34 @@
 	       (format "osascript -e 'display notification \"%s\" with title \"%s\" sound name \"%s\"'"
 		       appt-msg title sound-name))))))
 
-;; Custom easy templates
+;;;;;;;;;;;;;;;;;;;;;;;
+;; org-capture setup ;;
+;;;;;;;;;;;;;;;;;;;;;;;
+
+(when tviti/sync-dir
+  (setq org-directory (concat tviti/sync-dir "/org"))
+  (setq org-default-notes-file (concat org-directory "/notes.org")))
+
+(setq org-refile-targets `((nil . (:maxlevel . 3))
+			   (,(org-agenda-files t) . (:maxlevel . 3))))
+
+;; Load the capture templates
+(let ((fn (concat org-directory "/capture-templates.el")))
+  (with-temp-buffer
+    (insert-file-contents-literally fn)
+    (setq org-capture-templates (read (buffer-string)))))
+
+;; WORKAROUND:Incremental refile completion doesn't work with ivy-mode (see
+;; https://github.com/abo-abo/swiper/issues/1254 and
+;; https://github.com/abo-abo/swiper/issues/444), so if we want to refile to an
+;; actual sub tree path, it has to be in one go.
+(setq org-refile-use-outline-path t)
+(setq org-outline-path-complete-in-steps nil)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Custom easy templates ;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 ;; Latex "fragments"
 (add-to-list 'org-structure-template-alist
 	     '("lf" "#+BEGIN_LaTeX latex
@@ -84,6 +115,3 @@
 ?
 \\end{equation*}
 #+END_LaTeX"))
-
-
-
