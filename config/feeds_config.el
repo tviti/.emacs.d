@@ -80,7 +80,8 @@ building incremental tag completions."
     "r" #'elfeed-search-untag-all-unread
     "s" #'tviti/elfeed-ivy-live-filter
     "S" #'elfeed-search-set-filter
-    "c" #'elfeed-search-clear-filter)
+    "c" #'elfeed-search-clear-filter
+    (kbd "g r") #'elfeed-search-update--force)
 
   (evil-collection-define-key 'visual 'elfeed-search-mode-map
     "+" #'tviti/elfeed-search-tag-all
