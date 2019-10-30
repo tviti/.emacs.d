@@ -134,6 +134,13 @@
 ;;
 ;; User defined functions
 ;;
+
+(defun tviti/toggle-frame-undecorated ()
+  "Toggle decorations (i.e. borders) in the active frame."
+  (interactive)
+  (let ((undecorated (frame-parameter nil 'undecorated)))
+    (set-frame-parameter nil 'undecorated (not undecorated))))
+
 (defun tviti/kill-all-buffers ()
   "Kill all buffers, save for a few \"special\" ones."
   (interactive)
