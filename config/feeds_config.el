@@ -69,10 +69,11 @@ building incremental tag completions."
 			:require-match nil))
 	(elfeed-search-update :force))))
 
-;; Keybindings for elfeed+evil
+;; Make elfeed more evil
 (defun tviti/elfeed-search-evil-setup ()
-  "Evil keybindings for `elfeed-search-mode'"
-  (evil-collection-define-key 'normal 'elfeed-search-mode-map
+  "Setup Evil keybindings for `elfeed-search-mode' and
+`elfeed-show-mode'"
+  (evil-define-key 'normal elfeed-search-mode-map
     (kbd "RET") #'elfeed-search-show-entry
     "+" #'tviti/elfeed-search-tag-all
     "-" #'tviti/elfeed-search-untag-all
@@ -83,19 +84,14 @@ building incremental tag completions."
     "c" #'elfeed-search-clear-filter
     (kbd "g r") #'elfeed-search-update--force)
 
-  (evil-collection-define-key 'visual 'elfeed-search-mode-map
+  (evil-define-key 'visual elfeed-search-mode-map
     "+" #'tviti/elfeed-search-tag-all
     "-" #'tviti/elfeed-search-untag-all
-    "r" #'elfeed-search-untag-all-unread))
+    "r" #'elfeed-search-untag-all-unread)
 
-(defun tviti/elfeed-show-evil-setup ()
-  "Keybindings for `elfeed-show-mode'"
-  (evil-collection-define-key 'normal 'elfeed-show-mode-map
+  (evil-define-key 'normal elfeed-show-mode-map
     "+" #'tviti/elfeed-show-tag
     "-" #'elfeed-show-untag))
 
-(eval-after-load 'evil-collection
-  (add-hook 'elfeed-search-mode-hook #'tviti/elfeed-search-evil-setup))
-
-(eval-after-load 'evil-collection
-  (add-hook 'elfeed-show-mode-hook #'tviti/elfeed-show-evil-setup))
+(eval-after-load 'evil-mode
+  (tviti/elfeed-search-evil-setup))
