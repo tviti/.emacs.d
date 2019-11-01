@@ -27,7 +27,10 @@
 (global-set-key (kbd "C-c o C-a m") #'org-agenda-month-view)
 (global-set-key (kbd "C-c o C-a y") #'org-agenda-year-view)
 
-(global-set-key (kbd "C-c o o") #'org-insert-heading-after-current)
+;; (global-set-key (kbd "C-c o o") #'org-insert-heading-after-current)
+(global-set-key (kbd "C-c o o") #'org-clock-out)
+(global-set-key (kbd "C-c o i") #'org-clock-in-last)
+
 (global-set-key (kbd "C-c o n") #'org-next-block)
 (global-set-key (kbd "C-c o p") #'org-previous-block)
 
