@@ -1,11 +1,4 @@
 (require 'julia-mode)
-(push "~/lsp-julia/" load-path)
-;; Various BS trying to get my dev modules recognized
-;; (setq lsp-julia-package-dir 'nil)
-;; (setq lsp-julia-package-dir "/Users/taylor/julia-vscode-0.12.2/scripts/languageserver/packages")
-
-;; (setq lsp-julia-default-environment "/Users/taylor/BRAAP.jl")
-;; (setenv "JULIA_DEPOT_PATH" "/Users/taylor/BRAAP.jl/src")
 (require 'lsp-julia)
 (require 'lsp-mode)
 
