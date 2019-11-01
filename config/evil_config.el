@@ -13,13 +13,11 @@
 
 ;; Enable evil where it normally wouldn't be enabled
 (require 'evil-collection)
-(evil-collection-init 'ediff)
-(evil-collection-init 'ibuffer)
-(evil-collection-init 'package-menu)
-(evil-collection-init 'dired)
-(evil-collection-init 'magit)
-(evil-collection-init 'bookmark)
-(evil-collection-init 'slime)
+(evil-collection-init '(ediff ibuffer package-menu dired magit bookmark slime))
+
+;; Not sure why, but evil-collection-init won't actually load
+;; evil-collection-pdf, so we do it like so instead.
+(with-eval-after-load 'pdf-tools (evil-collection-pdf-setup))
  
 ;; Make org-mode more evil. Config is per the README.md
 (require 'evil-org)
@@ -31,10 +29,11 @@
 ;; Make Info mode more evil
 (defun tviti/evil-Info-mode-setup ()
   "Evil keybindings for `Info-mode'"
-  (evil-define-key 'normal Info-mode-map
+  (evil-define-key '(normal visual) Info-mode-map
     "h" #'evil-backward-char
     "l" #'evil-forward-char
-    "u" #'Info-history-back)
+    "u" #'Info-history-back
+    "g" #'Info-goto-node)
 
   (evil-set-initial-state 'Info-mode 'normal))
 
