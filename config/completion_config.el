@@ -28,6 +28,16 @@
 (define-key org-mode-map [remap org-goto] #'counsel-org-goto)
 (define-key org-mode-map [remap org-set-tags-command] #'counsel-org-tag)
 
+(global-set-key (kbd "C-s") #'swiper-isearch)
+
+;; swiper-isearch won't work in pdf's (and may even cause Emacs to
+;; hang). Override its keybinding in PDF-view buffers.
+(with-eval-after-load 'pdf-view
+  (add-hook 'pdf-view-mode-hook
+	    (lambda ()
+	      (local-set-key (kbd "C-s") #'isearch-forward))))
+
+
 ;;;;;;;;;;;;;;
 ;; ido-mode ;;
 ;;;;;;;;;;;;;;

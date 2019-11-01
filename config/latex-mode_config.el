@@ -1,3 +1,17 @@
+;; pdf-tools setup
+(require 'pdf-tools)
+(require 'pdf-view)
+
+(pdf-tools-install)
+
+
+;; Don't blink the cursor if evil-mode is activated. Adapted from
+;; https://github.com/hlissner/doom-emacs/pull/1107
+(add-hook 'pdf-view-mode-hook
+	  (lambda ()
+	    (when evil-mode
+	      (set (make-local-variable 'evil-normal-state-cursor) (list nil)))))
+
 ;; ;; Enable line number
 (add-hook 'LaTeX-mode-hook
 	  (lambda ()
@@ -47,18 +61,21 @@ a shift-cmd-click from within Skim to jump to the associated line in emacs"
 ;; (setq-default TeX-engine 'luatex)
 (setq-default TeX-engine 'xetex) ;; luatex + synctex + evince are problematic
 
-
 ;; Enable synctex doc correlation
 (setq TeX-source-correlate-mode t)
 
 ;; Default to using Skim displayline for pdf view when we're on OS X Doing C-v
 ;; from emacs will take you to the corresponding line in Skim Doing cmd-click
 ;; from Skim will take you to the corresponding line in Emacs
-(if (eq system-type 'darwin)
-    (setq TeX-view-program-selection
-	  '((output-dvi "open")
-	    (output-pdf "displayline")
-	    (output-html "open"))))
+;; (if (eq system-type 'darwin)
+;;     (setq TeX-view-program-selection
+;; 	  '((output-dvi "open")
+;; 	    (output-pdf "displayline")
+;; 	    (output-html "open"))))
+(setq TeX-view-program-selection
+      '((output-dvi "open")
+	(output-pdf "PDF Tools")
+	(output-html "open")))
 
 ;; Auctext uses just a single key to toggle comment-uncomment, which throws me
 ;; off (since I'm used to pre-fixed bindings for uncomment).
