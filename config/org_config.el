@@ -1,5 +1,8 @@
 (require 'org)
 
+(setq org-directory "~/org")
+(setq org-agenda-files (list org-directory))
+
 ;; Enable inline todo items
 (require 'org-inlinetask)
 
@@ -39,12 +42,7 @@
 (setq org-src-fontify-natively t
       org-src-tab-acts-natively t)
 
-;; Load agenda file lists
-(cond
- ((string-equal (system-name) "R-Daneel.local")
-  (setq org-agenda-files "~/.emacs.d/R-Daneel-agenda-files.txt"))
- ((string-equal (system-name) "magneto")
-  (setq org-agenda-files "~/.emacs.d/magneto-agenda-files.txt")))
+;; (setq org-agenda-fles "~/org")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Appointments and reminders ;;
@@ -71,9 +69,7 @@
 ;; org-capture setup ;;
 ;;;;;;;;;;;;;;;;;;;;;;;
 
-(when tviti/sync-dir
-  (setq org-directory (concat tviti/sync-dir "/org"))
-  (setq org-default-notes-file (concat org-directory "/notes.org")))
+(setq org-default-notes-file (concat org-directory "/notes.org"))
 
 (setq org-refile-targets `((nil . (:maxlevel . 3))
 			   (,(org-agenda-files t) . (:maxlevel . 3))))
