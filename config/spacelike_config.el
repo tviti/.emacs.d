@@ -25,3 +25,8 @@
 ;; Emacs). Spacemacs doesn't do this, but I'm placing it in this file anyways
 ;; because it's a spaceline config option.
 (setq spaceline-highlight-face-func #'spaceline-highlight-face-evil-state)
+
+;; Show the currently active org-clock in the modeline. This requires turning
+;; something off (in this case minor modes) to make space for it
+(spaceline-toggle-org-clock)
+(spaceline-toggle-minor-modes-off)
