@@ -27,7 +27,6 @@
 (global-set-key (kbd "C-c o C-a m") #'org-agenda-month-view)
 (global-set-key (kbd "C-c o C-a y") #'org-agenda-year-view)
 
-;; (global-set-key (kbd "C-c o o") #'org-insert-heading-after-current)
 (global-set-key (kbd "C-c o o") #'org-clock-out)
 (global-set-key (kbd "C-c o i") #'org-clock-in-last)
 
@@ -43,3 +42,7 @@
 (global-set-key (kbd "C-c d r") #'dired-do-rename)
 
 (global-set-key (kbd "C-c i") #'imenu)
+
+(with-eval-after-load 'flymake
+  (global-set-key (kbd "M-n") #'flymake-goto-next-error)
+  (global-set-key (kbd "M-p") #'flymake-goto-prev-error))
