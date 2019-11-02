@@ -32,6 +32,10 @@
 ;; entry-point for both pdf-tools installation, AND setup.
 (pdf-tools-install)
 
+;; Set emacs as the default pdf viewer (for this session), so that texdoc
+;; doesn't try to use an external viewer for command documentation.
+(setenv "PDFVIEWER" "emacsclient -n")
+
 ;; Don't blink the cursor if evil-mode is activated. Adapted from
 ;; https://github.com/hlissner/doom-emacs/pull/1107
 (add-hook 'pdf-view-mode-hook
