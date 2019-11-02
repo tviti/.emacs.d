@@ -111,3 +111,11 @@
 ?
 \\end{equation*}
 #+END_LaTeX"))
+
+;; Flyspell will take over the standard completion keybindings, so we set them
+;; ourselves here
+(define-key org-mode-map (kbd "M-<tab>")
+  (lambda () (interactive) (pcomplete-std-complete)))
+
+(define-key org-mode-map (kbd "C-M-i")
+  (lambda () (interactive) (pcomplete-std-complete)))
