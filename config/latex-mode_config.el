@@ -49,6 +49,9 @@
 	(output-pdf "PDF Tools")
 	(output-html "open")))
 
+;; Revert pdf-view buffer after compilation
+(add-hook 'TeX-after-compilation-finished-functions #'TeX-revert-document-buffer)
+
 ;; Highlight certain key words. Taken from
 ;; http://emacs-fu.blogspot.com/2008/12/highlighting-todo-fixme-and-friends.html
 (defun tviti/latex-font-lock ()
