@@ -14,3 +14,8 @@
 
 ;; Instruct Emacs to consume Apple-key events (e.g. cmd-Q and cmd-H)
 (setq mac-pass-command-to-system nil)
+
+;; Use mdfind for the locate
+(setq locate-command "mdfind")
+(with-eval-after-load 'counsel
+  (setq counsel-locate-cmd 'counsel-locate-cmd-mdfind))
