@@ -51,7 +51,6 @@
 (defvar tviti/emacs-dir "~/.emacs.d"
   "The directory to use as/instead of .emacs.d")
 
-
 ;; Enable the eyebrowse-mode "window manager"
 (eyebrowse-mode t)
 
@@ -86,8 +85,14 @@
 (add-hook 'prog-mode-hook (lambda () (display-line-numbers-mode)
 			    (setq display-line-numbers 'relative)))
 
+
 ;; Store bookmarks in a different directory
 (setq bookmark-file "~/Sync/bookmarks")
+
+;; Store yasnippets in a different directory
+(with-eval-after-load 'yasnippet
+  (add-to-list 'yas-snippet-dirs
+	       (concat tviti/sync-dir "/yasnippets")))
 
 ;; Setup groupings for ibuffer
 (setq ibuffer-saved-filter-groups
