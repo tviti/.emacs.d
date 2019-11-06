@@ -23,7 +23,9 @@
  'slime-display-or-scroll-completions
  :around #'ora-slime-completion-in-region)
 
-;; Keybindings
+;; Keybindings setup. Only keybindings that replace external functionality
+;; should be placed here. The proper place for opponent's keybindings is
+;; global_keys.el
 (require 'org)
 (define-key org-mode-map [remap org-goto] #'counsel-org-goto)
 (define-key org-mode-map [remap org-set-tags-command] #'counsel-org-tag)
