@@ -121,6 +121,11 @@
 
 (setq browse-url-browser-function #'tviti/browse-url-next-browser)
 
+(defun tviti/mac-port-p ()
+  "Check if the running Emacs instance is Mistuhara Yamamoto's mac-port."
+  (when (and (eq window-system 'mac) (boundp 'mac-carbon-version-string))
+    t))
+
 ;; Load custom configuration files
 (if (string-equal system-type "darwin")
     (load-file (concat tviti/emacs-dir "/config/osx_config.el")))
@@ -179,6 +184,7 @@
   buffers between eyebrowse workspaces."
   (interactive)
   (kill-new (buffer-name)))
+
 
 (desktop-save-mode 1)
 (setq ring-bell-function 'ignore)
