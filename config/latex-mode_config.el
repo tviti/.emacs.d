@@ -1,7 +1,15 @@
-;; Auctex setup
+;;;;;;;;;;;;;;;;;;
+;; Auctex setup ;;
+;;;;;;;;;;;;;;;;;;
+
 (require 'latex)
 (setq TeX-auto-save t)
 (setq TeX-parse-self t)
+
+;; Enable reftex
+(require 'reftex)
+(add-hook 'LaTeX-mode-hook 'turn-on-reftex)
+(setq reftex-plug-into-AUCTeX t)
 
 (add-hook 'LaTeX-mode-hook 'turn-on-auto-fill)
 
@@ -26,7 +34,10 @@
 ;; Setup flymake for tex-file linting
 (add-hook 'LaTeX-mode-hook #'flymake-mode)
 
-;; pdf-tools setup
+;;;;;;;;;;;;;;;;;;;;;
+;; pdf-tools setup ;;
+;;;;;;;;;;;;;;;;;;;;;
+
 (require 'pdf-tools)
 ;; The semantics are somewhat peculiar, but this function serves as the
 ;; entry-point for both pdf-tools installation, AND setup.
@@ -60,3 +71,9 @@
    '(("\\<\\(FIXME\\|TODO\\|BUG\\):" 1 font-lock-warning-face t))))
 
 (add-hook 'LaTeX-mode-hook #'tviti/latex-font-lock)
+
+;;;;;;;;;;;;;;;;;;;;;
+;; Yasnippet setup ;;
+;;;;;;;;;;;;;;;;;;;;;
+(require 'yasnippet)
+(add-hook 'LaTeX-mode-hook 'yas-minor-mode-on)
