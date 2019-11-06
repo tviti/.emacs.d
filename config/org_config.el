@@ -2,6 +2,8 @@
 
 (setq org-directory "~/org")
 (setq org-agenda-files (list org-directory))
+(require 'org-bullets)
+(add-hook 'org-mode-hook 'org-bullets-mode)
 
 ;; Enable inline todo items
 (require 'org-inlinetask)

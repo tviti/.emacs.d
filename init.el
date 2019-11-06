@@ -1,10 +1,12 @@
 ;; Trendy mode: Make the first window borderless
 ;; (setq initial-frame-alist '((undecorated . t)))
 
-;; Hide the tool bar and scroll bar
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
 (horizontal-scroll-bar-mode -1)
+(blink-cursor-mode 0)
+(global-hl-line-mode 1)
+(winner-mode 1) ;; Enables window state undo/redo
 
 ;; Package manager configuration
 (setq package-archives '(("gnu" . "https://elpa.gnu.org/packages/")
