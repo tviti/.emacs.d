@@ -28,12 +28,12 @@
 
 ;; Make Info mode more evil
 (defun tviti/evil-Info-mode-setup ()
-  "Evil keybindings for `Info-mode'"
+  "Evil keybindings for `Info-mode'."
   (evil-define-key '(normal visual) Info-mode-map
     "h" #'evil-backward-char
     "l" #'evil-forward-char
     "u" #'Info-history-back
-    "g" #'Info-goto-node)
+    "g g " #'evil-goto-first-line)
 
   (evil-set-initial-state 'Info-mode 'normal))
 
