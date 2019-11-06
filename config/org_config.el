@@ -1,7 +1,11 @@
 (require 'org)
-
 (setq org-directory "~/org")
-(setq org-agenda-files (list org-directory))
+(setq org-agenda-files (append (list org-directory)
+			       (with-temp-buffer
+				 (insert-file-contents-literally
+				  (concat tviti/sync-dir "/agenda-files.el"))
+				 (read (buffer-string)))))
+
 (require 'org-bullets)
 (add-hook 'org-mode-hook 'org-bullets-mode)
 
