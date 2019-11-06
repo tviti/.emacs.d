@@ -26,7 +26,15 @@
 ;; because it's a spaceline config option.
 (setq spaceline-highlight-face-func #'spaceline-highlight-face-evil-state)
 
-;; Show the currently active org-clock in the modeline. This requires turning
-;; something off (in this case minor modes) to make space for it
-(spaceline-toggle-org-clock)
+(spaceline-toggle-org-clock-on)
 (spaceline-toggle-minor-modes-off)
+(spaceline-toggle-version-control-off)
+(spaceline-toggle-buffer-size-off)
+(spaceline-toggle-buffer-encoding-abbrev-off)
+
+;; Show the current system time
+(setq display-time-default-load-average nil)
+(setq display-time-format "%a %m/%d %R")
+(display-time-mode 1)
+
+(spaceline-compile)
