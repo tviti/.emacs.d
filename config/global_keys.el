@@ -21,6 +21,8 @@
 (global-set-key (kbd "C-c m C-s m") #'magit-stage-modified)
 (global-set-key (kbd "C-c m l") #'magit-log-buffer-file)
 
+(require 'magit-annex)
+(global-set-key (kbd "C-c m a") #'magit-annex-dispatch)
 
 ;; org-mode keybindings
 (require 'org)
