@@ -39,6 +39,8 @@
 (global-set-key (kbd "C-c o o") #'org-clock-out)
 (global-set-key (kbd "C-c o i") #'org-clock-in-last)
 
+(global-set-key (kbd "C-c o I") #'org-toggle-inline-images)
+
 (global-set-key (kbd "C-c o n") #'org-next-block)
 (global-set-key (kbd "C-c o p") #'org-previous-block)
 
