@@ -138,7 +138,6 @@
 			     "ESS_config.el"
 			     "global_keys.el"
 			     "evil_config.el"
-			     "magit_config.el"
 			     "tramp_config.el"
 			     "python_config.el"
 			     "latex-mode_config.el"

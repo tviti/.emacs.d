@@ -15,6 +15,9 @@
 (require 'evil-collection)
 (evil-collection-init '(ediff ibuffer package-menu dired magit bookmark slime))
 
+(with-eval-after-load 'magit
+  (require 'evil-magit))
+
 ;; Not sure why, but evil-collection-init won't actually load
 ;; evil-collection-pdf, so we do it like so instead.
 (with-eval-after-load 'pdf-tools (evil-collection-pdf-setup))
