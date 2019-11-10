@@ -134,21 +134,21 @@
 (if (string-equal system-type "darwin")
     (load-file (concat tviti/emacs-dir "/config/osx_config.el")))
 
-(defvar tviti/config-files '("completion_config.el"
-			     "ESS_config.el"
-			     "global_keys.el"
-			     "evil_config.el"
-			     "tramp_config.el"
-			     "python_config.el"
-			     "latex-mode_config.el"
-			     "matlab_config.el"
-			     "julia_config.el"
-			     "org_config.el"
-			     "spacelike_config.el"
-			     "lsp_config.el"
-			     "slime_config.el"
-			     "feeds_config.el"
-			     "ruler-mode_config.el")
+(defvar tviti/config-files '("completion-config.el"
+			     "ESS-config.el"
+			     "global-keys.el"
+			     "evil-config.el"
+			     "tramp-config.el"
+			     "python-config.el"
+			     "latex-mode-config.el"
+			     "matlab-config.el"
+			     "julia-config.el"
+			     "org-config.el"
+			     "spacelike-config.el"
+			     "lsp-config.el"
+			     "slime-config.el"
+			     "feeds-config.el"
+			     "ruler-mode-config.el")
   "List of user config files to be loaded from located in
   <TVITI/EMACS-DIR>/config")
 
