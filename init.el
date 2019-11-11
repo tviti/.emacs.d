@@ -65,6 +65,10 @@
 ;; This should be one of the last things loaded, since it uses mode-hooks for
 ;; toggling linters.
 (require 'linter-config)
+
+;;
+;; Misc configurations
+;;
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
 (horizontal-scroll-bar-mode -1)
@@ -93,14 +97,13 @@
 (add-hook 'prog-mode-hook (lambda () (display-line-numbers-mode)
 			    (setq display-line-numbers 'relative)))
 
-
 ;; Store bookmarks in a different directory
-(setq bookmark-file (concat tviti/sync-dir "bookmarks"))
+(setq bookmark-file (expand-file-name "bookmarks" tviti/sync-dir))
 
 ;; Store yasnippets in a different directory
 (with-eval-after-load 'yasnippet
   (add-to-list 'yas-snippet-dirs
-	       (concat tviti/sync-dir "/yasnippets")))
+	       (expand-file-name "yasnippets" tviti/sync-dir)))
 
 ;; Setup groupings for ibuffer
 (setq ibuffer-saved-filter-groups
