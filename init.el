@@ -62,6 +62,9 @@
 (require 'julia-config)
 (require 'ess-config)
 
+;; This should be one of the last things loaded, since it uses mode-hooks for
+;; toggling linters.
+(require 'linter-config)
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
 (horizontal-scroll-bar-mode -1)
