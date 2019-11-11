@@ -130,30 +130,51 @@
   (when (and (eq window-system 'mac) (boundp 'mac-carbon-version-string))
     t))
 
+;;
 ;; Load custom configuration files
-(if (string-equal system-type "darwin")
-    (load-file (concat tviti/emacs-dir "/config/osx_config.el")))
+;;
+(add-to-list 'load-path (expand-file-name "config/" tviti/emacs-dir))
 
-(defvar tviti/config-files '("completion-config.el"
-			     "ESS-config.el"
-			     "global-keys.el"
-			     "evil-config.el"
-			     "tramp-config.el"
-			     "python-config.el"
-			     "latex-mode-config.el"
-			     "matlab-config.el"
-			     "julia-config.el"
-			     "org-config.el"
-			     "spacelike-config.el"
-			     "lsp-config.el"
-			     "slime-config.el"
-			     "feeds-config.el"
-			     "ruler-mode-config.el")
-  "List of user config files to be loaded from located in
-  <TVITI/EMACS-DIR>/config")
+;; Configs we want loaded immediately
+(if (string= system-type "darwin")
+    (require 'macos-config))
 
-(dolist (fn tviti/config-files)
-  (load-file (format "%s/config/%s" tviti/emacs-dir fn)))
+(require 'completion-config)
+(require 'evil-config)
+(require 'spacelike-config)
+(require 'global-keys)
+(require 'feeds-config)
+(require 'tramp-config)
+(require 'slime-config)
+(require 'ruler-mode-config)
+(require 'python-config)
+(require 'org-config)
+(require 'matlab-config)
+(require 'lsp-config)
+(require 'latex-mode-config)
+(require 'julia-config)
+(require 'ess-config)
+
+;; (defvar tviti/config-files '("completion-config.el"
+;; 			     "ESS-config.el"
+;; 			     "global-keys.el"
+;; 			     "evil-config.el"
+;; 			     "tramp-config.el"
+;; 			     "python-config.el"
+;; 			     "latex-mode-config.el"
+;; 			     "matlab-config.el"
+;; 			     "julia-config.el"
+;; 			     "org-config.el"
+;; 			     "spacelike-config.el"
+;; 			     "lsp-config.el"
+;; 			     "slime-config.el"
+;; 			     "feeds-config.el"
+;; 			     "ruler-mode-config.el")
+;;   "List of user config files to be loaded from located in
+;;   <TVITI/EMACS-DIR>/config")
+
+;; (dolist (fn tviti/config-files)
+;;   (load-file (format "%s/config/%s" tviti/emacs-dir fn)))
 
 ;;
 ;; User defined functions

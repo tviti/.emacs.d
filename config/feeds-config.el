@@ -95,3 +95,5 @@ building incremental tag completions."
 
 (eval-after-load 'evil-mode
   (tviti/elfeed-search-evil-setup))
+
+(provide 'feeds-config)

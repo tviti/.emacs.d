@@ -19,3 +19,5 @@
 	    (setq display-line-numbers 'relative)))
 
 (add-hook 'markdown-mode-hook 'turn-on-auto-fill)
+
+(provide 'ess-config)

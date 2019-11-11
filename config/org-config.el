@@ -127,3 +127,5 @@
 
 (define-key org-mode-map (kbd "C-M-i")
   (lambda () (interactive) (pcomplete-std-complete)))
+
+(provide 'org-config)

@@ -38,3 +38,5 @@
 ;; (setq lsp-log-io 't)
 (setq lsp-log-io 'ninill)
 ;; (setq lsp-signature-render-all 'nil)
+
+(provide 'lsp-config)

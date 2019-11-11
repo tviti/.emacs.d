@@ -52,3 +52,5 @@ julia-repl in the bottom portion"
 
 ;; ;; Display output from a connected buffer in the repl
 ;; (setq jupyter-repl-echo-eval-p t)
+
+(provide 'julia-config)

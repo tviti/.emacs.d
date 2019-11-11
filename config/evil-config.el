@@ -42,3 +42,5 @@
 
 (eval-after-load 'evil-mode
   (tviti/evil-Info-mode-setup))
+
+(provide 'evil-config)

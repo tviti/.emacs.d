@@ -38,3 +38,5 @@
 (display-time-mode 1)
 
 (spaceline-compile)
+
+(provide 'spacelike-config)

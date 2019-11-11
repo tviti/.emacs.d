@@ -77,3 +77,5 @@
 ;;;;;;;;;;;;;;;;;;;;;
 (require 'yasnippet)
 (add-hook 'LaTeX-mode-hook 'yas-minor-mode-on)
+
+(provide 'latex-mode-config)

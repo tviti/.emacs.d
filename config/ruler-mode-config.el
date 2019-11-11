@@ -35,3 +35,5 @@
 				(face-attribute 'font-lock-comment-face :foreground))
 	    (set-face-attribute 'ruler-mode-current-column nil :foreground
 				(face-attribute 'font-lock-warning-face :foreground))))
+
+(provide 'ruler-mode-config)

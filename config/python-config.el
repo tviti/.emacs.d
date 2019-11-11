@@ -28,3 +28,4 @@
   (let ((buffer "*Jupyter Notebook Server*"))
     (async-shell-command  "jupyter-notebook" buffer buffer)))
 			
+(provide 'python-config)

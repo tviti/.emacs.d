@@ -38,3 +38,5 @@
 	  (lambda ()
 	    (display-line-numbers-mode)
 	    (setq display-line-numbers 'relative)))
+
+(provide 'matlab-config)

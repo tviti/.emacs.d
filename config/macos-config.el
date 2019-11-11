@@ -19,3 +19,5 @@
 (setq locate-command "mdfind")
 (with-eval-after-load 'counsel
   (setq counsel-locate-cmd 'counsel-locate-cmd-mdfind))
+
+(provide 'macos-config)
