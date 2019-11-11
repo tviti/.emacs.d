@@ -2,12 +2,6 @@
 (global-set-key (kbd "\C-c ;") #'comment-region)
 (local-set-key (kbd "\C-u \C-c ;") #'uncomment-region)
 
-;; Suggested flyspell keybindings, per
-;; https://www.emacswiki.org/emacs/FlySpell. Note that this is not ALL of the
-;; suggested keybindings, just the ones that I "liked".
-(global-set-key (kbd "<f8>") #'ispell-word)
-(global-set-key (kbd "C-M-<f8>") #'flyspell-buffer)
-
 ;; Default to using ibuffer
 (global-set-key (kbd "C-x C-b") #'ibuffer)
 
@@ -62,9 +56,5 @@
 ;; misc keybindings
 (global-set-key (kbd "C-c w") #'whitespace-mode)
 (global-set-key (kbd "C-c i") #'imenu)
-
-(with-eval-after-load 'flymake
-  (global-set-key (kbd "M-n") #'flymake-goto-next-error)
-  (global-set-key (kbd "M-p") #'flymake-goto-prev-error))
 
 (provide 'global-keys)

@@ -31,9 +31,6 @@
 (define-key LaTeX-mode-map (kbd "\C-c ;") 'comment-region)
 (define-key LaTeX-mode-map (kbd "\C-u \C-c ;") 'uncomment-region)
 
-;; Setup flymake for tex-file linting
-(add-hook 'LaTeX-mode-hook #'flymake-mode)
-
 ;;;;;;;;;;;;;;;;;;;;;
 ;; pdf-tools setup ;;
 ;;;;;;;;;;;;;;;;;;;;;
