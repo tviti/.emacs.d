@@ -41,16 +41,6 @@
 	  (lambda ()
 	    (load-theme 'spacemacs-light t)))
 
-;; User specific globals
-;; TODO: Some of my config files depend on these values being defined! It may be
-;; better to lump these into a separate, and then use the (require ...)
-;; mechanism in my config files to ensure they exist!
-(defvar tviti/sync-dir "~/Sync"
-  "A synchronized directory.")
-
-(defvar tviti/emacs-dir "~/.emacs.d"
-  "The directory to use as/instead of .emacs.d")
-
 ;; Enable the eyebrowse-mode "window manager"
 (eyebrowse-mode t)
 
@@ -108,36 +98,19 @@
 ;; us completely if we are using a tiling window manager like yabai).
 (setq ediff-window-setup-function 'ediff-setup-windows-plain)
 
-;; Use next-browser for `browse-url' functionality
-(defvar tviti/next-browser-command ""
-  "Path to next-browser, used by `tviti/browse-url-next-browser'")
-
-(defun tviti/browse-url-next-browser (url &rest args)
-  (start-process "next-browser"
-		 nil tviti/next-browser-command url))
-
-(setq tviti/next-browser-command
-      (cond
-       ((string= (system-name) "R-Daneel.local")
-	"/Applications/Next.app/Contents/MacOS/next")
-       (t
-	"next")))
-
 (setq browse-url-browser-function #'tviti/browse-url-next-browser)
-
-(defun tviti/mac-port-p ()
-  "Check if the running Emacs instance is Mistuhara Yamamoto's mac-port."
-  (when (and (eq window-system 'mac) (boundp 'mac-carbon-version-string))
-    t))
 
 ;;
 ;; Load custom configuration files
 ;;
-(add-to-list 'load-path (expand-file-name "config/" tviti/emacs-dir))
+(add-to-list 'load-path (expand-file-name "config/" user-emacs-directory))
 
 ;; Configs we want loaded immediately
 (if (string= system-type "darwin")
     (require 'macos-config))
+
+(require 'user-globals)
+(require 'user-functions)
 
 (require 'completion-config)
 (require 'evil-config)
@@ -155,64 +128,9 @@
 (require 'julia-config)
 (require 'ess-config)
 
-;; (defvar tviti/config-files '("completion-config.el"
-;; 			     "ESS-config.el"
-;; 			     "global-keys.el"
-;; 			     "evil-config.el"
-;; 			     "tramp-config.el"
-;; 			     "python-config.el"
-;; 			     "latex-mode-config.el"
-;; 			     "matlab-config.el"
-;; 			     "julia-config.el"
-;; 			     "org-config.el"
-;; 			     "spacelike-config.el"
-;; 			     "lsp-config.el"
-;; 			     "slime-config.el"
-;; 			     "feeds-config.el"
-;; 			     "ruler-mode-config.el")
-;;   "List of user config files to be loaded from located in
-;;   <TVITI/EMACS-DIR>/config")
-
-;; (dolist (fn tviti/config-files)
-;;   (load-file (format "%s/config/%s" tviti/emacs-dir fn)))
-
-;;
-;; User defined functions
-;;
-
-(defun tviti/toggle-frame-undecorated ()
-  "Toggle decorations (i.e. borders) in the active frame."
-  (interactive)
-  (let ((undecorated (frame-parameter nil 'undecorated)))
-    (set-frame-parameter nil 'undecorated (not undecorated))))
-
-(defun tviti/kill-all-buffers ()
-  "Kill all buffers, save for a few \"special\" ones."
-  (interactive)
-  (let ((save-list '("*scratch*" "*Warnings*" "*Messages*"))
-	(blist (buffer-list)))
-    (when (y-or-n-p "Are you sure you want to kill all buffers?")
-      ;; TODO: Use dolist instead of mapc
-      (mapc (lambda (b)
-	      (unless (member (buffer-name b) save-list)
-		(kill-buffer b)))
-	    blist))))
-
-(defun tviti/copy-buffer-string ()
-  "Copy the entire current buffer to the \"kill-ring\" (i.e. clipboard)."
-  (interactive)
-  (kill-new (buffer-string)))
-
-(defun tviti/copy-buffer-name ()
-  "Copy the name of the active buffer to the kill-ring. Useful for swapping
-  buffers between eyebrowse workspaces."
-  (interactive)
-  (kill-new (buffer-name)))
-
-
 (desktop-save-mode 1)
 (setq ring-bell-function 'ignore)
 
 ;; Don't pollute this file with vars set using the customization interface
-(setq custom-file (concat tviti/emacs-dir "/custom.el"))
+(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 (load custom-file)

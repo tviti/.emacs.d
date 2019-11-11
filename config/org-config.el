@@ -1,3 +1,4 @@
+(require 'user-globals)
 (require 'org)
 (setq org-directory "~/org")
 (setq org-agenda-files (append (list org-directory)

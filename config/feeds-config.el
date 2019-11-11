@@ -1,6 +1,7 @@
 ;;
 ;; Elfeed setup
 ;;
+(require 'user-globals)
 (require 'elfeed)
 (require 'ivy)
 
