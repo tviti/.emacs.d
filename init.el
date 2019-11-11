@@ -1,13 +1,6 @@
 ;; Trendy mode: Make the first window borderless
 ;; (setq initial-frame-alist '((undecorated . t)))
 
-(tool-bar-mode -1)
-(scroll-bar-mode -1)
-(horizontal-scroll-bar-mode -1)
-(blink-cursor-mode 0)
-(global-hl-line-mode 1)
-(winner-mode 1) ;; Enables window state undo/redo
-
 ;; Package manager configuration
 (setq package-archives '(("gnu" . "https://elpa.gnu.org/packages/")
 			 ("melpa" . "https://melpa.org/packages/")
@@ -41,65 +34,6 @@
 	  (lambda ()
 	    (load-theme 'spacemacs-light t)))
 
-;; Enable the eyebrowse-mode "window manager"
-(eyebrowse-mode t)
-
-;; Make dired report human-readable file sizes
-(setq dired-listing-switches "-alh")
-
-;; Use flyspell mode in text-mode buffers (e.g. org-mode), but NOT in
-;; change-log-mode or log-edit-mode. Taken from
-;; https://www.emacswiki.org/emacs/FlySpell
-(dolist (hook '(text-mode-hook))
-  (add-hook hook (lambda () (flyspell-mode 1))))
-(dolist (hook '(change-log-mode-hook log-edit-mode-hook))
-  (add-hook hook (lambda () (flyspell-mode -1))))
-
-;; Spell check comments in .el files using flyspell
-(add-hook 'emacs-lisp-mode-hook
-          (lambda ()
-            (flyspell-prog-mode)))
-
-;; Pick a font + size
-(cond ((string= (system-name) "R-Daneel.local")
-       ;; Make the font a little bit bigger for my laptop
-       (progn
-	 (set-face-attribute 'default nil :height 180)
-	 (set-face-attribute 'default nil :family "Inconsolata")))
-      (t
-       (set-face-attribute 'default nil :height 140)
-       (set-face-attribute 'default nil :family "Inconsolata")))
-
-;; Enable line number and relative line numbering using the new built in system
-;; (requires Emacs >= 26.1)
-(add-hook 'prog-mode-hook (lambda () (display-line-numbers-mode)
-			    (setq display-line-numbers 'relative)))
-
-
-;; Store bookmarks in a different directory
-(setq bookmark-file "~/Sync/bookmarks")
-
-;; Store yasnippets in a different directory
-(with-eval-after-load 'yasnippet
-  (add-to-list 'yas-snippet-dirs
-	       (concat tviti/sync-dir "/yasnippets")))
-
-;; Setup groupings for ibuffer
-(setq ibuffer-saved-filter-groups
-      '(("default"
-	 ("dired" (mode . dired-mode))
-	 ("org-mode" (mode . org-mode))
-	 ("magit" (mode . magit-status-mode)))))
-(add-hook 'ibuffer-mode-hook
-	  (lambda ()
-	    (ibuffer-switch-to-saved-filter-groups "default")))
-
-;; Tell Ediff to NOT create a whole frame for the control window (this will fuck
-;; us completely if we are using a tiling window manager like yabai).
-(setq ediff-window-setup-function 'ediff-setup-windows-plain)
-
-(setq browse-url-browser-function #'tviti/browse-url-next-browser)
-
 ;;
 ;; Load custom configuration files
 ;;
@@ -127,6 +61,60 @@
 (require 'latex-mode-config)
 (require 'julia-config)
 (require 'ess-config)
+
+(tool-bar-mode -1)
+(scroll-bar-mode -1)
+(horizontal-scroll-bar-mode -1)
+(blink-cursor-mode 0)
+(global-hl-line-mode 1)
+(winner-mode 1) ;; Enables window state undo/redo
+
+;; Enable the eyebrowse-mode "window manager"
+(eyebrowse-mode t)
+
+;; Make dired report human-readable file sizes
+(setq dired-listing-switches "-alh")
+
+;; Pick a font + size
+(cond ((string= (system-name) "R-Daneel.local")
+       ;; Make the font a little bit bigger for my laptop
+       (progn
+	 (set-face-attribute 'default nil :height 180)
+	 (set-face-attribute 'default nil :family "Inconsolata")))
+      (t
+       (set-face-attribute 'default nil :height 140)
+       (set-face-attribute 'default nil :family "Inconsolata")))
+
+;; Enable line number and relative line numbering using the new built in system
+;; (requires Emacs >= 26.1)
+(add-hook 'prog-mode-hook (lambda () (display-line-numbers-mode)
+			    (setq display-line-numbers 'relative)))
+
+
+;; Store bookmarks in a different directory
+(setq bookmark-file (concat tviti/sync-dir "bookmarks"))
+
+;; Store yasnippets in a different directory
+(with-eval-after-load 'yasnippet
+  (add-to-list 'yas-snippet-dirs
+	       (concat tviti/sync-dir "/yasnippets")))
+
+;; Setup groupings for ibuffer
+(setq ibuffer-saved-filter-groups
+      '(("default"
+	 ("dired" (mode . dired-mode))
+	 ("org-mode" (mode . org-mode))
+	 ("magit" (mode . magit-status-mode)))))
+(add-hook 'ibuffer-mode-hook
+	  (lambda ()
+	    (ibuffer-switch-to-saved-filter-groups "default")))
+
+;; Tell Ediff to NOT create a whole frame for the control window (this will fuck
+;; us completely if we are using a tiling window manager like yabai).
+(setq ediff-window-setup-function 'ediff-setup-windows-plain)
+
+;; Use next-browser for browse-url functionality.
+(setq browse-url-browser-function #'tviti/browse-url-next-browser)
 
 (desktop-save-mode 1)
 (setq ring-bell-function 'ignore)
