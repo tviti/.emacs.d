@@ -14,20 +14,25 @@
     (setq elfeed-feeds (read (buffer-string)))))
 
 (defun tviti/elfeed-search-tag-all ()
-  "Same as `elfeed-search-tag-all' (called interactively), but
-using `completing-read' for tag selection."
+  "A wrapper over `elfeed-search-tag-all'.
+
+Uses `completing-read' for tag selection."
   (interactive)
   (let ((tag-str (completing-read "Tag: " (elfeed-db-get-all-tags) nil nil)))
     (elfeed-search-tag-all (intern tag-str))))
 
 (defun tviti/elfeed-show-tag ()
+  "A wrapper over `elfeed-show-tag'.
+
+Uses `completing-read' for tag selection."
   (interactive)
   (let ((tag-str (completing-read "Tag: " (elfeed-db-get-all-tags) nil nil)))
     (elfeed-show-tag (intern tag-str))))
 
 (defun tviti/elfeed-search-untag-all ()
-  "Same as `elfeed-search-untag-all' (called interactively), but
-using `completing-read' for tag selection."
+  "A wrapper over `elfeed-search-untag-all'.
+
+Uses `completing-read' for tag selection."
   (interactive)
   (let* ((entries (elfeed-search-selected))
 	 (tag-list))
@@ -39,10 +44,11 @@ using `completing-read' for tag selection."
       (elfeed-search-untag-all (intern tag-str)))))
 
 (defun tviti/elfeed-ivy-filter-complete (str)
-  "Completion function for `tviti/elfeed-ivy-live-filter'. STR should be a
-(potentially) valid `elfeed-search-filter'. If the last directive
-of STR corresponds to a positive/negative tag match directive,
-then return a list of filtered tag completions."
+  "Completion function for `tviti/elfeed-ivy-live-filter'.
+
+STR should be a (potentially) valid `elfeed-search-filter'.  If
+the last directive of STR corresponds to a positive/negative tag
+match directive, then return a list of filtered tag completions."
   (let* ((directive (car (last (split-string str " "))))
 	 (prefix (unless (string-empty-p directive) (substring directive 0 1))))
     ;; If the last directive was a tag directive, bring up tag completions
@@ -58,8 +64,10 @@ then return a list of filtered tag completions."
 		(ivy--re-filter (substring directive 1) tags))))))
 
 (defun tviti/elfeed-ivy-live-filter ()
-  "An implementation of `elfeed-live-filter' that uses `ivy' to backend for
-building incremental tag completions."
+  "Alternative to `elfeed-live-filter'.
+
+Uses `ivy' as a backend for building incremental tag
+completions."
   (interactive)
   (unwind-protect
       (let ((elfeed-search-filter-active :live))
@@ -72,8 +80,7 @@ building incremental tag completions."
 
 ;; Make elfeed more evil
 (defun tviti/elfeed-search-evil-setup ()
-  "Setup Evil keybindings for `elfeed-search-mode' and
-`elfeed-show-mode'"
+  "Setup Evil keybindings for `elfeed-search-mode' and `elfeed-show-mode'."
   (evil-define-key 'normal elfeed-search-mode-map
     (kbd "RET") #'elfeed-search-show-entry
     "+" #'tviti/elfeed-search-tag-all
