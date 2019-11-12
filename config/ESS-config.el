@@ -1,4 +1,5 @@
 (require 'ess-site)
+
 ;; Rstudio style rules
 (add-hook 'ess-mode-hook
 	  (lambda () (ess-set-style 'RStudio)))
@@ -19,5 +20,10 @@
 	    (setq display-line-numbers 'relative)))
 
 (add-hook 'markdown-mode-hook 'turn-on-auto-fill)
+
+;; Don't use ido for ESS completions. Disabling this allows ESS to use other
+;; completion backends, like ivy.
+(setq ess-use-ido nil)
+		 
 
 (provide 'ess-config)
