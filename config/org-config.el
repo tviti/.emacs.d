@@ -16,7 +16,8 @@
 ;; Configure the languages for source blocks
 (org-babel-do-load-languages
  'org-babel-load-languages
- '((shell . t)))
+ '((shell . t)
+   (R . t)))
 
 ;; Configure the export backends
 (eval-after-load "org"
