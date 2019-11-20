@@ -2,7 +2,7 @@
 
 ;; Use flyspell mode in text-mode buffers (e.g. org-mode), but NOT in
 ;; change-log-mode or log-edit-mode. Taken from
-;; https://www.emacswiki.org/emacs/FlySpell
+;; https://www.emacswiki.org/emacs/Fly Spell
 (dolist (hook '(text-mode-hook))
   (add-hook hook (lambda () (flyspell-mode 1))))
 (dolist (hook '(change-log-mode-hook log-edit-mode-hook))
@@ -11,19 +11,22 @@
 (defvar tviti/linter 'flycheck
   "Which linter to use.  Should be one of 'flycheck or 'flymake.")
 
-(cl-defun tviti/linter-on (&optional (linter tviti/linter))
-  "Enable linting in the active buffer."
+(cl-defun tviti/linter-on (&key (linter tviti/linter)
+				(prog-mode-p t))
+  "Enable linting in the active buffer. LINTER is one of
+'flycheck or 'flymake (default value is `tviti/linter'). Use
+PROG-MODE-P to turn on/off flyspell `prog-mode'."
   (cond ((eq linter 'flycheck)
 	 (flycheck-mode 1))
 	((eq linter 'flymake)
 	 (flymake-mode 1)))
-  (flyspell-prog-mode))
+  (when prog-mode-p (flyspell-prog-mode)))
 
 
 ;; modes to lint
-(add-hook 'emacs-lisp-mode-hook #'tviti/linter-on)
-(add-hook 'LaTeX-mode-hook #'tviti/linter-on)
 (setq ess-use-flymake nil)
 (add-hook 'ess-r-mode-hook #'tviti/linter-on)
+(add-hook 'emacs-lisp-mode-hook #'tviti/linter-on)
+(add-hook 'LaTeX-mode-hook (lambda () (tviti/linter-on :prog-mode-p nil)))
 
 (provide 'linter-config)
