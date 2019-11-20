@@ -83,14 +83,9 @@
 (setq dired-listing-switches "-alh")
 
 ;; Pick a font + size
-(cond ((string= (system-name) "R-Daneel.local")
-       ;; Make the font a little bit bigger for my laptop
-       (progn
-	 (set-face-attribute 'default nil :height 180)
-	 (set-face-attribute 'default nil :family "Inconsolata")))
-      (t
-       (set-face-attribute 'default nil :height 140)
-       (set-face-attribute 'default nil :family "Inconsolata")))
+(set-face-attribute 'default nil
+		    :height 140
+		    :family "DejaVu Sans Mono")
 
 ;; Enable line number and relative line numbering using the new built in system
 ;; (requires Emacs >= 26.1)
