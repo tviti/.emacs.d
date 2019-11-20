@@ -14,6 +14,8 @@
 (global-set-key (kbd "C-c m s") #'magit-status)
 (global-set-key (kbd "C-c m C-s m") #'magit-stage-modified)
 (global-set-key (kbd "C-c m l") #'magit-log-buffer-file)
+(global-set-key (kbd "C-c m p") #'magit-push)
+(define-key magit-mode-map (kbd "C-c m r") #'magit-diff-toggle-refine-hunk)
 
 (require 'magit-annex)
 (global-set-key (kbd "C-c m a") #'magit-annex-dispatch)
@@ -33,10 +35,8 @@
 (global-set-key (kbd "C-c o o") #'org-clock-out)
 (global-set-key (kbd "C-c o i") #'org-clock-in-last)
 
-(global-set-key (kbd "C-c o I") #'org-toggle-inline-images)
-
-(global-set-key (kbd "C-c o n") #'org-next-block)
-(global-set-key (kbd "C-c o p") #'org-previous-block)
+(define-key org-mode-map (kbd "C-c o n") #'org-next-block)
+(define-key org-mode-map (kbd "C-c o p") #'org-previous-block)
 
 (global-set-key (kbd "C-c o j") #'counsel-org-goto-all)
 
@@ -49,11 +49,6 @@
 (global-set-key (kbd "C-c c V") #'ivy-pop-view)
 (with-eval-after-load 'evil
   (evil-global-set-key 'normal (kbd "M-\"") #'counsel-evil-registers))
-
-(require 'dired)
-;; TODO: These were made before I realized that there were builtins.
-(global-set-key (kbd "C-c d c") #'dired-do-copy)
-(global-set-key (kbd "C-c d r") #'dired-do-rename)
 
 ;; misc keybindings
 (global-set-key (kbd "C-c w") #'whitespace-mode)
