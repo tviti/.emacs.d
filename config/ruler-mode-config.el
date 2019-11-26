@@ -15,25 +15,25 @@
 (add-hook 'find-file-hook (lambda () (ruler-mode 1)))
 
 ;; Try not to make ruler-mode stick out like such a sore thumb
-;; FIXME: This is fragile, and only works if all the used face-attributes are
-;; already set
 (require 'linum)
-(add-hook 'after-init-hook
-	  (lambda ()
-	    (set-face-attribute 'ruler-mode-default nil :background
-				(face-attribute 'default :background))
-	    (set-face-attribute 'ruler-mode-default nil :foreground
-				(face-attribute 'linum :foreground))
-	    (set-face-attribute 'ruler-mode-default nil :box
-				(face-attribute 'vertical-border :foreground))
+(defun tviti/ruler-match-theme ()
+  "Set ruler faces to better match the currently active theme."
+  (set-face-attribute 'ruler-mode-default nil :background
+		      (face-attribute 'default :background))
+  (set-face-attribute 'ruler-mode-default nil :foreground
+		      (face-attribute 'linum :foreground))
+  (set-face-attribute 'ruler-mode-default nil :box
+		      (face-attribute 'vertical-border :foreground))
 
-	    (set-face-attribute 'ruler-mode-column-number nil :foreground
-				(face-attribute 'linum :foreground))
-	    (set-face-attribute 'ruler-mode-fill-column nil :foreground
-				(face-attribute 'mode-line-buffer-id :foreground))
-	    (set-face-attribute 'ruler-mode-comment-column nil :foreground
-				(face-attribute 'font-lock-comment-face :foreground))
-	    (set-face-attribute 'ruler-mode-current-column nil :foreground
-				(face-attribute 'font-lock-warning-face :foreground))))
+  (set-face-attribute 'ruler-mode-column-number nil :foreground
+		      (face-attribute 'linum :foreground))
+  (set-face-attribute 'ruler-mode-fill-column nil :foreground
+		      (face-attribute 'mode-line-buffer-id :foreground))
+  (set-face-attribute 'ruler-mode-comment-column nil :foreground
+		      (face-attribute 'font-lock-comment-face :foreground))
+  (set-face-attribute 'ruler-mode-current-column nil :foreground
+		      (face-attribute 'font-lock-warning-face :foreground)))
+
+(add-hook 'after-init-hook #'tviti/ruler-match-theme)
 
 (provide 'ruler-mode-config)
