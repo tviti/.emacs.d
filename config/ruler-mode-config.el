@@ -34,6 +34,6 @@
   (set-face-attribute 'ruler-mode-current-column nil :foreground
 		      (face-attribute 'font-lock-warning-face :foreground)))
 
-(add-hook 'after-init-hook #'tviti/ruler-match-theme)
+;; (add-hook 'after-init-hook #'tviti/ruler-match-theme)
 
 (provide 'ruler-mode-config)
