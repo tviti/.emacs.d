@@ -15,7 +15,9 @@
 (global-set-key (kbd "C-c m C-s m") #'magit-stage-modified)
 (global-set-key (kbd "C-c m l") #'magit-log-buffer-file)
 (global-set-key (kbd "C-c m p") #'magit-push)
+;; TODO: These are local, not global keybindings!
 (define-key magit-mode-map (kbd "C-c m r") #'magit-diff-toggle-refine-hunk)
+(define-key magit-mode-map (kbd "C-c C-w") 'nil) ;; Conflicts w/ eyebrowse
 
 (require 'magit-annex)
 (global-set-key (kbd "C-c m a") #'magit-annex-dispatch)
@@ -35,6 +37,7 @@
 (global-set-key (kbd "C-c o o") #'org-clock-out)
 (global-set-key (kbd "C-c o i") #'org-clock-in-last)
 
+;; TODO: These are local, not global keybindings!
 (define-key org-mode-map (kbd "C-c o n") #'org-next-block)
 (define-key org-mode-map (kbd "C-c o p") #'org-previous-block)
 
@@ -42,6 +45,8 @@
 
 ;; counsel keybindings
 (global-set-key (kbd "C-c C-r") #'ivy-resume)
+(global-set-key (kbd "C-x B") #'counsel-switch-buffer)
+(global-set-key (kbd "C-c c f") #'counsel-git)
 (global-set-key (kbd "C-c c g") #'counsel-git-grep)
 (global-set-key (kbd "C-c c o") #'counsel-outline)
 (global-set-key (kbd "C-c c l") #'counsel-locate)
