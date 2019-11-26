@@ -103,24 +103,18 @@
 
 ;; Latex "fragments"
 (add-to-list 'org-structure-template-alist
-	     '("lf" "#+BEGIN_LaTeX latex
-?
-#+END_LaTeX"))
+	     '("lf" . "LaTeX latex"))
 
 ;; Latex fragment w/ un-numbered equation
 (add-to-list 'org-structure-template-alist
-	     '("lfe" "#+BEGIN_LaTeX latex
+	     '("lfe" . "LaTeX latex
 \\begin{equation}
-?
-\\end{equation}
-#+END_LaTeX"))
+\\end{equation}"))
 
 (add-to-list 'org-structure-template-alist
-	     '("lfE" "#+BEGIN_LaTeX latex
+	     '("lfE" . "LaTeX latex
 \\begin{equation*}
-?
-\\end{equation*}
-#+END_LaTeX"))
+\\end{equation*}"))
 
 ;; Flyspell will take over the standard completion keybindings, so we set them
 ;; ourselves here
