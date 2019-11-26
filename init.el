@@ -81,9 +81,13 @@
   (add-to-list 'yas-snippet-dirs
 	       (expand-file-name "yasnippets" tviti/sync-dir)))
 
+;;
 ;; Setup groupings for ibuffer
+;;
 (setq ibuffer-saved-filter-groups
       '(("default"
+	 ("nix" (filename . ".*?\\."))
+	 ("PDFs" (filename . ".*?\\.pdf"))
 	 ("dired" (mode . dired-mode))
 	 ("org-mode" (mode . org-mode))
 	 ("magit" (mode . magit-status-mode)))))
