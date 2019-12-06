@@ -60,6 +60,7 @@
 (global-set-key (kbd "C-c w") #'whitespace-mode)
 (global-set-key (kbd "C-c i") #'imenu)
 
+(global-set-key (kbd "C-c d Y") #'tviti/copy-buffer-directory)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Hawaiian language layer ;;

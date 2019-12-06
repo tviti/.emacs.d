@@ -32,6 +32,12 @@ Useful for swapping buffers between eyebrowse workspaces."
   (interactive)
   (kill-new (buffer-name)))
 
+(defun tviti/copy-buffer-directory ()
+  "Copy the directory of the current buffer to the `kill-ring'."
+  (interactive)
+  (when default-directory
+    (kill-new default-directory)))
+
 (defun tviti/browse-url-next-browser (url &rest args)
   "Start a new Next browser process to view URL `tviti/next-browser-command'.
 If Next is already running, this will instead open a new Next
