@@ -1,34 +1,23 @@
-;; (require 'julia-mode)
-;; (require 'lsp-julia)
-;; (require 'lsp-mode)
-;; 
-;; (require 'lsp-ui)
-;; (add-hook 'lsp-mode-hook 'lsp-ui-mode)
-;; 
-;; ;; Configure lsp + julia
-;; (add-hook 'julia-mode-hook #'lsp-mode)
-;; (add-hook 'julia-mode-hook #'lsp)
-;; 
-;; ;; Don't bomb the user with object documentation
-;; (setq lsp-ui-doc-enable 'nil)
-;; (setq lsp-ui-sideline-enable 'nil)
-;; 
-;; ;; Keybindings
-;; (define-key lsp-ui-mode-map (kbd "C-c l") 'lsp-ui-imenu)
-;; 
-;; ;; Override xref keybindings w/ lsp-ui-peek
-;; (define-key lsp-ui-mode-map [remap xref-find-definitions] #'lsp-ui-peek-find-definitions)
-;; (define-key lsp-ui-mode-map [remap xref-find-references] #'lsp-ui-peek-find-references)
-;; 
-;; ;; (define-key lsp-ui-mode-map (kbd "\C-c d") #'lsp-ui-doc-show)
-;; ;; (define-key lsp-ui-mode-map (kbd "\C-u \C-c d") #'lsp-ui-doc-hide)
-;; 
-;; (setq lsp-eldoc-enable-hover 't)
-;; (setq lsp-eldoc-render-all 'nil)
-;; (setq lsp-eldoc-prefer-signature-help 't)
-;; 
-;; ;; (setq lsp-log-io 't)
-;; (setq lsp-log-io 'ninill)
-;; ;; (setq lsp-signature-render-all 'nil)
-;; 
+;;
+;; Eglot config
+;;
+(require 'eglot)
+(add-hook 'ess-r-mode-hook #'eglot-ensure)
+(add-hook 'tex-mode-hook #'eglot-ensure)
+(add-hook 'bibtex-mode-hook #'eglot-ensure)
+(add-to-list 'eglot-server-programs  '(tex-mode "texlab"))
+(add-to-list 'eglot-server-programs  '(bibtex-mode "texlab"))
+
+(require 'linter-config)
+(defun tviti/setup-latex-lsp ()
+  (when (eq tviti/linter 'flymake)
+    ;; Retain the default latex flymake linter
+    (setq-local eglot-stay-out-of '(flymake))
+    (setq-local flymake-diagnostic-functions '(LaTeX-flymake eglot-flymake-backend t)))
+  ;; Force auctex to use eglot completion candidates
+  (define-key TeX-mode-map (kbd "C-M-i") #'complete-symbol))
+
+(with-eval-after-load 'tex
+  (add-hook 'TeX-mode-hook #'tviti/setup-latex-lsp))
+
 (provide 'lsp-config)

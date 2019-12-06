@@ -8,7 +8,7 @@
 (dolist (hook '(change-log-mode-hook log-edit-mode-hook))
   (add-hook hook (lambda () (flyspell-mode -1))))
 
-(defvar tviti/linter 'flycheck
+(defvar tviti/linter 'flymake
   "Which linter to use.  Should be one of 'flycheck or 'flymake.")
 
 (cl-defun tviti/linter-on (&key (linter tviti/linter)
@@ -24,9 +24,15 @@ PROG-MODE-P to turn on/off flyspell `prog-mode'."
 
 
 ;; modes to lint
-(setq ess-use-flymake nil)
+;; (setq ess-use-flymake nil)
 (add-hook 'ess-r-mode-hook #'tviti/linter-on)
-(add-hook 'emacs-lisp-mode-hook #'tviti/linter-on)
+;; The flymake checkdoc backend seems to be broken, so we shut it off (note that
+;; this seems to work OK in flycheck, but is still kind of annoying since
+;; checkdoc is a little aggressive.
+(add-hook 'emacs-lisp-mode-hook (lambda ()
+				  (tviti/linter-on)
+				  (remove-hook 'flymake-diagnostic-functions
+					       'elisp-flymake-checkdoc t)))
 (add-hook 'LaTeX-mode-hook (lambda () (tviti/linter-on :prog-mode-p nil)))
 
 (provide 'linter-config)
