@@ -10,7 +10,9 @@
 (require 'poly-R)
 
 ;; Re-def to 'nil so that polymode doesn't open export results.
-(defun pm--display-file (ofile) '())
+(defun pm--display-file (ofile)
+  "An empty defun to placate and quiet `polymode' (arg OFILE is unused)."
+  '())
 
 ;; Turn on line-numbering in markdown-mode so that we can get line numbers when
 ;; editing .Rmd files
