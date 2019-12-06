@@ -12,6 +12,7 @@
 ;; magit keybindings. Don't forget about "C-c M-g" as well!
 (require 'magit)
 (global-set-key (kbd "C-c m s") #'magit-status)
+(global-set-key (kbd "C-c m S") #'magit-stage-file)
 (global-set-key (kbd "C-c m C-s m") #'magit-stage-modified)
 (global-set-key (kbd "C-c m l") #'magit-log-buffer-file)
 (global-set-key (kbd "C-c m p") #'magit-push)
@@ -58,5 +59,19 @@
 ;; misc keybindings
 (global-set-key (kbd "C-c w") #'whitespace-mode)
 (global-set-key (kbd "C-c i") #'imenu)
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Hawaiian language layer ;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Don't forget that you can also very effectively insert a kahakō by using the
+;; TeX input method (i.e. "C-x <ret> C-\ TeX"), although this doesn't give the
+;; ʻokina.
+(global-set-key (kbd "C-c h '") (lambda () (interactive) (insert ?ʻ)))
+(global-set-key (kbd "C-c h a") (lambda () (interactive) (insert ?ā)))
+(global-set-key (kbd "C-c h e") (lambda () (interactive) (insert ?ē)))
+(global-set-key (kbd "C-c h i") (lambda () (interactive) (insert ?ī)))
+(global-set-key (kbd "C-c h o") (lambda () (interactive) (insert ?ō)))
+(global-set-key (kbd "C-c h u") (lambda () (interactive) (insert ?ū)))
 
 (provide 'global-keys)
