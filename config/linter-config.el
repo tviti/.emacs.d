@@ -41,4 +41,10 @@ PROG-MODE-P to turn on/off flyspell `prog-mode'."
 			     (add-hook 'flymake-diagnostic-functions #'nix-flymake nil t)
 			     (tviti/linter-on))))
 
+;; Don't let flyspell take control of "C-M-i"
+(with-eval-after-load 'flyspell
+  (add-hook 'flyspell-mode-hook
+	    (lambda ()
+	      (define-key flyspell-mode-map (kbd "C-M-i") nil))))
+
 (provide 'linter-config)
