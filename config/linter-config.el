@@ -47,4 +47,8 @@ PROG-MODE-P to turn on/off flyspell `prog-mode'."
 	    (lambda ()
 	      (define-key flyspell-mode-map (kbd "C-M-i") nil))))
 
+(define-key flymake-mode-map (kbd "C-c f n") #'flymake-goto-next-error)
+(define-key flymake-mode-map (kbd "C-c f p") #'flymake-goto-prev-error)
+(define-key flymake-mode-map (kbd "C-c f b") #'flymake-show-diagnostics-buffer)
+
 (provide 'linter-config)
