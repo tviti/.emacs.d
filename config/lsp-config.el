@@ -35,9 +35,15 @@
     (setq-local eglot-stay-out-of '(flymake))
     (setq-local flymake-diagnostic-functions '(LaTeX-flymake eglot-flymake-backend t)))
   ;; Force auctex to use eglot completion candidates
-  (define-key TeX-mode-map (kbd "C-M-i") #'complete-symbol))
+  (define-key TeX-mode-map (kbd "C-M-i") #'complete-symbol)
+  (define-key TeX-mode-map (kbd "C-c f C-c") #'tviti/eglot-texlab-build))
 
 (with-eval-after-load 'tex
   (add-hook 'TeX-mode-hook #'tviti/setup-latex-lsp))
+
+;;
+;; Misc. keybindings
+;;
+(define-key eglot-mode-map (kbd "C-c f h") #'eglot-help-at-point)
 
 (provide 'lsp-config)
