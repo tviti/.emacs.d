@@ -5,8 +5,7 @@
 (add-hook 'ess-r-mode-hook #'eglot-ensure)
 (add-hook 'tex-mode-hook #'eglot-ensure)
 (add-hook 'bibtex-mode-hook #'eglot-ensure)
-(add-to-list 'eglot-server-programs  '(tex-mode "texlab"))
-(add-to-list 'eglot-server-programs  '(bibtex-mode "texlab"))
+(add-to-list 'eglot-server-programs  '((tex-mode bibtex-mode latex-mode yatex-mode) "texlab"))
 
 (require 'linter-config)
 (defun tviti/setup-latex-lsp ()
