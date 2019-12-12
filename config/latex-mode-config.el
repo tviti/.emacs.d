@@ -57,6 +57,8 @@
 	(output-pdf "PDF Tools")
 	(output-html "open")))
 
+(setq TeX-view-program-list '(("PDF Tools" TeX-pdf-tools-sync-view)))
+
 ;; Revert pdf-view buffer after compilation
 (add-hook 'TeX-after-compilation-finished-functions #'TeX-revert-document-buffer)
 
