@@ -30,6 +30,7 @@
 (global-set-key (kbd "C-c o c") #'counsel-org-capture)
 (global-set-key (kbd "C-c O") #'org-capture) ;; the "minimum-typing" variant
 (global-set-key (kbd "C-c o r") #'org-refile)
+(global-set-key (kbd "C-c o l") #'org-store-link)
 (global-set-key (kbd "C-c o C-a d") #'org-agenda-day-view)
 (global-set-key (kbd "C-c o C-a w") #'org-agenda-week-view)
 (global-set-key (kbd "C-c o C-a m") #'org-agenda-month-view)
@@ -53,6 +54,7 @@
 (global-set-key (kbd "C-c c l") #'counsel-locate)
 (global-set-key (kbd "C-c c v") #'ivy-push-view)
 (global-set-key (kbd "C-c c V") #'ivy-pop-view)
+(global-set-key (kbd "C-c c k") #'counsel-kmacro)
 (with-eval-after-load 'evil
   (evil-global-set-key 'normal (kbd "M-\"") #'counsel-evil-registers))
 
