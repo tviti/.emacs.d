@@ -46,4 +46,8 @@
 (with-eval-after-load 'ess-r-mode
   (evil-set-initial-state 'ess-help-mode 'normal))
 
+;; Make flymake more evil
+(with-eval-after-load 'flymake
+  (evil-collection-flymake-setup))
+
 (provide 'evil-config)
