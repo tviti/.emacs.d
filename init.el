@@ -76,7 +76,7 @@
 			    (setq display-line-numbers 'relative)))
 
 ;; Store bookmarks in a different directory
-(setq bookmark-file (expand-file-name "bookmarks" tviti/sync-dir))
+(setq bookmark-default-file (expand-file-name "bookmarks" tviti/sync-dir))
 
 ;; Store yasnippets in a different directory
 (with-eval-after-load 'yasnippet
