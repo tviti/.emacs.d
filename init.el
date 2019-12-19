@@ -21,6 +21,7 @@
 (add-to-list 'load-path (expand-file-name "config/" user-emacs-directory))
 
 ;; Configs we want loaded immediately
+(menu-bar-mode 0)
 (if (string= system-type "darwin")
     (require 'macos-config))
 
