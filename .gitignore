@@ -1,10 +1,13 @@
-# Random cruft
+# Random cruft and ephemeral files
 idlwave
 lisp
 .python-environments
 transient
 session*
 url/
+eshell/
+recentf
+srecode-map.el
 
 # Created by https://www.gitignore.io/api/osx,elisp,emacs
 # Edit at https://www.gitignore.io/?templates=osx,elisp,emacs
