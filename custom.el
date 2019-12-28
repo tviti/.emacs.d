@@ -88,7 +88,7 @@
  '(org-icalendar-use-scheduled (quote (event-if-not-todo event-if-todo todo-start)))
  '(package-selected-packages
    (quote
-    (elfeed counsel ox-gfm poly-R poly-markdown ess evil-org slime lsp-ui flycheck lsp-mode rainbow-delimiters highlight-numbers which-key helm quelpa matlab-mode auctex eyebrowse solarized-theme rebecca-theme spaceline powerline spacemacs-theme julia-repl bash-completion elpy pdf-tools evil-collection ein stan-mode markdown-mode polymode arduino-mode zenburn-theme request-deferred python-environment popwin nzenburn-theme goto-last-change evil epc company-quickhelp alert ac-ispell)))
+    (ox-pandoc elfeed counsel ox-gfm poly-R poly-markdown ess evil-org slime lsp-ui flycheck lsp-mode rainbow-delimiters highlight-numbers which-key helm quelpa matlab-mode auctex eyebrowse solarized-theme rebecca-theme spaceline powerline spacemacs-theme julia-repl bash-completion elpy pdf-tools evil-collection ein stan-mode markdown-mode polymode arduino-mode zenburn-theme request-deferred python-environment popwin nzenburn-theme goto-last-change evil epc company-quickhelp alert ac-ispell)))
  '(pdf-view-midnight-colors (quote ("#b2b2b2" . "#292b2e")))
  '(pos-tip-background-color "#073642")
  '(pos-tip-foreground-color "#93a1a1")

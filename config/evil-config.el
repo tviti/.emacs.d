@@ -50,4 +50,8 @@
 (with-eval-after-load 'flymake
   (evil-collection-flymake-setup))
 
+;; Make xref more evil
+(with-eval-after-load 'xref
+  (evil-collection-xref-setup))
+
 (provide 'evil-config)
