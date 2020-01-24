@@ -88,7 +88,7 @@
 ;;
 (setq ibuffer-saved-filter-groups
       '(("default"
-	 ("nix" (filename . ".*?\\."))
+	 ("nix" (filename . "\\.nix"))
 	 ("PDFs" (filename . ".*?\\.pdf"))
 	 ("dired" (mode . dired-mode))
 	 ("org-mode" (mode . org-mode))
