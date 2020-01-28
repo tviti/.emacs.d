@@ -58,10 +58,11 @@
 (global-set-key (kbd "C-c c k") #'counsel-kmacro)
 (with-eval-after-load 'evil
   (evil-global-set-key 'normal (kbd "M-\"") #'counsel-evil-registers))
-
+ 
 ;; misc keybindings
 (global-set-key (kbd "C-c w") #'whitespace-mode)
 (global-set-key (kbd "C-c i") #'imenu)
+(global-set-key (kbd "C-c e") #'eshell)
 
 (global-set-key (kbd "C-c d Y") #'tviti/copy-buffer-directory)
 
