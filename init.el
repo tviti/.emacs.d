@@ -32,11 +32,12 @@
 (require 'evil-config)
 (require 'spacelike-config)
 (require 'global-keys)
-(require 'feeds-config)
+;; (require 'feeds-config)
 (require 'tramp-config)
 (require 'slime-config)
 (require 'ruler-mode-config)
 (require 'python-config)
+(require 'projectile-config)
 (require 'org-config)
 (require 'matlab-config)
 (require 'lsp-config)
@@ -67,7 +68,7 @@
 
 ;; Pick a font + size
 (set-face-attribute 'default nil
-		    :height 140
+		    :height 120
 		    :family "DejaVu Sans Mono")
 
 ;; Enable line number and relative line numbering using the new built in system
@@ -117,5 +118,5 @@
 (require 'ruler-mode-config)
 (add-hook 'after-init-hook
 	  (lambda ()
-	    (load-theme 'spacemacs-dark t)
+	    (load-theme 'spacemacs-light t)
 	    (tviti/ruler-match-theme)))
