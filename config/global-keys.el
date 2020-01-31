@@ -28,6 +28,7 @@
 (require 'counsel)
 (global-set-key (kbd "C-c o a") #'org-agenda)
 (global-set-key (kbd "C-c o c") #'counsel-org-capture)
+(global-set-key (kbd "C-c o S") #'org-save-all-org-buffers)
 (global-set-key (kbd "C-c O") #'org-capture) ;; the "minimum-typing" variant
 (global-set-key (kbd "C-c o r") #'org-refile)
 (global-set-key (kbd "C-c o l") #'org-store-link)
@@ -58,7 +59,15 @@
 (global-set-key (kbd "C-c c k") #'counsel-kmacro)
 (with-eval-after-load 'evil
   (evil-global-set-key 'normal (kbd "M-\"") #'counsel-evil-registers))
- 
+
+;; nix-mode keybindings
+(require 'nix)
+(global-set-key (kbd "C-c n u") #'nix-shell-unpack)
+(global-set-key (kbd "C-c n c") #'nix-shell-configure)
+(global-set-key (kbd "C-c n b") #'nix-shell-build)
+(global-set-key (kbd "C-c n e") #'nix-eshell)
+(global-set-key (kbd "C-c n s") #'nix-shell)
+
 ;; misc keybindings
 (global-set-key (kbd "C-c w") #'whitespace-mode)
 (global-set-key (kbd "C-c i") #'imenu)
