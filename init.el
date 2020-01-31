@@ -19,6 +19,7 @@
 ;; Load custom configuration files
 ;;
 (add-to-list 'load-path (expand-file-name "config/" user-emacs-directory))
+(add-to-list 'load-path (expand-file-name "config/nix-flymake" user-emacs-directory))
 
 ;; Configs we want loaded immediately
 (menu-bar-mode 0)

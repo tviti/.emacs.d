@@ -1,0 +1,3 @@
+[submodule "config/nix-flymake"]
+	path = config/nix-flymake
+	url = git@github.com:tviti/nix-flymake.git
