@@ -15,6 +15,11 @@
 ;; explanatory comments.
 (package-initialize)
 
+;; Pick a font + size
+(set-face-attribute 'default nil
+		    :height 120
+		    :family "DejaVu Sans Mono")
+
 ;;
 ;; Load custom configuration files
 ;;
@@ -66,11 +71,6 @@
 
 ;; Make dired report human-readable file sizes
 (setq dired-listing-switches "-alh")
-
-;; Pick a font + size
-(set-face-attribute 'default nil
-		    :height 120
-		    :family "DejaVu Sans Mono")
 
 ;; Enable line number and relative line numbering using the new built in system
 ;; (requires Emacs >= 26.1)
