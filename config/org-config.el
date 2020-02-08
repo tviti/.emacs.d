@@ -12,7 +12,8 @@
 ;; Configure the languages for source blocks
 (org-babel-do-load-languages
  'org-babel-load-languages
- '((shell . t)
+ '((eshell . t)
+   (shell . t)
    (R . t)))
 
 ;; Configure the export backends
