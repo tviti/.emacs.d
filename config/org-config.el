@@ -75,7 +75,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;
 ;; org-capture setup ;;
 ;;;;;;;;;;;;;;;;;;;;;;;
-
 (setq org-default-notes-file (concat org-directory "/notes.org"))
 
 (setq org-refile-targets `((nil . (:maxlevel . 3))
@@ -85,7 +84,7 @@
 (let ((fn (concat org-directory "/capture-templates.el")))
   (with-temp-buffer
     (insert-file-contents-literally fn)
-    (setq org-capture-templates (read (buffer-string)))))
+    (setq org-capture-templates (eval (read (buffer-string))))))
 
 ;; WORKAROUND:Incremental refile completion doesn't work with ivy-mode (see
 ;; https://github.com/abo-abo/swiper/issues/1254 and
