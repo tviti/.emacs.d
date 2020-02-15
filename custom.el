@@ -72,9 +72,6 @@
    (quote
     ("#CC9393" "#DFAF8F" "#F0DFAF" "#7F9F7F" "#BFEBBF" "#93E0E3" "#94BFF3" "#DC8CC3")))
  '(org-M-RET-may-split-line (quote ((default))))
- '(org-agenda-files
-   (quote
-    ("/home/tviti/org/groundwater.org" "/home/tviti/org/ike.org" "/home/tviti/org/keebs.org" "/home/tviti/org/misc.org" "/home/tviti/org/notes.org" "/home/tviti/org/school.org" "/home/tviti/org/tiff_mtg.org")))
  '(org-babel-load-languages
    (quote
     ((latex . t)

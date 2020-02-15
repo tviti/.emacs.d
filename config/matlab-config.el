@@ -5,10 +5,6 @@
 ;; (setq matlab-shell-command "/Applications/MATLAB_R2015a.app/bin/matlab")
 ;; (setq matlab-mode-install-path "/Users/taylor/.emacs.d/matlab-emacs")
 
-;; On my office computer, we have to use software opengl for rendering
-(if (string-equal (system-name) "magneto")
-    (setq matlab-shell-command-switches '("-nodesktop" "-softwareopengl")))
-
 ;; shell mode keybindings
 ;; (add-hook 'matlab-shell-mode-hook
 ;; 	  (lambda () (local-set-key (kbd "\C-c a") 'matlab-shell-close-figures)))
