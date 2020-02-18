@@ -83,10 +83,19 @@
 ;; TeX input method (i.e. "C-x <ret> C-\ TeX"), although this doesn't give the
 ;; ʻokina.
 (global-set-key (kbd "C-c h '") (lambda () (interactive) (insert ?ʻ)))
+
+;; Lowercase kahakou chars
 (global-set-key (kbd "C-c h a") (lambda () (interactive) (insert ?ā)))
 (global-set-key (kbd "C-c h e") (lambda () (interactive) (insert ?ē)))
 (global-set-key (kbd "C-c h i") (lambda () (interactive) (insert ?ī)))
 (global-set-key (kbd "C-c h o") (lambda () (interactive) (insert ?ō)))
 (global-set-key (kbd "C-c h u") (lambda () (interactive) (insert ?ū)))
+
+;; Uppercase kahakou chars
+(global-set-key (kbd "C-c h A") (lambda () (interactive) (insert ?Ā)))
+(global-set-key (kbd "C-c h E") (lambda () (interactive) (insert ?Ē)))
+(global-set-key (kbd "C-c h I") (lambda () (interactive) (insert ?Ī)))
+(global-set-key (kbd "C-c h O") (lambda () (interactive) (insert ?Ō)))
+(global-set-key (kbd "C-c h U") (lambda () (interactive) (insert ?Ū)))
 
 (provide 'global-keys)
