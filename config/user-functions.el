@@ -58,4 +58,29 @@ included for call signature compatibility, but is otherwise ignored."
       (mac-osa-script
        "tell application \"System Events\" to tell appearance preferences to set dark mode to not dark mode")))
 
+(defun tviti/ncdump (&rest args)
+  "Call ncdump with ARGS."
+  (let ((bname "*nc-dump Output*"))
+    (when (get-buffer bname)
+      (with-current-buffer bname (erase-buffer)))
+    (apply #'call-process "ncdump" nil bname nil args)
+    (display-buffer bname)))
+
+(defun tviti/dired-do-ncdump (&rest args)
+  "Call ncdump on file at point, prompting the user for args."
+  (interactive)
+  (let* ((fn (dired-get-filename))
+	 (args (if args
+		   args
+		 (split-string (read-shell-command "ncdump args: "))))
+	 (args-out (append args (list fn))))
+    (apply #'tviti/ncdump args-out)))
+
+;; TODO: This is not the right place for keybindings!
+(with-eval-after-load 'dired
+  (define-key dired-mode-map (kbd "C-c d n") #'tviti/dired-do-ncdump)
+  (define-key dired-mode-map (kbd "C-c d N") (lambda ()
+					       (interactive)
+					       (tviti/dired-do-ncdump "-h"))))
+
 (provide 'user-functions)
