@@ -77,9 +77,10 @@ included for call signature compatibility, but is otherwise ignored."
     (apply #'tviti/ncdump args-out)))
 
 ;; TODO: This is not the right place for keybindings!
-(define-key dired-mode-map (kbd "C-c d n") #'tviti/dired-do-ncdump)
-(define-key dired-mode-map (kbd "C-c d N") (lambda ()
-					     (interactive)
-					     (tviti/dired-do-ncdump "-h")))
+(with-eval-after-load 'dired
+  (define-key dired-mode-map (kbd "C-c d n") #'tviti/dired-do-ncdump)
+  (define-key dired-mode-map (kbd "C-c d N") (lambda ()
+					       (interactive)
+					       (tviti/dired-do-ncdump "-h"))))
 
 (provide 'user-functions)
