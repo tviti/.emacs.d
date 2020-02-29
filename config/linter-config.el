@@ -47,7 +47,13 @@ PROG-MODE-P to turn on/off flyspell `prog-mode'."
 	    (lambda ()
 	      (define-key flyspell-mode-map (kbd "C-M-i") nil))))
 
-(define-key flymake-mode-map (kbd "C-c f n") #'flymake-goto-next-error)
+(define-transient-command tviti/linter-nav ()
+  :transient-suffix 'transient--do-stay
+  :transient-non-suffix 'transient--do-warn
+  [("p" "previous message" flymake-goto-prev-error)
+   ("n" "next message" flymake-goto-next-error)])
+
+(define-key flymake-mode-map (kbd "C-c f n") #'tviti/linter-nav)
 (define-key flymake-mode-map (kbd "C-c f p") #'flymake-goto-prev-error)
 (define-key flymake-mode-map (kbd "C-c f b") #'flymake-show-diagnostics-buffer)
 

@@ -81,7 +81,7 @@
 (global-set-key (kbd "C-c n s") #'nix-shell)
 
 ;; misc keybindings
-(global-set-key (kbd "C-c w") #'whitespace-mode)
+(global-set-key (kbd "C-c W") #'whitespace-mode)
 (global-set-key (kbd "C-c i") #'imenu)
 (global-set-key (kbd "C-c e") #'eshell)
 
@@ -108,5 +108,24 @@
 (global-set-key (kbd "C-c h I") (lambda () (interactive) (insert ?Ī)))
 (global-set-key (kbd "C-c h O") (lambda () (interactive) (insert ?Ō)))
 (global-set-key (kbd "C-c h U") (lambda () (interactive) (insert ?Ū)))
+
+(define-transient-command tviti/evil-window ()
+  :transient-suffix 'transient--do-stay
+  :transient-non-suffix 'transient--do-warn
+  [["Movement"
+    ("h" "left" evil-window-left)
+    ("j" "down" evil-window-down)
+    ("k" "up" evil-window-up)
+    ("l" "right" evil-window-right)]
+   ["Height"
+    ("-" "decrease height" evil-window-decrease-height)
+    ("+" "increase height" evil-window-increase-height)]
+   ["Width"
+    ("<" "decrease width" evil-window-decrease-width)
+    (">" "increase width" evil-window-increase-width)]
+   [("^" "buffer" evil-buffer)
+    ("c" "delete" evil-window-delete)]])
+
+(global-set-key (kbd "C-c w") #'tviti/evil-window)
 
 (provide 'global-keys)
