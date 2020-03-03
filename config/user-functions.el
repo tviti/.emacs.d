@@ -122,7 +122,9 @@ included for call signature compatibility, but is otherwise ignored."
 	     nil t initial-input history)))
 
 ;; TODO: This is not the right place for keybindings!
-(define-key dired-mode-map (kbd "C-c d n") #'tviti/dired-ncdump)
+
+(with-eval-after-load 'dired
+  (define-key dired-mode-map (kbd "C-c d n") #'tviti/dired-ncdump))
 
 (define-transient-command tviti/literate ()
   :transient-suffix 'transient--do-stay
