@@ -18,7 +18,8 @@
 (global-set-key (kbd "C-c m p") #'magit-push)
 ;; TODO: These are local, not global keybindings!
 (define-key magit-mode-map (kbd "C-c m r") #'magit-diff-toggle-refine-hunk)
-(define-key magit-mode-map (kbd "C-c C-w") 'nil) ;; Conflicts w/ eyebrowse
+(with-eval-after-load 'eyebrowse
+  (define-key magit-mode-map eyebrowse-keymap-prefix nil)) ;; Conflicts w/ eyebrowse
 
 (require 'magit-annex)
 (global-set-key (kbd "C-c m a") #'magit-annex-dispatch)
@@ -97,5 +98,10 @@
 (global-set-key (kbd "C-c h I") (lambda () (interactive) (insert ?Ī)))
 (global-set-key (kbd "C-c h O") (lambda () (interactive) (insert ?Ō)))
 (global-set-key (kbd "C-c h U") (lambda () (interactive) (insert ?Ū)))
+
+;; "Free up" conflicts between Shell-mode and eyebrowse
+;; TODO: These are local, not GLOBAL keybindings!
+(with-eval-after-load 'eyebrowse
+  (define-key shell-mode-map eyebrowse-keymap-prefix nil))
 
 (provide 'global-keys)
