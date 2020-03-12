@@ -126,37 +126,4 @@ included for call signature compatibility, but is otherwise ignored."
 (with-eval-after-load 'dired
   (define-key dired-mode-map (kbd "C-c d n") #'tviti/dired-ncdump))
 
-(define-transient-command tviti/literate ()
-  :transient-suffix 'transient--do-stay
-  :transient-non-suffix 'transient--do-warn
-  [["Navigation"
-    ("p" "prev chunk" tviti/literate-previous-chunk)
-    ("n" "next chunk" tviti/literate-next-chunk)]
-   ["Editing"
-    ("e" "eval chunk" tviti/literate-eval-chunk)
-    ("k" "kill chunk" tviti/literate-kill-chunk)]])
-
-(defun tviti/literate-previous-chunk ()
-  (interactive)
-  (cond ((and (boundp polymode-mode) polymode-mode)
-	 (polymode-previous-chunk 1))))
-
-(defun tviti/literate-next-chunk ()
-  (interactive)
-  (cond ((and (boundp polymode-mode) polymode-mode)
-	 (polymode-next-chunk 1))))
-
-(defun tviti/literate-eval-chunk ()
-  (interactive)
-  (cond ((and (boundp polymode-mode) polymode-mode)
-	 (polymode-eval-region-or-chunk))))
-
-(defun tviti/literate-kill-chunk ()
-  (interactive)
-  (cond ((and (boundp polymode-mode) polymode-mode)
-	 (polymode-kill-chunk))))
-
-(with-eval-after-load 'polymode
-  (define-key polymode-mode-map (kbd "C-c l") #'tviti/literate))
-
 (provide 'user-functions)
