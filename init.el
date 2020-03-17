@@ -51,6 +51,7 @@
 (require 'julia-config)
 (require 'ess-config)
 (require 'eshell-config)
+(require 'literate)
 
 ;; This should be one of the last things loaded, since it uses mode-hooks for
 ;; toggling linters.
