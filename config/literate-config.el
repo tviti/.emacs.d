@@ -26,13 +26,16 @@ ORG-BODY."
     ("C-n" "next heading" outline-next-visible-heading)
     ("o" "outline" counsel-outline)]
    ["Editing"
+    ("'" "special edit" org-edit-special)
     ("e" "eval chunk" tviti/literate-eval-chunk)
     ("k" "kill chunk" tviti/literate-kill-chunk)
     ("t" "narrow chunk" tviti/literate-narrow-chunk)
-    ("m" "mark chunk" tviti/literate-select-chunk)]
+    ("m" "mark chunk" tviti/literate-select-chunk)
+    (":" "insert header arg" org-babel-insert-header-arg)]
    ["Previewing"
-    ("v" "toggle images" tviti/literate-toggle-inline-images)]])
-
+    ("v" "toggle images" tviti/literate-toggle-inline-images)
+    ("l" "toggle LaTeX" tviti/literate-toggle-inline-latex)]])
+   
 (defun tviti/polymode-active-p ()
   "Returns t if `polymode' is active in the current buffer."
   (and (boundp polymode-mode) polymode-mode))
@@ -87,6 +90,12 @@ ORG-BODY."
   (tviti/literate-with-host
    nil
    (org-cycle)))
+
+(defun tviti/literate-toggle-inline-latex ()
+  (interactive)
+  (tviti/literate-with-host
+   nil
+   (org-toggle-latex-fragment)))
 
 (with-eval-after-load 'polymode
   (define-key polymode-mode-map (kbd "C-c l") #'tviti/literate))

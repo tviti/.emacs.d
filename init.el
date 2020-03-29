@@ -41,7 +41,7 @@
 (require 'global-keys)
 (require 'julia-config)
 (require 'latex-mode-config)
-(require 'literate)
+(require 'literate-config)
 (require 'lsp-config)
 (require 'matlab-config)
 (require 'org-config)
