@@ -42,16 +42,6 @@
 (global-set-key (kbd "C-c o i") #'org-clock-in-last)
 (global-set-key (kbd "C-c o g") #'org-clock-goto)
 (global-set-key (kbd "C-c o z") #'org-resolve-clocks)
-
-;; TODO: These are local, not global keybindings!
-(define-transient-command tviti/org-src-navigate ()
-  :transient-suffix 'transient--do-stay
-  :transient-non-suffix 'transient--do-warn
-  [("p" "next block" org-previous-block)
-   ("n" "next block" org-next-block)])
-
-(define-key org-mode-map (kbd "C-c o s") #'tviti/org-src-navigate)
-
 (global-set-key (kbd "C-c o j") #'counsel-org-goto-all)
 
 ;; counsel keybindings
