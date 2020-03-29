@@ -58,6 +58,11 @@ included for call signature compatibility, but is otherwise ignored."
       (mac-osa-script
        "tell application \"System Events\" to tell appearance preferences to set dark mode to not dark mode")))
 
+;;;;;;;;;;;;;;;;;;;;;;;;;
+;; netCDF interactions ;;
+;;;;;;;;;;;;;;;;;;;;;;;;;
+(require 'transient)
+
 (defun tviti/ncdump (&rest args)
   "Call ncdump with ARGS."
   (let ((bname "*nc-dump Output*"))
@@ -66,9 +71,9 @@ included for call signature compatibility, but is otherwise ignored."
     (apply #'call-process "ncdump" nil bname nil args)
     (display-buffer bname)))
 
-(defun tviti/dired-do-ncdump (&rest args)
+(defun tviti/dired-do-ncdump (&optional args)
   "Call ncdump on file at point, prompting the user for args."
-  (interactive)
+  (interactive (list (tviti/dired-ncdump-arguments)))
   (let* ((fn (dired-get-filename))
 	 (args (if args
 		   args
@@ -76,11 +81,70 @@ included for call signature compatibility, but is otherwise ignored."
 	 (args-out (append args (list fn))))
     (apply #'tviti/ncdump args-out)))
 
-;; TODO: This is not the right place for keybindings!
+(define-transient-command tviti/dired-ncdump ()
+  "Call ncdump on file at point."
+  :man-page "ncdump"
+  ["Arguments"
+   ("-h" "Show only the header information in the output" ("-h" "-h"))
+   ("-c" "Show the values of coordinate variables" ("-c" "-c"))
+   (tviti/dired-ncdump:-v)]
+  [("RET" "go!" tviti/dired-do-ncdump)])
+
+(defun tviti/dired-ncdump-arguments nil
+  (transient-args 'tviti/dired-ncdump))
+
+(defun tviti/ncdump-get-vars (fn)
+  "Returns a list of variables contained in FN."
+  (with-temp-buffer
+    (apply #'call-process "ncdump" nil (buffer-name) nil (list "-h" fn))
+    ;; Delete everything EXCEPT for the variable list
+    (goto-char (point-min))
+    (re-search-forward "^variables:$")
+    (delete-region (point-min) (point))
+    (when (re-search-forward "^// global attributes:$" nil t)
+      (re-search-backward "^// global attributes:$")
+      (delete-region (point) (point-max)))
+    (goto-char (point-min))
+    (let ((vars))
+      (while (re-search-forward "[a-z]+ \\(.+?\\)(.*?).*" nil t)
+	(pushnew (match-string 1) vars))
+      vars)))
+
+(define-infix-argument tviti/dired-ncdump:-v ()
+  :description "Limit to variable(s)"
+  :class 'transient-option
+  :key "-v"
+  :argument "-v"
+  :reader (lambda (prompt initial-input history)
+	    (completing-read
+	     prompt
+	     (tviti/ncdump-get-vars (dired-get-filename))
+	     nil t initial-input history)))
+
 (with-eval-after-load 'dired
-  (define-key dired-mode-map (kbd "C-c d n") #'tviti/dired-do-ncdump)
-  (define-key dired-mode-map (kbd "C-c d N") (lambda ()
-					       (interactive)
-					       (tviti/dired-do-ncdump "-h"))))
+  (define-key dired-mode-map (kbd "C-c d n") #'tviti/dired-ncdump))
+
+(define-transient-command tviti/evil-window ()
+  :transient-suffix 'transient--do-stay
+  :transient-non-suffix 'transient--do-warn
+  [["Movement"
+    ("h" "left" evil-window-left)
+    ("j" "down" evil-window-down)
+    ("k" "up" evil-window-up)
+    ("l" "right" evil-window-right)]
+   ["Height"
+    ("-" "decrease height" evil-window-decrease-height)
+    ("+" "increase height" evil-window-increase-height)
+    ("s" "H-split" split-window-vertically)]
+   ["Width"
+    ("<" "decrease width" evil-window-decrease-width)
+    (">" "increase width" evil-window-increase-width)
+    ("v" "V-split" split-window-horizontally)]
+   [("=" "ballance" balance-windows)
+    ("^" "buffer" evil-buffer)
+    ("b" "switch buffer" counsel-switch-buffer)
+    ("f" "find file" counsel-find-file)
+    ("x" "extended command" counsel-M-x)
+    ("c" "delete" evil-window-delete)]])
 
 (provide 'user-functions)

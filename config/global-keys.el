@@ -1,3 +1,5 @@
+(require 'user-functions)
+
 ;; Global keybindings
 (global-set-key (kbd "\C-c ;") #'comment-region)
 (local-set-key (kbd "\C-u \C-c ;") #'uncomment-region)
@@ -27,6 +29,7 @@
 ;; org-mode keybindings
 (require 'org)
 (require 'counsel)
+
 (global-set-key (kbd "C-c o a") #'org-agenda)
 (global-set-key (kbd "C-c o c") #'counsel-org-capture)
 (global-set-key (kbd "C-c o S") #'org-save-all-org-buffers)
@@ -42,24 +45,24 @@
 (global-set-key (kbd "C-c o i") #'org-clock-in-last)
 (global-set-key (kbd "C-c o g") #'org-clock-goto)
 (global-set-key (kbd "C-c o z") #'org-resolve-clocks)
-
-;; TODO: These are local, not global keybindings!
-(define-key org-mode-map (kbd "C-c o n") #'org-next-block)
-(define-key org-mode-map (kbd "C-c o p") #'org-previous-block)
-
 (global-set-key (kbd "C-c o j") #'counsel-org-goto-all)
 
 ;; counsel keybindings
 (global-set-key (kbd "C-c C-r") #'ivy-resume)
 (global-set-key (kbd "C-x B") #'counsel-switch-buffer)
+(global-set-key (kbd "C-x C-M-b") #'counsel-ibuffer)
 (global-set-key (kbd "C-c c f") #'counsel-git)
 (global-set-key (kbd "C-c c g") #'counsel-git-grep)
+(global-set-key (kbd "C-c c G") #'counsel-grep)
 (global-set-key (kbd "C-c c o") #'counsel-outline)
 (global-set-key (kbd "C-c c l") #'counsel-locate)
 (global-set-key (kbd "C-c c v") #'ivy-push-view)
 (global-set-key (kbd "C-c c V") #'ivy-pop-view)
 (global-set-key (kbd "C-c c k") #'counsel-kmacro)
+(global-set-key (kbd "C-c c r") #'counsel-register)
+(global-set-key (kbd "C-c c p") #'counsel-list-processes)
 (with-eval-after-load 'evil
+  (global-set-key (kbd "C-c c e") #'counsel-evil-marks)
   (evil-global-set-key 'normal (kbd "M-\"") #'counsel-evil-registers))
 
 ;; nix-mode keybindings
@@ -71,7 +74,7 @@
 (global-set-key (kbd "C-c n s") #'nix-shell)
 
 ;; misc keybindings
-(global-set-key (kbd "C-c w") #'whitespace-mode)
+(global-set-key (kbd "C-c W") #'whitespace-mode)
 (global-set-key (kbd "C-c i") #'imenu)
 (global-set-key (kbd "C-c e") #'eshell)
 
@@ -103,5 +106,7 @@
 ;; TODO: These are local, not GLOBAL keybindings!
 (with-eval-after-load 'eyebrowse
   (define-key shell-mode-map eyebrowse-keymap-prefix nil))
+
+(global-set-key (kbd "C-c w") #'tviti/evil-window)
 
 (provide 'global-keys)

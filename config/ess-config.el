@@ -26,6 +26,9 @@
 ;; Don't use ido for ESS completions. Disabling this allows ESS to use other
 ;; completion backends, like ivy.
 (setq ess-use-ido nil)
-		 
+
+;; Don't let ESS shells take over evil keybindings
+(define-key inferior-ess-mode-map (kbd "C-y") nil)
+(define-key inferior-ess-mode-map (kbd "C-c C-w") nil)
 
 (provide 'ess-config)

@@ -45,6 +45,22 @@
 ;;
 ;; Misc. keybindings
 ;;
-(define-key eglot-mode-map (kbd "C-c f h") #'eglot-help-at-point)
+(define-transient-command tviti/linter-nav ()
+  :transient-suffix 'transient--do-stay
+  :transient-non-suffix 'transient--do-warn
+  [["Errors"
+    ("p" "previous message" flymake-goto-prev-error)
+    ("n" "next message" flymake-goto-next-error)]
+   ["Formatting"
+    ("r" "rename" eglot-rename)
+    ("f" "format" eglot-format)
+    ("F" "format buffer" eglot-format-buffer)]
+   ["xref"
+    ("x" "find refs" xref-find-references)
+    ("d" "find defs" xref-find-definitions)]
+   ["Help"
+    ("h" "eglot help" eglot-help-at-point)]])
+
+(define-key eglot-mode-map (kbd "C-c f") #'tviti/linter-nav)
 
 (provide 'lsp-config)
