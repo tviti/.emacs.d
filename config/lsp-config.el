@@ -43,6 +43,42 @@
   (add-hook 'TeX-mode-hook #'tviti/setup-latex-lsp))
 
 ;;
+;; Eglot support in org-babel. Based on
+;; https://github.com/seagle0128/.emacs.d/blob/03a69b9b725a228a451ec27d7506a2d24f4d1a0f/lisp/init-lsp.el#L436
+;;
+(cl-defmacro tviti/lsp-org-babel-enable (lang)
+  "Support LANG in org source code block. `eglot' will be
+activated in the `org-edit-special' buffers of blocks that have a
+#+name: specified. The blocks #+name: must translate into an
+acceptable filename string, complete with file extension."
+  (cl-check-type lang stringp)
+  (let* ((edit-pre (intern (format "org-babel-edit-prep:%s" lang)))
+	 (intern-pre (intern (format "lsp--%s" (symbol-name edit-pre)))))
+    `(progn
+       (defun ,intern-pre (info)
+	 (let ((name (nth 4 info)))
+	   (unless name
+	     (user-error "LSP:: specify block #+name: to enable"))
+
+	   (setq buffer-file-name name)
+	   (eglot-ensure)))
+	   ;; (execute-extended-command nil "eglot")))
+       (put ',intern-pre 'function-documentation
+	    (format "Enable `%s' in the buffer of org source block (%s)."
+		    'eglot (upcase ,lang)))
+
+       (if (fboundp ',edit-pre)
+	   (advice-add ',edit-pre :after ',intern-pre)
+	 (progn
+	   (defun ,edit-pre (info)
+	     (,intern-pre info))
+	   (put ',edit-pre 'function-documentation
+		(format "Prepare local buffer environment for org source block (%s)."
+			(upcase ,lang))))))))
+
+;; (tviti/lsp-org-babel-enable "python")
+
+;;
 ;; Misc. keybindings
 ;;
 (define-transient-command tviti/linter-nav ()
