@@ -1,7 +1,14 @@
 (require 'user-globals)
 (require 'org)
+(require 'org-crypt)
+
 (setq org-directory "~/org")
 (setq org-agenda-files (list org-directory))
+
+;; org-crypt setup (based on [[info:org#Org Crypt][info:org#Org Crypt]])
+(org-crypt-use-before-save-magic)
+(setq org-crypt-key nil)
+(setq org-tags-exclude-from-inheritance '("crypt"))
 
 (require 'org-bullets)
 (add-hook 'org-mode-hook 'org-bullets-mode)
