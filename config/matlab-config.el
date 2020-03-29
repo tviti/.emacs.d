@@ -26,7 +26,6 @@
 
 (defun tviti/matlab-mode-setup ()
   "Apply configuration for `matlab-mode'."
-  (company-mode 1)
   ;; Set the fill-column in emacs to be consistent with the default text limit
   ;; indicator location in the matlab gui editor
   (set-fill-column 75)
@@ -36,8 +35,14 @@
   (setq display-line-numers 'relative))
 
 (defun tviti/M-shell-mode-setup ()
-  "Apply configuration for `M-shell-mode'."
-  (company-mode 1))
+  "Apply configuration for `M-shell-mode'.")
+
+;; Don't use company for completions, since the company style menu is a little
+;; bit of a context switch from the ivy menu.
+(custom-set-variables
+ '(matlab-shell-tab-use-company nil))
+
+(define-key matlab-shell-mode-map (kbd "C-M-i") #'matlab-shell-tab)
 
 (add-hook 'matlab-mode-hook #'tviti/matlab-mode-setup)
 (add-hook 'M-shell-mode #'tviti/M-shell-mode-setup)
