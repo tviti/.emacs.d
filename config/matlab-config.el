@@ -32,7 +32,7 @@
   
   ;; Line numbers don't work by default for some reason. Turn them on.
   (display-line-numbers-mode)
-  (setq display-line-numers 'relative))
+  (setq display-line-numbers 'relative))
 
 (defun tviti/M-shell-mode-setup ()
   "Apply configuration for `M-shell-mode'.")
