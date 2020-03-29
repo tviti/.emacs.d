@@ -126,4 +126,27 @@ included for call signature compatibility, but is otherwise ignored."
 (with-eval-after-load 'dired
   (define-key dired-mode-map (kbd "C-c d n") #'tviti/dired-ncdump))
 
+(define-transient-command tviti/evil-window ()
+  :transient-suffix 'transient--do-stay
+  :transient-non-suffix 'transient--do-warn
+  [["Movement"
+    ("h" "left" evil-window-left)
+    ("j" "down" evil-window-down)
+    ("k" "up" evil-window-up)
+    ("l" "right" evil-window-right)]
+   ["Height"
+    ("-" "decrease height" evil-window-decrease-height)
+    ("+" "increase height" evil-window-increase-height)
+    ("s" "H-split" split-window-vertically)]
+   ["Width"
+    ("<" "decrease width" evil-window-decrease-width)
+    (">" "increase width" evil-window-increase-width)
+    ("v" "V-split" split-window-horizontally)]
+   [("=" "ballance" balance-windows)
+    ("^" "buffer" evil-buffer)
+    ("b" "switch buffer" counsel-switch-buffer)
+    ("f" "find file" counsel-find-file)
+    ("x" "extended command" counsel-M-x)
+    ("c" "delete" evil-window-delete)]])
+
 (provide 'user-functions)
