@@ -35,7 +35,8 @@
   (setq display-line-numbers 'relative))
 
 (defun tviti/M-shell-mode-setup ()
-  "Apply configuration for `M-shell-mode'.")
+  "Apply configuration for `M-shell-mode'."
+  (define-key matlab-shell-mode-map (kbd "C-c C-n") #'comint-next-input))
 
 ;; Don't use company for completions, since the company style menu is a little
 ;; bit of a context switch from the ivy menu.
