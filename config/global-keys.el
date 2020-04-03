@@ -40,12 +40,17 @@
 (global-set-key (kbd "C-c o C-a w") #'org-agenda-week-view)
 (global-set-key (kbd "C-c o C-a m") #'org-agenda-month-view)
 (global-set-key (kbd "C-c o C-a y") #'org-agenda-year-view)
+(global-set-key (kbd "C-c o f") #'org-cycle-agenda-files)
 
 (global-set-key (kbd "C-c o o") #'org-clock-out)
 (global-set-key (kbd "C-c o i") #'org-clock-in-last)
 (global-set-key (kbd "C-c o g") #'org-clock-goto)
 (global-set-key (kbd "C-c o z") #'org-resolve-clocks)
 (global-set-key (kbd "C-c o j") #'counsel-org-goto-all)
+
+(require 'org-ql)
+(global-set-key (kbd "C-c o s") #'org-ql-search)
+(global-set-key (kbd "C-c o v") #'org-ql-view)
 
 ;; counsel keybindings
 (global-set-key (kbd "C-c C-r") #'ivy-resume)
