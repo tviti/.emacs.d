@@ -47,7 +47,7 @@
 (require 'ruler-mode-config)
 (require 'slime-config)
 (require 'spacelike-config)
-;; (require 'feeds-config)
+(require 'feeds-config)
 (require 'tramp-config)
 
 ;; This should be one of the last things loaded, since it uses mode-hooks for

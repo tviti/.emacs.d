@@ -5,7 +5,8 @@
 (require 'elfeed)
 (require 'ivy)
 
-(setq elfeed-db-directory (concat tviti/sync-dir "/elfeed/"))
+;; (setq elfeed-db-directory (concat tviti/sync-dir "/elfeed/"))
+(setq elfeed-db-directory "~/RSS")
 
 ;; Load the list of feeds
 (let ((fn (concat tviti/sync-dir "/elfeed-feeds.el")))
@@ -86,6 +87,7 @@ completions."
     "+" #'tviti/elfeed-search-tag-all
     "-" #'tviti/elfeed-search-untag-all
     "u" #'elfeed-search-tag-all-unread
+    "U" #'elfeed-update
     "r" #'elfeed-search-untag-all-unread
     "s" #'tviti/elfeed-ivy-live-filter
     "S" #'elfeed-search-set-filter
@@ -98,6 +100,11 @@ completions."
     "r" #'elfeed-search-untag-all-unread)
 
   (evil-define-key 'normal elfeed-show-mode-map
+    "q" #'elfeed-kill-buffer
+    "n" #'elfeed-show-next
+    "p" #'elfeed-show-prev
+    (kbd "C-j") #'elfeed-show-next ;; For consistency w/ mu4e
+    (kbd "C-k") #'elfeed-show-prev
     "+" #'tviti/elfeed-show-tag
     "-" #'elfeed-show-untag))
 
