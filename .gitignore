@@ -103,3 +103,5 @@ Temporary Items
 .apdisk
 
 # End of https://www.gitignore.io/api/osx,elisp,emacs
+
+**/private/**

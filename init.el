@@ -77,6 +77,7 @@
 
 ;; Store bookmarks in a different directory
 (setq bookmark-default-file (expand-file-name "bookmarks" tviti/sync-dir))
+(bookmark-load bookmark-default-file)
 
 ;; Store yasnippets in a different directory
 (with-eval-after-load 'yasnippet
