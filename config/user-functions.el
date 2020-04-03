@@ -106,8 +106,10 @@ included for call signature compatibility, but is otherwise ignored."
       (delete-region (point) (point-max)))
     (goto-char (point-min))
     (let ((vars))
-      (while (re-search-forward "[a-z]+ \\(.+?\\)(.*?).*" nil t)
-	(pushnew (match-string 1) vars))
+      (while (re-search-forward
+	      "^[[:space:]]+\\(int\\)\\|\\(double\\)\\|\\(float\\) \\(.*?\\) ;$"
+	      nil t)
+	(pushnew (match-string 4) vars))
       vars)))
 
 (define-infix-argument tviti/dired-ncdump:-v ()
