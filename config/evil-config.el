@@ -13,7 +13,7 @@
 
 ;; Enable evil where it normally wouldn't be enabled
 (require 'evil-collection)
-(evil-collection-init '(ediff ibuffer package-menu dired magit bookmark slime))
+(evil-collection-init '(ediff ibuffer package-menu dired magit bookmark slime mu4e))
 
 (with-eval-after-load 'magit
   (require 'evil-magit))
@@ -53,5 +53,9 @@
 ;; Make xref more evil
 (with-eval-after-load 'xref
   (evil-collection-xref-setup))
+
+;; Override "z=" binding for ispell-word to use the flyspell-correct pkg
+(require 'flyspell-correct-ivy)
+(define-key evil-normal-state-map [remap ispell-word] #'flyspell-correct-wrapper)
 
 (provide 'evil-config)
