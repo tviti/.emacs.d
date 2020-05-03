@@ -91,6 +91,7 @@
 ;;
 (setq ibuffer-saved-filter-groups
       '(("default"
+	 ("gpg" (filename . "\\.gpg"))
 	 ("nix" (filename . "\\.nix"))
 	 ("PDFs" (filename . ".*?\\.pdf"))
 	 ("dired" (mode . dired-mode))
