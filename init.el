@@ -1,7 +1,9 @@
 ;; Trendy mode: Make the first window borderless
 ;; (setq initial-frame-alist '((undecorated . t)))
 
-;; Package manager configuration
+;; Package manager configuration. NOTE: This is actually pointless to do on a
+;; machine running nixpkgs! I'm leaving it here anyways though for whenever I
+;; inevitably try to bootstrap this emacs config on a box w/o nix.
 (setq package-archives '(("gnu" . "https://elpa.gnu.org/packages/")
 			 ("melpa" . "https://melpa.org/packages/")
 			 ("melpa-stable" . "https://stable.melpa.org/packages/")))
