@@ -24,12 +24,14 @@ ORG-BODY."
     ("n" "next chunk" tviti/literate-next-chunk)
     ("C-p" "prev heading" outline-previous-visible-heading)
     ("C-n" "next heading" outline-next-visible-heading)
+    ("C-e" "scroll down" scroll-up-line)
+    ("C-y" "scroll up" scroll-down-line)
     ("o" "outline" counsel-outline)]
    ["Editing"
     ("'" "special edit" org-edit-special)
     ("e" "eval chunk" tviti/literate-eval-chunk)
     ("k" "kill chunk" tviti/literate-kill-chunk)
-    ("t" "narrow chunk" tviti/literate-narrow-chunk)
+    ("t" "tangle" org-babel-tangle)
     ("m" "mark chunk" tviti/literate-select-chunk)
     (":" "insert header arg" org-babel-insert-header-arg)]
    ["Previewing"
