@@ -67,7 +67,7 @@
 (winner-mode 1) ;; Enables window state undo/redo
 
 ;; Enable the eyebrowse-mode "window manager"
-(eyebrowse-mode t)
+;; (eyebrowse-mode t)
 
 ;; Make dired report human-readable file sizes
 (setq dired-listing-switches "-alh")
@@ -106,6 +106,10 @@
 
 ;; Use next-browser for browse-url functionality.
 (setq browse-url-browser-function #'tviti/browse-url-next-browser)
+
+;; emacs-27 specific customisations
+(when (>= emacs-major-version 27)
+  (setq tab-bar-show nil))
 
 (desktop-save-mode 1)
 (setq ring-bell-function 'ignore)
