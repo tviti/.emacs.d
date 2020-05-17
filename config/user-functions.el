@@ -77,7 +77,9 @@ included for call signature compatibility, but is otherwise ignored."
 	 (args (if args
 		   args
 		 (split-string (read-shell-command "ncdump args: "))))
-	 (args-out (append args (list fn))))
+	 (args-out (append (list (concat "*ncdump on " (file-name-nondirectory fn) "*"))
+			   args
+			   (list fn))))
     (apply #'tviti/ncdump args-out)))
 
 (define-transient-command tviti/dired-ncdump ()
