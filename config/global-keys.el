@@ -41,6 +41,7 @@
 (global-set-key (kbd "C-c o C-a m") #'org-agenda-month-view)
 (global-set-key (kbd "C-c o C-a y") #'org-agenda-year-view)
 (global-set-key (kbd "C-c o f") #'org-cycle-agenda-files)
+(global-set-key (kbd "C-c o d") #'org-decrypt-entry)
 
 (global-set-key (kbd "C-c o o") #'org-clock-out)
 (global-set-key (kbd "C-c o i") #'org-clock-in-last)
@@ -82,6 +83,7 @@
 (global-set-key (kbd "C-c W") #'whitespace-mode)
 (global-set-key (kbd "C-c i") #'imenu)
 (global-set-key (kbd "C-c e") #'eshell)
+(global-set-key (kbd "C-c s") #'shell)
 
 (global-set-key (kbd "C-c d Y") #'tviti/copy-buffer-directory)
 
