@@ -63,13 +63,12 @@ included for call signature compatibility, but is otherwise ignored."
 ;;;;;;;;;;;;;;;;;;;;;;;;;
 (require 'transient)
 
-(defun tviti/ncdump (&rest args)
-  "Call ncdump with ARGS."
-  (let ((bname "*nc-dump Output*"))
-    (when (get-buffer bname)
-      (with-current-buffer bname (erase-buffer)))
-    (apply #'call-process "ncdump" nil bname nil args)
-    (display-buffer bname)))
+(cl-defun tviti/ncdump (bname &rest args)
+  "Call ncdump with ARGS, displaying the results in buffer BNAME."
+  (when (get-buffer bname)
+    (with-current-buffer bname (erase-buffer)))
+  (apply #'call-process "ncdump" nil bname nil args)
+  (display-buffer bname))
 
 (defun tviti/dired-do-ncdump (&optional args)
   "Call ncdump on file at point, prompting the user for args."
