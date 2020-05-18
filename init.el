@@ -111,6 +111,9 @@
 (when (>= emacs-major-version 27)
   (setq tab-bar-show nil))
 
+;; ASK before exiting!
+(setq confirm-kill-emacs #'yes-or-no-p)
+
 (desktop-save-mode 1)
 (setq ring-bell-function 'ignore)
 
