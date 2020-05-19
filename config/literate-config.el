@@ -26,7 +26,8 @@ ORG-BODY."
     ("C-n" "next heading" outline-next-visible-heading)
     ("C-e" "scroll down" scroll-up-line)
     ("C-y" "scroll up" scroll-down-line)
-    ("o" "outline" counsel-outline)]
+    ("o" "outline" counsel-outline)
+    ("g" "goto named block" org-babel-goto-named-src-block)]
    ["Editing"
     ("'" "special edit" org-edit-special)
     ("e" "eval chunk" tviti/literate-eval-chunk)
