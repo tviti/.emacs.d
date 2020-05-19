@@ -101,16 +101,16 @@ included for call signature compatibility, but is otherwise ignored."
     ;; Delete everything EXCEPT for the variable list
     (goto-char (point-min))
     (re-search-forward "^variables:$")
-    (delete-region (point-min) (point))
+    (delete-region (point-min) (+ 1 (point)))
     (when (re-search-forward "^// global attributes:$" nil t)
       (re-search-backward "^// global attributes:$")
       (delete-region (point) (point-max)))
     (goto-char (point-min))
     (let ((vars))
       (while (re-search-forward
-	      "^[[:space:]]+\\(int\\)\\|\\(double\\)\\|\\(float\\) \\(.*?\\) ;$"
+	      "^[[:space:]]+\\(char\\|int\\|double\\|float\\) \\(.*?\\)(.*?) ;$"
 	      nil t)
-	(pushnew (match-string 4) vars))
+	(pushnew (match-string 2) vars))
       vars)))
 
 (define-infix-argument tviti/dired-ncdump:-v ()
