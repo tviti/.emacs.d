@@ -94,6 +94,7 @@ included for call signature compatibility, but is otherwise ignored."
 (defun tviti/dired-ncdump-arguments nil
   (transient-args 'tviti/dired-ncdump))
 
+(require 'cl-lib)
 (defun tviti/ncdump-get-vars (fn)
   "Returns a list of variables contained in FN."
   (with-temp-buffer
@@ -110,7 +111,7 @@ included for call signature compatibility, but is otherwise ignored."
       (while (re-search-forward
 	      "^[[:space:]]+\\(char\\|int\\|double\\|float\\) \\(.*?\\)(.*?) ;$"
 	      nil t)
-	(pushnew (match-string 2) vars))
+	(cl-pushnew (match-string 2) vars))
       vars)))
 
 (define-infix-argument tviti/dired-ncdump:-v ()
