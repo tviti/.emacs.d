@@ -22,6 +22,21 @@
 ;; because it's a spaceline config option.
 (setq spaceline-highlight-face-func #'spaceline-highlight-face-evil-state)
 
+;;
+;; Custom spaceline segments
+;;
+(when (>= emacs-major-version 27)
+  (spaceline-define-segment workspace-number
+    "Display the name of the active window configuration from `tab-bar-mode'.
+
+NOTE: This overrides the default workspace-number segment def in
+spaceline-segments.el"
+    (let* ((current-tab (cdr (tab-bar--current-tab)))
+	   (explicit-name (alist-get 'explicit-name current-tab))
+	   (tab-name (alist-get 'name current-tab)))
+      (when explicit-name
+	tab-name))))
+
 (spaceline-toggle-org-clock-on)
 (spaceline-toggle-minor-modes-off)
 (spaceline-toggle-version-control-off)
