@@ -19,6 +19,10 @@
 		    :height 120
 		    :family "DejaVu Sans Mono")
 
+;; Drop straight into server mode, so that the the email daemon(s) can update
+;; the index can be updated using emacsclient.
+(server-start)
+
 ;;
 ;; Load custom configuration files
 ;;
