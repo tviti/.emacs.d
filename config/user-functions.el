@@ -3,6 +3,10 @@
 ;;
 (require 'user-globals)
 
+(defun tviti/dms-to-ddec (d m s)
+  "Convert degree-minute-second (D M S) to decimal degrees."
+  (+ d (/ m 60.0) (/ s 3600.0)))
+
 (defun tviti/toggle-frame-undecorated ()
   "Toggle decorations (i.e. borders) in the active frame."
   (interactive)
