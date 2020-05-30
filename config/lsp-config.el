@@ -60,9 +60,8 @@ acceptable filename string, complete with file extension."
 	   (unless name
 	     (user-error "LSP:: specify block #+name: to enable"))
 
-	   (setq buffer-file-name name)
+	   (set-visited-file-name name)
 	   (eglot-ensure)))
-	   ;; (execute-extended-command nil "eglot")))
        (put ',intern-pre 'function-documentation
 	    (format "Enable `%s' in the buffer of org source block (%s)."
 		    'eglot (upcase ,lang)))
