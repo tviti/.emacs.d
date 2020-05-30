@@ -155,4 +155,12 @@ included for call signature compatibility, but is otherwise ignored."
     ("x" "extended command" counsel-M-x)
     ("c" "delete" evil-window-delete)]])
 
+(with-eval-after-load 'magit-annex
+  (defun tviti/magit-annex-kill-key ()
+    "Copy the g-annex key for FILE at point to the kill ring."
+    (interactive)
+    (--when-let (magit-current-section)
+      (kill-new (magit-git-string "annex" "lookupkey"
+				  (oref it value))))))
+
 (provide 'user-functions)
