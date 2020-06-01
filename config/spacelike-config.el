@@ -48,6 +48,10 @@ spaceline-segments.el"
 (setq display-time-format "%a %m/%d %R")
 (display-time-mode 1)
 
+;; Only show org-clock total for today
+(with-eval-after-load 'org
+  (setq org-clock-mode-line-total 'today))
+
 (spaceline-compile)
 
 (provide 'spacelike-config)
