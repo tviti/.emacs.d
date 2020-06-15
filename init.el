@@ -15,9 +15,8 @@
 (package-initialize)
 
 ;; Pick a font + size
-(set-face-attribute 'default nil
-		    :height 120
-		    :family "DejaVu Sans Mono")
+(add-to-list 'default-frame-alist
+	     '(font . "Fira Code-14"))
 
 ;; Drop straight into server mode, so that the the email daemon(s) can update
 ;; the index can be updated using emacsclient.
