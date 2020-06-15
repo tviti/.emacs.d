@@ -85,11 +85,18 @@
   (kbd "<leader>s") #'save-buffer
   (kbd "<leader>b") #'switch-to-buffer
 
-  (kbd "<leader>0") #'delete-window)
+  (kbd "<leader>0") #'delete-window
+
+  (kbd "<leader>i") #'imenu
+  (kbd "<leader>e") #'eshell
+  ;; (kbd "<leader>s") #'shell
+
+  (kbd "<leader>x") #'Control-X-prefix)
 
 (with-eval-after-load 'counsel
   (evil-define-key '(normal visual motion) 'global
-    (kbd "<leader>rb") #'counsel-bookmark))
+    (kbd "<leader>rb") #'counsel-bookmark
+    (kbd "<leader>c") #'tviti/counsel-map))
 
 (when (>= emacs-major-version 27)
   (evil-define-key '(normal visual motion) 'global
@@ -99,8 +106,9 @@
 
 (with-eval-after-load 'magit-mode
   (evil-define-key '(normal visual motion) 'global
-    (kbd "<leader>ms") #'magit-status
-    (kbd "<leader>ml") #'magit-log-buffer-file))
+    (kbd "<leader>m") #'tviti/magit-map
+    (kbd "<leader>o") #'tviti/org-map
+    (kbd "<leader>O") #'org-capture))
 
 (with-eval-after-load 'projectile
   (evil-define-key '(normal visual motion) 'global

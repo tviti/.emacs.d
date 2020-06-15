@@ -13,62 +13,70 @@
 
 ;; magit keybindings. Don't forget about "C-c M-g" as well!
 (require 'magit)
-(global-set-key (kbd "C-c m s") #'magit-status)
-(global-set-key (kbd "C-c m S") #'magit-stage-file)
-(global-set-key (kbd "C-c m C-s m") #'magit-stage-modified)
-(global-set-key (kbd "C-c m l") #'magit-log-buffer-file)
-(global-set-key (kbd "C-c m p") #'magit-push)
-;; TODO: These are local, not global keybindings!
-(define-key magit-mode-map (kbd "C-c m r") #'magit-diff-toggle-refine-hunk)
+(define-prefix-command 'tviti/magit-map)
+(global-set-key (kbd "C-c m") #'tviti/magit-map)
+(define-key 'tviti/magit-map (kbd "s") #'magit-status)
+(define-key 'tviti/magit-map (kbd "f") #'magit-find-file)
+(define-key 'tviti/magit-map (kbd "S") #'magit-stage-file)
+(define-key 'tviti/magit-map (kbd "C-s m") #'magit-stage-modified)
+(define-key 'tviti/magit-map (kbd "l") #'magit-log-buffer-file)
+(define-key 'tviti/magit-map (kbd "p") #'magit-push)
 (with-eval-after-load 'eyebrowse
   (define-key magit-mode-map eyebrowse-keymap-prefix nil)) ;; Conflicts w/ eyebrowse
 
-(require 'magit-annex)
-(global-set-key (kbd "C-c m a") #'magit-annex-dispatch)
+(with-eval-after-load 'magit-annex
+  (define-key 'tviti/magit-map (kbd "a") #'magit-annex-dispatch))
 
 ;; org-mode keybindings
 (require 'org)
 (require 'counsel)
 
-(global-set-key (kbd "C-c o a") #'org-agenda)
-(global-set-key (kbd "C-c o c") #'counsel-org-capture)
-(global-set-key (kbd "C-c o S") #'org-save-all-org-buffers)
-(global-set-key (kbd "C-c O") #'org-capture) ;; the "minimum-typing" variant
-(global-set-key (kbd "C-c o r") #'org-refile)
-(global-set-key (kbd "C-c o l") #'org-store-link)
-(global-set-key (kbd "C-c o C-a d") #'org-agenda-day-view)
-(global-set-key (kbd "C-c o C-a w") #'org-agenda-week-view)
-(global-set-key (kbd "C-c o C-a m") #'org-agenda-month-view)
-(global-set-key (kbd "C-c o C-a y") #'org-agenda-year-view)
-(global-set-key (kbd "C-c o f") #'org-cycle-agenda-files)
-(global-set-key (kbd "C-c o d") #'org-decrypt-entry)
+(global-set-key (kbd "C-c O") #'org-capture)
 
-(global-set-key (kbd "C-c o o") #'org-clock-out)
-(global-set-key (kbd "C-c o i") #'org-clock-in-last)
-(global-set-key (kbd "C-c o g") #'org-clock-goto)
-(global-set-key (kbd "C-c o z") #'org-resolve-clocks)
-(global-set-key (kbd "C-c o j") #'counsel-org-goto-all)
+(define-prefix-command 'tviti/org-map)
+(global-set-key (kbd "C-c o") #'tviti/org-map)
+(define-key 'tviti/org-map (kbd "a") #'org-agenda)
+(define-key 'tviti/org-map (kbd "c") #'counsel-org-capture)
+(define-key 'tviti/org-map (kbd "S") #'org-save-all-org-buffers)
+(define-key 'tviti/org-map (kbd "r") #'org-refile)
+(define-key 'tviti/org-map (kbd "l") #'org-store-link)
+(define-key 'tviti/org-map (kbd "C-a d") #'org-agenda-day-view)
+(define-key 'tviti/org-map (kbd "C-a w") #'org-agenda-week-view)
+(define-key 'tviti/org-map (kbd "C-a m") #'org-agenda-month-view)
+(define-key 'tviti/org-map (kbd "C-a y") #'org-agenda-year-view)
+(define-key 'tviti/org-map (kbd "f") #'org-cycle-agenda-files)
+(define-key 'tviti/org-map (kbd "d") #'org-decrypt-entry)
 
-(require 'org-ql)
-(global-set-key (kbd "C-c o s") #'org-ql-search)
-(global-set-key (kbd "C-c o v") #'org-ql-view)
+(define-key 'tviti/org-map (kbd "o") #'org-clock-out)
+(define-key 'tviti/org-map (kbd "i") #'org-clock-in-last)
+(define-key 'tviti/org-map (kbd "g") #'org-clock-goto)
+(define-key 'tviti/org-map (kbd "z") #'org-resolve-clocks)
+(define-key 'tviti/org-map (kbd "j") #'counsel-org-goto-all)
+
+(with-eval-after-load 'org-ql
+  (define-key 'tviti/org-map (kbd "s") #'org-ql-search)
+  (define-key 'tviti/org-map (kbd "v") #'org-ql-view))
 
 ;; counsel keybindings
+(define-prefix-command #'tviti/counsel-map)
+(global-set-key (kbd "C-c c") #'tviti/counsel-map)
+(define-key 'tviti/counsel-map (kbd "f") #'counsel-git)
+(define-key 'tviti/counsel-map (kbd "g") #'counsel-git-grep)
+(define-key 'tviti/counsel-map (kbd "G") #'counsel-grep)
+(define-key 'tviti/counsel-map (kbd "o") #'counsel-outline)
+(define-key 'tviti/counsel-map (kbd "l") #'counsel-locate)
+(define-key 'tviti/counsel-map (kbd "v") #'ivy-push-view)
+(define-key 'tviti/counsel-map (kbd "V") #'ivy-pop-view)
+(define-key 'tviti/counsel-map (kbd "k") #'counsel-kmacro)
+(define-key 'tviti/counsel-map (kbd "r") #'counsel-register)
+(define-key 'tviti/counsel-map (kbd "p") #'counsel-list-processes)
+
+;; counsel keybindings that live outside of the prefix-map
 (global-set-key (kbd "C-c C-r") #'ivy-resume)
 (global-set-key (kbd "C-x B") #'counsel-switch-buffer)
 (global-set-key (kbd "C-x C-M-b") #'counsel-ibuffer)
-(global-set-key (kbd "C-c c f") #'counsel-git)
-(global-set-key (kbd "C-c c g") #'counsel-git-grep)
-(global-set-key (kbd "C-c c G") #'counsel-grep)
-(global-set-key (kbd "C-c c o") #'counsel-outline)
-(global-set-key (kbd "C-c c l") #'counsel-locate)
-(global-set-key (kbd "C-c c v") #'ivy-push-view)
-(global-set-key (kbd "C-c c V") #'ivy-pop-view)
-(global-set-key (kbd "C-c c k") #'counsel-kmacro)
-(global-set-key (kbd "C-c c r") #'counsel-register)
-(global-set-key (kbd "C-c c p") #'counsel-list-processes)
 (with-eval-after-load 'evil
-  (global-set-key (kbd "C-c c e") #'counsel-evil-marks)
+  (define-key 'tviti/counsel-map (kbd "c e") #'counsel-evil-marks)
   (evil-global-set-key 'normal (kbd "M-\"") #'counsel-evil-registers))
 
 ;; nix-mode keybindings
@@ -93,21 +101,24 @@
 ;; Don't forget that you can also very effectively insert a kahakō by using the
 ;; TeX input method (i.e. "C-x <ret> C-\ TeX"), although this doesn't give the
 ;; ʻokina.
-(global-set-key (kbd "C-c h '") (lambda () (interactive) (insert ?ʻ)))
+(define-prefix-command 'tviti/hawaiian-map)
+(global-set-key (kbd "C-c h") #'tviti/hawaiian-map)
+
+(define-key 'tviti/hawaiian-map (kbd "'") (lambda () (interactive) (insert ?ʻ)))
 
 ;; Lowercase kahakou chars
-(global-set-key (kbd "C-c h a") (lambda () (interactive) (insert ?ā)))
-(global-set-key (kbd "C-c h e") (lambda () (interactive) (insert ?ē)))
-(global-set-key (kbd "C-c h i") (lambda () (interactive) (insert ?ī)))
-(global-set-key (kbd "C-c h o") (lambda () (interactive) (insert ?ō)))
-(global-set-key (kbd "C-c h u") (lambda () (interactive) (insert ?ū)))
+(define-key 'tviti/hawaiian-map (kbd "a") (lambda () (interactive) (insert ?ā)))
+(define-key 'tviti/hawaiian-map (kbd "e") (lambda () (interactive) (insert ?ē)))
+(define-key 'tviti/hawaiian-map (kbd "i") (lambda () (interactive) (insert ?ī)))
+(define-key 'tviti/hawaiian-map (kbd "o") (lambda () (interactive) (insert ?ō)))
+(define-key 'tviti/hawaiian-map (kbd "u") (lambda () (interactive) (insert ?ū)))
 
 ;; Uppercase kahakou chars
-(global-set-key (kbd "C-c h A") (lambda () (interactive) (insert ?Ā)))
-(global-set-key (kbd "C-c h E") (lambda () (interactive) (insert ?Ē)))
-(global-set-key (kbd "C-c h I") (lambda () (interactive) (insert ?Ī)))
-(global-set-key (kbd "C-c h O") (lambda () (interactive) (insert ?Ō)))
-(global-set-key (kbd "C-c h U") (lambda () (interactive) (insert ?Ū)))
+(define-key 'tviti/hawaiian-map (kbd "A") (lambda () (interactive) (insert ?Ā)))
+(define-key 'tviti/hawaiian-map (kbd "E") (lambda () (interactive) (insert ?Ē)))
+(define-key 'tviti/hawaiian-map (kbd "I") (lambda () (interactive) (insert ?Ī)))
+(define-key 'tviti/hawaiian-map (kbd "O") (lambda () (interactive) (insert ?Ō)))
+(define-key 'tviti/hawaiian-map (kbd "U") (lambda () (interactive) (insert ?Ū)))
 
 ;; "Free up" conflicts between Shell-mode and eyebrowse
 ;; TODO: These are local, not GLOBAL keybindings!
