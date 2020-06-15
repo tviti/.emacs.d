@@ -48,4 +48,69 @@
 (add-hook 'matlab-mode-hook #'tviti/matlab-mode-setup)
 (add-hook 'M-shell-mode #'tviti/M-shell-mode-setup)
 
+(with-eval-after-load 'ob-octave
+  ;; (defun org-babel-edit-prep:matlab (info)
+  ;;   ;; Enable mlint and the debugger, by assigning a temporary file to the
+  ;;   ;; `org-edit-special' buffer. MATLAB and mlint are fussy about hyphenated
+  ;;   ;; filenames, so we avoid using `org-babel-temp-file' for this.
+  ;;   (set-visited-file-name (make-temp-file "octave_" nil ".m" (buffer-string)))
+  ;;   ;; ;; Save to trigger mlint.
+  ;;   (save-buffer))
+
+  ;; Hacked to suppress input lines in result blocks when using matlab-mode.
+  (defun org-babel-octave-evaluate-session
+      (session body result-type &optional matlabp)
+    "Evaluate BODY in SESSION."
+    (let* ((tmp-file (org-babel-temp-file (if matlabp "matlab-" "octave-")))
+	   (wait-file (org-babel-temp-file "matlab-emacs-link-wait-signal-"))
+	   (full-body
+	    (pcase result-type
+	      (`output
+	       (if 'matlab-shell
+		   (format "cd %s;\n%s" ;; Make sure we eval in the correct dir
+			   (file-name-directory (buffer-file-name)) body)
+		 (mapconcat
+		  #'org-babel-chomp
+		  (list body org-babel-octave-eoe-indicator) "\n")))
+	      (`value
+	       (mapconcat
+		#'org-babel-chomp
+		(list (format org-babel-octave-wrapper-method
+			      body
+			      (org-babel-process-file-name tmp-file 'noquote)
+			      (org-babel-process-file-name tmp-file 'noquote))
+		      org-babel-octave-eoe-indicator) "\n"))))
+	   (raw (if (and 'matlab-shell (not (eq result-type 'value)))
+		    (save-window-excursion
+		      (with-temp-buffer
+			(insert full-body)
+			(write-region nil nil tmp-file nil t)
+			(split-string
+			 (matlab-shell-collect-command-output
+			  (matlab-shell-region-command (point-min) (point-max)))
+			 "\\(K\\|EDU\\)?>> *")))
+		  (org-babel-comint-with-output
+		      (session
+		       (if matlabp
+			   org-babel-octave-eoe-indicator
+			 org-babel-octave-eoe-output)
+		       t full-body)
+		    (insert full-body) (comint-send-input nil t)))) results)
+      (pcase result-type
+	(`value
+	 (org-babel-octave-import-elisp-from-file tmp-file))
+	(`output
+	 (setq results
+	       (if matlabp
+		   (if (and 'matlab-shell (not (eq result-type 'value)))
+		       (reverse (remove "" (mapcar #'org-strip-quotes
+						 (mapcar #'org-trim raw))))
+		     (cdr (reverse (delq "" (mapcar #'org-strip-quotes
+						    (mapcar #'org-trim raw))))))
+		 (cdr (member org-babel-octave-eoe-output
+			      (reverse (mapcar #'org-strip-quotes
+					       (mapcar #'org-trim raw)))))))
+	 (mapconcat #'identity (reverse results) "\n"))))))
+
+
 (provide 'matlab-config)
