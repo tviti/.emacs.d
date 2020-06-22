@@ -7,10 +7,10 @@
 ;; Configuration for the ivy/counsel/swiper trifecta
 (ivy-mode 1)
 (counsel-mode 1)
-
 ;; Customizations suggested by the *info* page
 (setq ivy-use-virtual-buffers t)
 (setq ivy-count-format "(%d/%d) ")
+(setq enable-recursive-minibuffers t)
 
 ;; SLIME won't actually use the ivy backend ootb. Per abo-abo: "Looks like SLIME
 ;; is really old school, and doesn't obey the completion-in-region-function
