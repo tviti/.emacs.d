@@ -23,4 +23,13 @@
 		("-l"))
 	       (tramp-remote-shell-args ("-c"))))
 
+;; rclone Google Drive "Shared With Me" folder
+(add-to-list 'tramp-methods
+	     '("rclone-shared"
+	       (tramp-mount-args nil)
+	       (tramp-copyto-args nil)
+	       (tramp-moveto-args nil)
+	       (tramp-about-args ("--full" "--drive-shared-with-me"))))
+
+
 (provide 'tramp-config)
