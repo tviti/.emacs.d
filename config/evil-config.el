@@ -7,12 +7,15 @@
 (require 'evil)
 (evil-mode 1)
 
+(require 'user-globals)
+
 ;; Move all elements of evil-emacs-state-modes to evil-motion-state-modes
 ;; (setq evil-motion-state-modes (append evil-emacs-state-modes evil-motion-state-modes))
 ;; (setq evil-emacs-state-modes nil)
 
 ;; Enable evil where it normally wouldn't be enabled
 (require 'evil-collection)
+(add-to-list 'evil-collection-key-blacklist (key-description tviti/evil-leader))
 (evil-collection-init '(ediff ibuffer package-menu dired magit bookmark slime mu4e))
 
 (with-eval-after-load 'magit
@@ -61,19 +64,14 @@
 ;;
 ;; Leader-key bindings
 ;;
-(evil-set-leader '(normal visual motion) (kbd "SPC"))
+(evil-set-leader '(normal visual motion) tviti/evil-leader)
 
 ;; SPC as leader will be shadowed by certain mode-maps. Clear these bindings.
 (with-eval-after-load 'magit-mode
-  (define-key magit-mode-map (kbd "SPC") nil))
+  (define-key magit-mode-map tviti/evil-leader nil))
 
-;; dired-mode-map is already being modified by evil-mode, so we use
-;; evil-define-key instead.
-(evil-define-key 'normal dired-mode-map (kbd "SPC") nil)
-
-(with-eval-after-load 'pdf-view
-  (evil-define-key 'normal pdf-view-mode-map (kbd "SPC") nil))
-  
+(with-eval-after-load 'magit-diff
+  (define-key magit-revision-mode-map tviti/evil-leader nil))
 
 (evil-define-key '(normal visual motion) 'global
   (kbd "<leader>h") #'evil-window-left
@@ -104,7 +102,7 @@
     (kbd "<leader>t 2") #'tab-bar-new-tab
     (kbd "<leader>t r") #'tab-bar-rename-tab))
 
-(with-eval-after-load 'magit-mode
+(with-eval-after-load 'global-keys
   (evil-define-key '(normal visual motion) 'global
     (kbd "<leader>m") #'tviti/magit-map
     (kbd "<leader>o") #'tviti/org-map
