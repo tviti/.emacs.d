@@ -39,6 +39,80 @@
 	    (lambda ()
 	      (local-set-key (kbd "C-s") #'isearch-forward))))
 
+;;
+;; ivy + emacs 27's tab-bar mode
+;;
+;; (defun tviti/ivy-switch-tab-action (tab-name)
+;;   "Switch to TAB-NAME or, if TAB-NAME does not name a tab, then create a new tab
+;; with that name."
+;;   (if (member tab-name (mapcar (lambda (x) (alist-get 'name x))
+;; 			       (tab-bar-tabs)))
+;;       (tab-bar-switch-to-tab tab-name)
+;;     (tab-bar-new-tab)
+;;     (tab-bar-rename-tab tab-name)))
+
+(defun tviti/ivy-switch-tab-action (tab-name)
+  "Switch to TAB-NAME or, if TAB-NAME does not name a tab, then create a new tab
+with that name."
+  (unless (zerop (length tab-name))
+    (if (member tab-name (mapcar (lambda (x) (alist-get 'name x))
+				 (tab-bar-tabs)))
+	(tab-bar-switch-to-tab tab-name)
+      (tab-bar-new-tab)
+      (tab-bar-rename-tab tab-name))))
+
+(defun tviti/recent-tabs (string &optional predicate flag)
+  (ivy--re-filter string (mapcar (lambda (tab)
+				(alist-get 'name tab))
+			      (tab-bar--tabs-recent))))
+
+(defun tviti/ivy-switch-tab ()
+  "Switch to another tab."
+  (interactive)
+  (ivy-read "Tab name: " #'tviti/recent-tabs
+	    :action #'tviti/ivy-switch-tab-action
+	    :dynamic-collection t
+	    :caller 'tviti/ivy-switch-tab))
+
+(defun tviti/ivy--rename-tab-action (tab-name)
+  (interactive)
+  (let ((new-name (read-from-minibuffer
+                   "New name for tab (leave blank for automatic naming): "
+		   nil nil nil nil tab-name)))
+    (tab-bar-rename-tab-by-name tab-name new-name)
+    (ivy--reset-state ivy-last)))
+
+(defun tviti/ivy--close-tab-action (tab-name)
+  (let ((current-input (ivy-state-text ivy-last)))
+    (tab-bar-close-tab-by-name tab-name)
+    (ivy--reset-state ivy-last)))
+
+(with-eval-after-load 'ivy
+  (ivy-set-actions
+   'tviti/ivy-switch-tab
+   '(("k" tviti/ivy--close-tab-action "close tab")
+     ("r" tviti/ivy--rename-tab-action "rename tab"))))
+
+;; (defun tviti/counsel-switch-tab-update-fn ()
+;;   (let ((names (mapcar (lambda (x) (alist-get 'name x))
+;; 		       (tab-bar-tabs)))
+;; 	(selection (ivy-state-current ivy-last)))
+;;     (when (member selection names)
+;;       (save-excursion ;; Prevents point jumping to (point-min) on tab switch
+;; 	(tab-bar-switch-to-tab selection)))))
+
+;; (defun tviti/counsel-switch-tab ()
+;;   ""
+;;   (interactive)
+;;   (let* ((ivy-update-fns-alist
+;; 	  '((tviti/ivy-switch-tab . tviti/counsel-switch-tab-update-fn)))
+;; 	 (starting-tab (tab-bar--current-tab))
+;; 	 (res))
+;;     (unwind-protect
+;; 	(setq res (tviti/ivy-switch-tab))
+;;       (tab-bar-switch-to-tab (if res
+;; 				 res
+;; 			       (alist-get 'name starting-tab))))))
 
 ;;;;;;;;;;;;;;
 ;; ido-mode ;;
