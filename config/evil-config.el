@@ -98,9 +98,7 @@
 
 (when (>= emacs-major-version 27)
   (evil-define-key '(normal visual motion) 'global
-    (kbd "<leader>t RET") #'tab-bar-select-tab-by-name
-    (kbd "<leader>t 2") #'tab-bar-new-tab
-    (kbd "<leader>t r") #'tab-bar-rename-tab))
+    (kbd "<leader>t") #'tviti/ivy-switch-tab))
 
 (with-eval-after-load 'global-keys
   (evil-define-key '(normal visual motion) 'global
