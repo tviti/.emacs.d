@@ -22,6 +22,9 @@
 ;; the index can be updated using emacsclient.
 (server-start)
 
+;; Load packages
+(require 'magit-annex)
+
 ;;
 ;; Load custom configuration files
 ;;
