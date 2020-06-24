@@ -93,6 +93,37 @@ with that name."
    '(("k" tviti/ivy--close-tab-action "close tab")
      ("r" tviti/ivy--rename-tab-action "rename tab"))))
 
+;;
+;; Custom ivy-switch-buffer actions
+;;
+(defun tviti/ivy--switch-buffer-other-frame-action (buffer)
+  "Switch to BUFFER in other frame.
+BUFFER may be a string or nil."
+  (if (zerop (length buffer))
+      (switch-to-buffer-other-frame ivy-text)
+    (let ((virtual (assoc buffer ivy--virtual-buffers)))
+      (if (and virtual
+               (not (get-buffer buffer)))
+          (find-file-other-frame (cdr virtual))
+        (switch-to-buffer-other-frame buffer)))))
+
+(defun tviti/ivy--switch-buffer-other-tab-action (buffer)
+  "Switch to BUFFER in other tab.
+BUFFER may be a string or nil."
+  (if (zerop (length buffer))
+      (switch-to-buffer-other-tab ivy-text)
+    (let ((virtual (assoc buffer ivy--virtual-buffers)))
+      (if (and virtual
+               (not (get-buffer buffer)))
+          (find-file-other-tab (cdr virtual))
+        (switch-to-buffer-other-tab buffer)))))
+
+(with-eval-after-load 'ivy
+  (ivy-add-actions
+   'ivy-switch-buffer
+   '(("J" tviti/ivy--switch-buffer-other-frame-action "other frame")
+     ("t" tviti/ivy--switch-buffer-other-tab-action "other tab"))))
+ 
 ;; (defun tviti/counsel-switch-tab-update-fn ()
 ;;   (let ((names (mapcar (lambda (x) (alist-get 'name x))
 ;; 		       (tab-bar-tabs)))
