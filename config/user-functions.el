@@ -155,12 +155,16 @@ included for call signature compatibility, but is otherwise ignored."
     ("x" "extended command" counsel-M-x)
     ("c" "delete" evil-window-delete)]])
 
+
+(defun tviti/magit-annex-kill-key (files &optional args)
+  "Copy the sha key for the selected files to the kill ring.
+At the moment, this only works on a single file at a time."
+  (interactive (magit-annex--file-arguments))
+  (kill-new (magit-git-string "annex" "lookupkey" args "--" (car files))))
+
 (with-eval-after-load 'magit-annex
-  (defun tviti/magit-annex-kill-key ()
-    "Copy the g-annex key for FILE at point to the kill ring."
-    (interactive)
-    (--when-let (magit-current-section)
-      (kill-new (magit-git-string "annex" "lookupkey"
-				  (oref it value))))))
+  (transient-append-suffix 'magit-annex-file-action '(-1 -1 -1)
+    '("k" "Key" tviti/magit-annex-kill-key)))
+
 
 (provide 'user-functions)
