@@ -79,11 +79,13 @@ with that name."
   (let ((new-name (read-from-minibuffer
                    "New name for tab (leave blank for automatic naming): "
 		   nil nil nil nil tab-name)))
-    (tab-bar-rename-tab-by-name tab-name new-name)
+    (if (zerop (length tab-name))
+	(tab-bar-rename-tab-by-name (alist-get 'name (tab-bar--current-tab)) new-name)
+      (tab-bar-rename-tab-by-name tab-name new-name))
     (ivy--reset-state ivy-last)))
 
 (defun tviti/ivy--close-tab-action (tab-name)
-  (let ((current-input (ivy-state-text ivy-last)))
+  (unless (zerop (length tab-name))
     (tab-bar-close-tab-by-name tab-name)
     (ivy--reset-state ivy-last)))
 
