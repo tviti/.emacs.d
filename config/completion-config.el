@@ -3,6 +3,7 @@
 ;;;;;;;;;;;;;;
 ;; ivy-mode ;;
 ;;;;;;;;;;;;;;
+(require 'ivy)
 
 ;; Configuration for the ivy/counsel/swiper trifecta
 (ivy-mode 1)
@@ -89,11 +90,10 @@ with that name."
     (tab-bar-close-tab-by-name tab-name)
     (ivy--reset-state ivy-last)))
 
-(with-eval-after-load 'ivy
-  (ivy-set-actions
-   'tviti/ivy-switch-tab
-   '(("k" tviti/ivy--close-tab-action "close tab")
-     ("r" tviti/ivy--rename-tab-action "rename tab"))))
+(ivy-set-actions
+ 'tviti/ivy-switch-tab
+ '(("k" tviti/ivy--close-tab-action "close tab")
+   ("r" tviti/ivy--rename-tab-action "rename tab")))
 
 ;;
 ;; Custom ivy-switch-buffer actions
@@ -120,11 +120,11 @@ BUFFER may be a string or nil."
           (find-file-other-tab (cdr virtual))
         (switch-to-buffer-other-tab buffer)))))
 
-(with-eval-after-load 'ivy
+(ivy-add-actions
+ 'ivy-switch-buffer
+ '(("J" tviti/ivy--switch-buffer-other-frame-action "other frame")
+   ("t" tviti/ivy--switch-buffer-other-tab-action "other tab")))
   (ivy-add-actions
-   'ivy-switch-buffer
-   '(("J" tviti/ivy--switch-buffer-other-frame-action "other frame")
-     ("t" tviti/ivy--switch-buffer-other-tab-action "other tab"))))
  
 ;; (defun tviti/counsel-switch-tab-update-fn ()
 ;;   (let ((names (mapcar (lambda (x) (alist-get 'name x))
