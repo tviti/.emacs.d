@@ -124,7 +124,22 @@ BUFFER may be a string or nil."
  'ivy-switch-buffer
  '(("J" tviti/ivy--switch-buffer-other-frame-action "other frame")
    ("t" tviti/ivy--switch-buffer-other-tab-action "other tab")))
+
+(defun tviti/ivy--switch-project-other-frame-action (project)
+  (interactive)
+  (let ((projectile-switch-project-action 'projectile-dired-other-frame))
+    (projectile-switch-project-by-name project)))
+
+(defun tviti/ivy--switch-project-other-window-action (project)
+  (interactive)
+  (let ((projectile-switch-project-action 'projectile-dired-other-window))
+    (projectile-switch-project-by-name project)))
+
+(with-eval-after-load 'projectile
   (ivy-add-actions
+   'projectile-switch-project
+   '(("j" tviti/ivy--switch-project-other-window-action "other window")
+     ("J" tviti/ivy--switch-project-other-frame-action "other frame"))))
  
 ;; (defun tviti/counsel-switch-tab-update-fn ()
 ;;   (let ((names (mapcar (lambda (x) (alist-get 'name x))
