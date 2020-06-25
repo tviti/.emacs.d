@@ -166,5 +166,12 @@ At the moment, this only works on a single file at a time."
   (transient-append-suffix 'magit-annex-file-action '(-1 -1 -1)
     '("k" "Key" tviti/magit-annex-kill-key)))
 
+(defun tviti/projectile-switch-project-other-frame (&optional arg)
+  (interactive)
+  (let ((projectile-switch-project-action 'projectile-dired-other-frame))
+    (projectile-switch-project arg)))
+
+(with-eval-after-load 'projectile
+  (define-key 'projectile-command-map (kbd "5 p") #'tviti/projectile-switch-project-other-frame))
 
 (provide 'user-functions)
