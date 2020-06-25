@@ -111,7 +111,7 @@
 (setq ediff-window-setup-function 'ediff-setup-windows-plain)
 
 ;; Use next-browser for browse-url functionality.
-(setq browse-url-browser-function #'tviti/browse-url-next-browser)
+(setq browse-url-browser-function #'tviti/browse-url-nyxt-browser)
 
 ;; emacs-27 specific customisations
 (when (>= emacs-major-version 27)

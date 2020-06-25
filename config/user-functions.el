@@ -42,13 +42,13 @@ Useful for swapping buffers between eyebrowse workspaces."
   (when default-directory
     (kill-new default-directory)))
 
-(defun tviti/browse-url-next-browser (url &rest args)
+(defun tviti/browse-url-nyxt-browser (url &rest args)
   "Start a new Next browser process to view URL `tviti/next-browser-command'.
 If Next is already running, this will instead open a new Next
 buffer at URL, in the last active browser window.  ARGS is
 included for call signature compatibility, but is otherwise ignored."
-  (start-process "next-browser"
-		 nil tviti/next-browser-command url))
+  (start-process "nyxt-browser"
+		 nil tviti/nyxt-browser-command url))
 
 (defun tviti/mac-port-p ()
   "Check if the running Emacs instance is Mitsuhara Yamamoto's mac-port."
