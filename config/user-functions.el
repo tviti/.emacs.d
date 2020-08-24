@@ -129,8 +129,15 @@ included for call signature compatibility, but is otherwise ignored."
 	     (tviti/ncdump-get-vars (dired-get-filename))
 	     nil t initial-input history)))
 
+(defun tviti/dired-ncview ()
+  (interactive)
+  (let* ((fn (dired-get-filename))
+	 (pname (concat (make-temp-name (concat "*ncview " fn)) "*"))
+	 (proc (make-process :name pname :command (list "ncview" fn))))))
+
 (with-eval-after-load 'dired
-  (define-key dired-mode-map (kbd "C-c d n") #'tviti/dired-ncdump))
+  (define-key dired-mode-map (kbd "C-c d n") #'tviti/dired-ncdump)
+  (define-key dired-mode-map (kbd "C-c d v") #'tviti/dired-ncview))
 
 (define-transient-command tviti/evil-window ()
   :transient-suffix 'transient--do-stay
