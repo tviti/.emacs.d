@@ -93,6 +93,7 @@
 
 (with-eval-after-load 'counsel
   (evil-define-key '(normal visual motion) 'global
+    (kbd "<leader>B") #'counsel-switch-buffer
     (kbd "<leader>rb") #'counsel-bookmark
     (kbd "<leader>c") #'tviti/counsel-map))
 
