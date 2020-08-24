@@ -75,7 +75,8 @@ acceptable filename string, complete with file extension."
 		(format "Prepare local buffer environment for org source block (%s)."
 			(upcase ,lang))))))))
 
-;; (tviti/lsp-org-babel-enable "python")
+(tviti/lsp-org-babel-enable "R")
+(tviti/lsp-org-babel-enable "python")
 
 ;;
 ;; Misc. keybindings
