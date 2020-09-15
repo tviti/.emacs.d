@@ -95,7 +95,7 @@ acceptable filename string, complete with file extension."
     ("x" "find refs" xref-find-references)
     ("d" "find defs" xref-find-definitions)]
    ["Help"
-    ("h" "eglot help" eglot-help-at-point)]])
+    ("h" "eglot help" eldoc-doc-buffer)]])
 
 (define-key eglot-mode-map (kbd "C-c f") #'tviti/linter-nav)
 
