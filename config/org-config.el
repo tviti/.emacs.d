@@ -21,7 +21,8 @@
  'org-babel-load-languages
  '((eshell . t)
    (shell . t)
-   (R . t)))
+   (R . t)
+   (org . t)))
 
 ;; Configure the export backends
 (eval-after-load "org"
