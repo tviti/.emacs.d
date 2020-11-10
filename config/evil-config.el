@@ -1,8 +1,8 @@
 ;; Fix related to https://github.com/emacs-evil/evil-collection/issues/60
 (setq evil-want-keybinding nil)
 
-(require 'undo-tree)
-(global-undo-tree-mode)
+; (require 'undo-tree)
+; (global-undo-tree-mode)
 
 (require 'evil)
 (evil-mode 1)
