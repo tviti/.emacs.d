@@ -73,6 +73,11 @@
 (with-eval-after-load 'magit-diff
   (define-key magit-revision-mode-map tviti/evil-leader nil))
 
+(with-eval-after-load 'org-agenda
+  (define-key org-agenda-mode-map tviti/evil-leader nil)
+  (evil-define-key 'motion org-agenda-mode-map
+    tviti/evil-leader nil))
+
 (evil-define-key '(normal visual motion) 'global
   (kbd "<leader>h") #'evil-window-left
   (kbd "<leader>j") #'evil-window-down
