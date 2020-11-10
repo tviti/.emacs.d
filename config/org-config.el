@@ -32,8 +32,8 @@
 
 ;; (require 'ox-bibtex) ; For bibtex citations
 
-;; (add-hook 'org-babel-after-execute-hook
-;; 	  (lambda () (org-redisplay-inline-images)))
+(add-hook 'org-babel-after-execute-hook
+	  (lambda () (org-redisplay-inline-images)))
 
 ;; Force org-babel to use python3
 ;; (setq org-babel-python-command "python3")
