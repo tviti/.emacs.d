@@ -25,10 +25,12 @@
    (org . t)))
 
 ;; Configure the export backends
-(eval-after-load "org"
-  (progn
-    '(require 'ox-md nil t)
-    '(require 'ox-gfm nil t)))
+;; (eval-after-load "org"
+;;   (progn
+;;     '(require 'ox-gfm nil t)))
+(with-eval-after-load 'org
+  (require 'ox-gfm))
+(add-to-list 'org-export-backends 'md)
 
 ;; (require 'ox-bibtex) ; For bibtex citations
 
