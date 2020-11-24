@@ -144,11 +144,20 @@ included for call signature compatibility, but is otherwise ignored."
 	 (pname (concat (make-temp-name (concat "*mpv " fn)) "*"))
 	 (proc (make-process :name pname :command (list "mpv" "--keep-open=yes" fn))))))
 
+(defun tviti/dired-grdinfo ()
+  (interactive)
+  (let* ((fn (dired-get-filename))
+	 (pname (concat (make-temp-name (concat "*gmt grdinfo " fn)) "*"))
+	 (buff (pop-to-buffer pname))
+	 (proc (make-process :name pname :buffer buff
+			     :command (list "gmt" "grdinfo" fn))))))
+
 
 (with-eval-after-load 'dired
   (define-key dired-mode-map (kbd "C-c d n") #'tviti/dired-ncdump)
   (define-key dired-mode-map (kbd "C-c d v") #'tviti/dired-ncview)
-  (define-key dired-mode-map (kbd "C-c d m") #'tviti/dired-mpv))
+  (define-key dired-mode-map (kbd "C-c d m") #'tviti/dired-mpv)
+  (define-key dired-mode-map (kbd "C-c d g") #'tviti/dired-grdinfo))
 
 (define-transient-command tviti/evil-window ()
   :transient-suffix 'transient--do-stay
