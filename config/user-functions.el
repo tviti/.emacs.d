@@ -92,6 +92,7 @@ included for call signature compatibility, but is otherwise ignored."
   ["Arguments"
    ("-h" "Show only the header information in the output" ("-h" "-h"))
    ("-c" "Show the values of coordinate variables" ("-c" "-c"))
+   ("-k" "Output kind of netCDF file" ("-k" "-k"))
    (tviti/dired-ncdump:-v)]
   [("RET" "go!" tviti/dired-do-ncdump)])
 
