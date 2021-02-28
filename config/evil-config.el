@@ -18,8 +18,8 @@
 (add-to-list 'evil-collection-key-blacklist (key-description tviti/evil-leader))
 (evil-collection-init '(ediff ibuffer package-menu dired magit bookmark slime mu4e))
 
-(with-eval-after-load 'magit
-  (require 'evil-magit))
+;; (with-eval-after-load 'magit
+;;   (require 'evil-magit)
 
 ;; Not sure why, but evil-collection-init won't actually load
 ;; evil-collection-pdf, so we do it like so instead.
