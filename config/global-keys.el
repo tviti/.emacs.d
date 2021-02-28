@@ -46,6 +46,8 @@
 (define-key 'tviti/org-map (kbd "C-a y") #'org-agenda-year-view)
 (define-key 'tviti/org-map (kbd "f") #'org-cycle-agenda-files)
 (define-key 'tviti/org-map (kbd "d") #'org-decrypt-entry)
+(define-key 'tviti/org-map (kbd "b r") #'org-refile-goto-last-stored)
+(define-key 'tviti/org-map (kbd "b c") #'org-capture-goto-last-stored)
 
 (define-key 'tviti/org-map (kbd "o") #'org-clock-out)
 (define-key 'tviti/org-map (kbd "i") #'org-clock-in-last)
