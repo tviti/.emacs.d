@@ -70,6 +70,9 @@
 (with-eval-after-load 'magit-mode
   (define-key magit-mode-map tviti/evil-leader nil))
 
+(with-eval-after-load 'magit-stash
+  (define-key magit-stash-mode-map tviti/evil-leader nil))
+
 (with-eval-after-load 'magit-diff
   (define-key magit-revision-mode-map tviti/evil-leader nil))
 
