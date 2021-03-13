@@ -16,7 +16,7 @@
 
 ;; Pick a font + size
 (add-to-list 'default-frame-alist
-	     '(font . "Fira Code-14"))
+	     '(font . "Iosevka-14"))
 
 ;; Drop straight into server mode, so that the the email daemon(s) can update
 ;; the index can be updated using emacsclient.
