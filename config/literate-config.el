@@ -36,9 +36,11 @@ ORG-BODY."
     ("m" "mark chunk" tviti/literate-select-chunk)
     (":" "insert header arg" org-babel-insert-header-arg)]
    ["Previewing"
+    ("d" "decrypt entry" tviti/literate-decrypt-entry)
     ("v" "toggle images" tviti/literate-toggle-inline-images)
     ("l" "toggle LaTeX" tviti/literate-toggle-inline-latex)]])
-   
+
+
 (defun tviti/polymode-active-p ()
   "Returns t if `polymode' is active in the current buffer."
   (and (boundp polymode-mode) polymode-mode))
@@ -46,6 +48,12 @@ ORG-BODY."
 (defun tviti/org-mode-active-p ()
   "Returns t if `org-mode' is active in the current buffer."
   (eq major-mode 'org-mode))
+
+(defun tviti/literate-decrypt-entry ()
+  (interactive)
+  (tviti/literate-with-host
+   nil
+   (org-decrypt-entry)))
 
 (defun tviti/literate-previous-chunk ()
   (interactive)
@@ -75,6 +83,8 @@ ORG-BODY."
 	   (org-babel-execute-subtree))
 	  ((eq type 'src-block)
 	   (org-babel-execute-src-block))
+	  ((eq type 'dynamic-block)
+	   (org-update-dblock))
 	  (t
 	   (org-babel-execute-src-block-maybe))))))
 
