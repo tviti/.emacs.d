@@ -25,6 +25,9 @@
 ;; Load packages
 (require 'magit-annex)
 
+(require 'undo-tree)
+(global-undo-tree-mode)
+
 ;;
 ;; Load custom configuration files
 ;;
