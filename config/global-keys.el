@@ -48,12 +48,31 @@
 (define-key 'tviti/org-map (kbd "d") #'org-decrypt-entry)
 (define-key 'tviti/org-map (kbd "b r") #'org-refile-goto-last-stored)
 (define-key 'tviti/org-map (kbd "b c") #'org-capture-goto-last-stored)
+(define-key 'tviti/org-map (kbd "t") #'org-todo)
 
+(with-eval-after-load 'org-caldav
+  (define-key 'tviti/org-map (kbd "C-c") #'org-caldav-sync))
+
+(define-key 'tviti/org-map (kbd "<tab>") #'org-clock-in)
 (define-key 'tviti/org-map (kbd "o") #'org-clock-out)
 (define-key 'tviti/org-map (kbd "i") #'org-clock-in-last)
 (define-key 'tviti/org-map (kbd "g") #'org-clock-goto)
 (define-key 'tviti/org-map (kbd "z") #'org-resolve-clocks)
 (define-key 'tviti/org-map (kbd "j") #'counsel-org-goto-all)
+
+(define-key 'tviti/org-map (kbd "C-i")
+  (lambda ()
+    (interactive)
+    (save-window-excursion
+      (org-id-goto "4b96d7df-cd4e-48f7-b1a3-3de72839051c")
+      (org-clock-in))))
+
+(define-key 'tviti/org-map (kbd "C-o")
+  (lambda ()
+    (interactive)
+    (save-window-excursion
+      (org-id-goto "4b96d7df-cd4e-48f7-b1a3-3de72839051c")
+      (org-clock-out))))
 
 (with-eval-after-load 'org-ql
   (define-key 'tviti/org-map (kbd "s") #'org-ql-search)
