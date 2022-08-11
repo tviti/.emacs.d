@@ -58,7 +58,7 @@
 (require 'ruler-mode-config)
 (require 'slime-config)
 (require 'spacelike-config)
-(require 'feeds-config)
+;;(require 'feeds-config)
 (require 'tramp-config)
 
 ;; This should be one of the last things loaded, since it uses mode-hooks for
@@ -87,12 +87,12 @@
 			    (setq display-line-numbers 'relative)))
 
 ;; Store bookmarks in a different directory
-(setq bookmark-default-file (expand-file-name "bookmarks" tviti/sync-dir))
+(setq bookmark-default-file (expand-file-name "bookmarks" user-emacs-directory))
 
-;; Store yasnippets in a different directory
-(with-eval-after-load 'yasnippet
-  (add-to-list 'yas-snippet-dirs
-	       (expand-file-name "yasnippets" tviti/sync-dir)))
+;; ;; Store yasnippets in a different directory
+;; (with-eval-after-load 'yasnippet
+;;   (add-to-list 'yas-snippet-dirs
+;; 	       (expand-file-name "yasnippets" tviti/sync-dir)))
 
 ;;
 ;; Setup groupings for ibuffer
