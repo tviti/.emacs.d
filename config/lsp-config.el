@@ -94,6 +94,9 @@ acceptable filename string, complete with file extension."
    ["xref"
     ("x" "find refs" xref-find-references)
     ("d" "find defs" xref-find-definitions)]
+   ["Misc"
+    ("a" "code actions" eglot-code-actions)
+    ("b" "diagnostics" flymake-show-buffer-diagnostics)]
    ["Help"
     ("h" "eglot help" eldoc-doc-buffer)]])
 
