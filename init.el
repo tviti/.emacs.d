@@ -79,7 +79,7 @@
 ;; (eyebrowse-mode t)
 
 ;; Make dired report human-readable file sizes
-(setq dired-listing-switches "-alhFS")
+(setq dired-listing-switches "-alhFSL")
 
 ;; Enable line number and relative line numbering using the new built in system
 ;; (requires Emacs >= 26.1)

@@ -81,7 +81,7 @@ acceptable filename string, complete with file extension."
 ;;
 ;; Misc. keybindings
 ;;
-(define-transient-command tviti/linter-nav ()
+(transient-define-prefix tviti/linter-nav ()
   :transient-suffix 'transient--do-stay
   :transient-non-suffix 'transient--do-warn
   [["Errors"
