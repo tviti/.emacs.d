@@ -15,7 +15,7 @@ ORG-BODY."
 	 ((tviti/org-mode-active-p)
 	  ,org-body)))
 
-(define-transient-command tviti/literate ()
+(transient-define-prefix tviti/literate ()
   :transient-suffix 'transient--do-stay
   :transient-non-suffix 'transient--do-warn
   [["Navigation"

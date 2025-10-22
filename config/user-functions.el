@@ -86,7 +86,7 @@ included for call signature compatibility, but is otherwise ignored."
 			   (list fn))))
     (apply #'tviti/ncdump args-out)))
 
-(define-transient-command tviti/dired-ncdump ()
+(transient-define-prefix tviti/dired-ncdump ()
   "Call ncdump on file at point."
   :man-page "ncdump"
   ["Arguments"
@@ -119,7 +119,7 @@ included for call signature compatibility, but is otherwise ignored."
 	(cl-pushnew (match-string 2) vars))
       vars)))
 
-(define-infix-argument tviti/dired-ncdump:-v ()
+(transient-define-infix tviti/dired-ncdump:-v ()
   :description "Limit to variable(s)"
   :class 'transient-option
   :key "-v"
@@ -169,7 +169,7 @@ included for call signature compatibility, but is otherwise ignored."
   (define-key dired-mode-map (kbd "C-c d g") #'tviti/dired-grdinfo)
   (define-key dired-mode-map (kbd "C-c d i") #'tviti/dired-gmtinfo))
 
-(define-transient-command tviti/evil-window ()
+(transient-define-prefix tviti/evil-window ()
   :transient-suffix 'transient--do-stay
   :transient-non-suffix 'transient--do-warn
   [["Movement"
