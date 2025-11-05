@@ -105,9 +105,9 @@
     (format "%s--%s" date shifted)))
 
 (let ((fn (concat org-directory "/capture-templates.el")))
-  (with-temp-buffer
-    (insert-file-contents-literally fn)
-    (setq org-capture-templates (doct (eval (read (buffer-string)))))))
+ (with-temp-buffer
+   (insert-file-contents-literally fn)
+   (setq org-capture-templates (doct (eval (read (buffer-string)))))))
 
 ;; WORKAROUND:Incremental refile completion doesn't work with ivy-mode (see
 ;; https://github.com/abo-abo/swiper/issues/1254 and
