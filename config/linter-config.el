@@ -35,11 +35,11 @@ PROG-MODE-P to turn on/off flyspell `prog-mode'."
 					       'elisp-flymake-checkdoc t)))
 (add-hook 'LaTeX-mode-hook (lambda () (tviti/linter-on :prog-mode-p nil)))
 
-(with-eval-after-load 'nix-mode
-  (require 'nix-flymake)
-  (add-hook 'nix-mode-hook (lambda ()
-			     (add-hook 'flymake-diagnostic-functions #'nix-flymake nil t)
-			     (tviti/linter-on))))
+;(with-eval-after-load 'nix-mode
+;  (require 'nix-flymake)
+;  (add-hook 'nix-mode-hook (lambda ()
+;			     (add-hook 'flymake-diagnostic-functions #'nix-flymake nil t)
+;			     (tviti/linter-on))))
 
 ;; Don't let flyspell take control of "C-M-i"
 (define-key flyspell-mode-map (kbd "C-M-i") nil)

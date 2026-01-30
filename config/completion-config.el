@@ -3,7 +3,8 @@
 ;;;;;;;;;;;;;;
 ;; ivy-mode ;;
 ;;;;;;;;;;;;;;
-(require 'ivy)
+(use-package ivy)
+(use-package counsel)
 
 ;; Configuration for the ivy/counsel/swiper trifecta
 (ivy-mode 1)
@@ -16,7 +17,7 @@
 ;; SLIME won't actually use the ivy backend ootb. Per abo-abo: "Looks like SLIME
 ;; is really old school, and doesn't obey the completion-in-region-function
 ;; API. We can make it work with advice":
-(require 'slime)
+(use-package slime)
 (defun ora-slime-completion-in-region (_fn completions start end)
   (funcall completion-in-region-function start end completions))
 

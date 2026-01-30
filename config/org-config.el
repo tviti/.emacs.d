@@ -10,11 +10,15 @@
 (setq org-crypt-key nil)
 (setq org-tags-exclude-from-inheritance '("crypt"))
 
-(require 'org-bullets)
+(use-package org-bullets)
 (add-hook 'org-mode-hook 'org-bullets-mode)
 
 ;; Enable inline todo items
 (require 'org-inlinetask)
+
+(use-package ox-gfm)
+
+(use-package htmlize)
 
 ;; Configure the languages for source blocks
 (org-babel-do-load-languages
@@ -28,8 +32,8 @@
 ;; (eval-after-load "org"
 ;;   (progn
 ;;     '(require 'ox-gfm nil t)))
-(with-eval-after-load 'org
-  (require 'ox-gfm))
+;;(with-eval-after-load 'org
+;;  (use-package ox-gfm))
 (add-to-list 'org-export-backends 'md)
 
 ;; (require 'ox-bibtex) ; For bibtex citations
@@ -91,7 +95,7 @@
 			   (,(org-agenda-files t) . (:maxlevel . 3))))
 
 ;; Load the capture templates
-(require 'doct)
+(use-package doct)
 
 (defun tviti/org-insert-time-range (dt)
   "Returns an active time range at point from now till DT minutes."
@@ -104,10 +108,10 @@
 				      (time-add date-input (seconds-to-time (* dt 60))))))
     (format "%s--%s" date shifted)))
 
-(let ((fn (concat org-directory "/capture-templates.el")))
- (with-temp-buffer
-   (insert-file-contents-literally fn)
-   (setq org-capture-templates (doct (eval (read (buffer-string)))))))
+;(let ((fn (concat org-directory "/capture-templates.el")))
+; (with-temp-buffer
+;   (insert-file-contents-literally fn)
+;   (setq org-capture-templates (doct (eval (read (buffer-string)))))))
 
 ;; WORKAROUND:Incremental refile completion doesn't work with ivy-mode (see
 ;; https://github.com/abo-abo/swiper/issues/1254 and

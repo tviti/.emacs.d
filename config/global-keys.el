@@ -101,7 +101,7 @@
   (evil-global-set-key 'normal (kbd "M-\"") #'counsel-evil-registers))
 
 ;; nix-mode keybindings
-(require 'nix)
+(use-package nix-mode)
 (global-set-key (kbd "C-c n u") #'nix-shell-unpack)
 (global-set-key (kbd "C-c n c") #'nix-shell-configure)
 (global-set-key (kbd "C-c n b") #'nix-shell-build)

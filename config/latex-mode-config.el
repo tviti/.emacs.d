@@ -1,13 +1,19 @@
 ;;;;;;;;;;;;;;;;;;
 ;; Auctex setup ;;
 ;;;;;;;;;;;;;;;;;;
-
+(use-package tex
+  :ensure auctex)
 (require 'latex)
 (setq TeX-auto-save t)
 (setq TeX-parse-self t)
 
+;; Make sure Emacs can find the tex binaries
+(setenv "PATH" (concat "/Library/TeX/texbin:"
+                       (getenv "PATH")))
+(add-to-list 'exec-path "/Library/TeX/texbin")
+
 ;; Enable reftex
-(require 'reftex)
+(use-package reftex)
 (add-hook 'LaTeX-mode-hook 'turn-on-reftex)
 (setq reftex-plug-into-AUCTeX t)
 
@@ -35,7 +41,7 @@
 ;; pdf-tools setup ;;
 ;;;;;;;;;;;;;;;;;;;;;
 
-(require 'pdf-tools)
+(use-package pdf-tools)
 ;; The semantics are somewhat peculiar, but this function serves as the
 ;; entry-point for both pdf-tools installation, AND setup.
 (pdf-tools-install)
@@ -74,7 +80,7 @@
 ;;;;;;;;;;;;;;;;;;;;;
 ;; Yasnippet setup ;;
 ;;;;;;;;;;;;;;;;;;;;;
-(require 'yasnippet)
+(use-package yasnippet)
 (add-hook 'LaTeX-mode-hook 'yas-minor-mode-on)
 
 (provide 'latex-mode-config)

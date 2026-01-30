@@ -23,10 +23,19 @@
 (server-start)
 
 ;; Load packages
-(require 'magit-annex)
+(require 'use-package-ensure)
+(setq use-package-always-ensure t)
 
-(require 'undo-tree)
-(global-undo-tree-mode)
+(use-package magit-annex)
+
+(use-package csv-mode)
+
+(use-package direnv)
+
+(use-package undo-tree
+  :config
+  (global-undo-tree-mode))
+;;(global-undo-tree-mode)
 
 ;;
 ;; Load custom configuration files
@@ -44,11 +53,11 @@
 
 (require 'completion-config)
 (require 'eshell-config)
-(require 'ess-config)
+;;(require 'ess-config)
 (require 'evil-config)
 (require 'global-keys)
 (require 'julia-config)
-(require 'latex-mode-config)
+;; (require 'latex-mode-config)
 (require 'literate-config)
 (require 'lsp-config)
 (require 'matlab-config)
@@ -139,3 +148,17 @@
 	  (lambda ()
 	    (load-theme 'spacemacs-light t)
 	    (tviti/ruler-match-theme)))
+
+;;
+;; Tramp setup
+;;
+(customize-set-variable
+ 'tramp-ssh-controlmaster-options
+ (concat
+   "-o ControlPath=/tmp/ssh-ControlPath-%%r@%%h:%%p "
+   "-o ControlMaster=auto -o ControlPersist=yes"))
+
+(use-package exec-path-from-shell
+  :init
+  (exec-path-from-shell-initialize)
+  (exec-path-from-shell-copy-envs '("LIBRARY_PATH" "INFOPATH" "CPATH" "MANPATH" "PYTHONPATH")))

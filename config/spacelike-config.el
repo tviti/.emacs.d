@@ -1,18 +1,24 @@
 ;; Configs inspired by playing around in spacemacs for a little bit
 ;;
-(require 'which-key)
+(use-package which-key)
 (which-key-mode)
 (which-key-setup-minibuffer)
 
-(require 'highlight-numbers)
-(require 'rainbow-delimiters)
+(use-package spacemacs-theme
+             :defer t
+             :init (load-theme 'spacemacs-light t))
+
+(use-package highlight-numbers)
+(use-package rainbow-delimiters)
 	 (add-hook 'prog-mode-hook 'highlight-numbers-mode)
 (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
 
 ;;
 ;; Powerline configuration
 ;;
-(require 'spaceline-config)
+(use-package spaceline
+             :config
+             (require 'spaceline-config))
 (setq powerline-default-separator 'slant)
 (setq powerline-height 20) ;; Give it some more breathing room
 (spaceline-spacemacs-theme)

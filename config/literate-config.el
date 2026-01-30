@@ -1,8 +1,8 @@
 ;; General facilities for literate programming. The goal here is to implement an
 ;; interface that exposes common literate programming tasks, while abstracting
 ;; away the host language.
-(require 'transient)
-(require 'polymode)
+(use-package transient)
+(use-package polymode)
 (require 'org)
 
 (defmacro tviti/literate-with-host (&optional poly-body org-body)

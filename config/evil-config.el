@@ -4,7 +4,7 @@
 ; (require 'undo-tree)
 ; (global-undo-tree-mode)
 
-(require 'evil)
+(use-package evil)
 (evil-mode 1)
 
 (require 'user-globals)
@@ -14,7 +14,7 @@
 ;; (setq evil-emacs-state-modes nil)
 
 ;; Enable evil where it normally wouldn't be enabled
-(require 'evil-collection)
+(use-package evil-collection)
 (add-to-list 'evil-collection-key-blacklist (key-description tviti/evil-leader))
 (evil-collection-init '(ediff ibuffer package-menu dired magit bookmark slime mu4e))
 
@@ -26,11 +26,11 @@
 (with-eval-after-load 'pdf-tools (evil-collection-pdf-setup))
  
 ;; Make org-mode more evil. Config is per the README.md
-(require 'evil-org)
+(use-package evil-org)
 (add-hook 'org-mode-hook 'evil-org-mode)
 (evil-org-set-key-theme '(navigation insert textobjects additional calendar))
-(require 'evil-org-agenda)
-(evil-org-agenda-set-keys)
+;(use-package evil-org-agenda)
+;(evil-org-agenda-set-keys)
 
 ;; Make Info mode more evil
 (defun tviti/evil-Info-mode-setup ()
@@ -58,7 +58,7 @@
   (evil-collection-xref-setup))
 
 ;; Override "z=" binding for ispell-word to use the flyspell-correct pkg
-(require 'flyspell-correct-ivy)
+(use-package flyspell-correct-ivy)
 (define-key evil-normal-state-map [remap ispell-word] #'flyspell-correct-wrapper)
 
 ;;

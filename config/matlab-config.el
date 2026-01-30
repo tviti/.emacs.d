@@ -1,5 +1,5 @@
-(require 'matlab)
-(matlab-cedet-setup)
+(use-package matlab-mode)
+;(matlab-cedet-setup)
 
 ;; Uncomment these two lines to run a remote MATLAB session from MBP
 ;; (setq matlab-shell-command "/Applications/MATLAB_R2015a.app/bin/matlab")
@@ -33,18 +33,19 @@
   ;; Line numbers don't work by default for some reason. Turn them on.
   (display-line-numbers-mode)
   (setq display-line-numbers 'relative)
-  (add-to-list 'mlint-programs "maci64/mlint"))
+  (add-to-list 'mlint-programs "maci64/mlint")
+  (add-to-list 'mlint-programs "maca64/mlint"))
 
-(defun tviti/M-shell-mode-setup ()
-  "Apply configuration for `M-shell-mode'."
-  (define-key matlab-shell-mode-map (kbd "C-c C-n") #'comint-next-input))
+;(defun tviti/M-shell-mode-setup ()
+;  "Apply configuration for `M-shell-mode'."
+;  (define-key matlab-shell-mode-map (kbd "C-c C-n") #'comint-next-input))
 
 ;; Don't use company for completions, since the company style menu is a little
 ;; bit of a context switch from the ivy menu.
 (custom-set-variables
  '(matlab-shell-tab-use-company nil))
 
-(define-key matlab-shell-mode-map (kbd "C-M-i") #'matlab-shell-tab)
+;(define-key matlab-shell-mode-map (kbd "C-M-i") #'matlab-shell-tab)
 
 (add-hook 'matlab-mode-hook #'tviti/matlab-mode-setup)
 (add-hook 'M-shell-mode #'tviti/M-shell-mode-setup)
