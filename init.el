@@ -37,6 +37,9 @@
   (global-undo-tree-mode))
 ;;(global-undo-tree-mode)
 
+(use-package tex
+  :ensure auctex)
+
 ;;
 ;; Load custom configuration files
 ;;
