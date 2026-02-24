@@ -51,11 +51,23 @@
               ("C-n" . copilot-next-completion)
               ("C-p" . copilot-previous-completion)))
 
+(use-package copilot-chat
+  :ensure t
+  :vc (:url "https://github.com/chep/copilot-chat.el.git"
+	    :rev :newest
+	    :branch "master")
+  :bind (:map copilot-chat-mode-map
+	      ("C-c C-c" . copilot-chat-send-message)
+	      ("C-c C-n" . copilot-chat-next-message)
+	      ("C-c C-p" . copilot-chat-previous-message)))
+
 ;;
 ;; Load custom configuration files
 ;;
 (add-to-list 'load-path (expand-file-name "config/" user-emacs-directory))
 (add-to-list 'load-path (expand-file-name "config/nix-flymake" user-emacs-directory))
+
+(load-library "copilot-chat-config.el.gpg")
 
 ;; Configs we want loaded immediately
 (menu-bar-mode 0)
@@ -64,14 +76,13 @@
 
 (require 'user-globals)
 (require 'user-functions)
-
+;; (require 'latex-mode-config)
 (require 'completion-config)
 (require 'eshell-config)
 ;;(require 'ess-config)
 (require 'evil-config)
 (require 'global-keys)
 (require 'julia-config)
-;; (require 'latex-mode-config)
 (require 'literate-config)
 (require 'lsp-config)
 (require 'matlab-config)
