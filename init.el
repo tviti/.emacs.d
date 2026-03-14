@@ -62,11 +62,12 @@
   :ensure t
   :vc (:url "https://github.com/chep/copilot-chat.el.git"
 	    :rev :newest
-	    :branch "master")
-  :bind (:map copilot-chat-mode-map
-	      ("C-c C-c" . copilot-chat-send-message)
-	      ("C-c C-n" . copilot-chat-next-message)
-	      ("C-c C-p" . copilot-chat-previous-message)))
+	    :branch "master"))
+;  :bind (:map copilot-chat-mode-map
+;	      ("C-c C-c" . copilot-chat-send-message)
+;	      ("C-c C-n" . copilot-chat-next-message)
+;	      ("C-c C-p" . copilot-chat-previous-message)))
+
 (use-package pcre2el
   :ensure t)
 
