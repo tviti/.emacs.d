@@ -4,9 +4,7 @@
 (which-key-mode)
 (which-key-setup-minibuffer)
 
-(use-package spacemacs-theme
-             :defer t
-             :init (load-theme 'spacemacs-light t))
+(use-package spacemacs-theme)
 
 (use-package highlight-numbers)
 (use-package rainbow-delimiters)
