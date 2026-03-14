@@ -32,6 +32,7 @@
   (exec-path-from-shell-initialize)
   (exec-path-from-shell-copy-envs '("LIBRARY_PATH" "INFOPATH" "CPATH" "MANPATH" "PYTHONPATH")))
 
+(use-package magit)
 (use-package magit-annex)
 
 (use-package csv-mode)
