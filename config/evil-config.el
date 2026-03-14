@@ -118,8 +118,16 @@
     (kbd "<leader>o") #'tviti/org-map
     (kbd "<leader>O") #'org-capture))
 
-(with-eval-after-load 'projectile
-  (evil-define-key '(normal visual motion) 'global
-    (kbd "<leader>p") #'projectile-command-map))
+(with-eval-after-load 'projectile-config
+  (defun tviti/project-switch-project-dired ()
+    "Switch to a project and open its root directory in dired."
+    (interactive)
+    (let ((project-dir (project-prompt-project-dir)))
+      (dired project-dir)))
+  
+  (define-key evil-normal-state-map (kbd "<leader>p") project-prefix-map)
+  (define-key evil-visual-state-map (kbd "<leader>p") project-prefix-map)
+  (define-key evil-motion-state-map (kbd "<leader>p") project-prefix-map)
+  (define-key project-prefix-map "p" #'tviti/project-switch-project-dired))
 
 (provide 'evil-config)

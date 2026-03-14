@@ -203,12 +203,14 @@ At the moment, this only works on a single file at a time."
   (transient-append-suffix 'magit-annex-file-action '(-1 -1 -1)
     '("k" "Key" tviti/magit-annex-kill-key)))
 
-(defun tviti/projectile-switch-project-other-frame (&optional arg)
+(defun tviti/project-switch-project-other-frame (&optional arg)
   (interactive)
-  (let ((projectile-switch-project-action 'projectile-dired-other-frame))
-    (projectile-switch-project arg)))
+  (let* ((projects (project-known-project-roots))
+         (project (completing-read "Switch to project: " projects)))
+    (when project
+      (dired-other-frame project))))
 
-(with-eval-after-load 'projectile
-  (define-key 'projectile-command-map (kbd "5 p") #'tviti/projectile-switch-project-other-frame))
+(with-eval-after-load 'projectile-config
+  (define-key project-command-map (kbd "5") #'tviti/project-switch-project-other-frame))
 
 (provide 'user-functions)

@@ -126,21 +126,21 @@ BUFFER may be a string or nil."
  '(("J" tviti/ivy--switch-buffer-other-frame-action "other frame")
    ("t" tviti/ivy--switch-buffer-other-tab-action "other tab")))
 
-(defun tviti/ivy--switch-project-other-frame-action (project)
+(defun tviti/project-switch-project-other-frame-action (project)
   (interactive)
-  (let ((projectile-switch-project-action 'projectile-dired-other-frame))
-    (projectile-switch-project-by-name project)))
+  (let ((default-directory (project-root project)))
+    (dired-other-frame default-directory)))
 
-(defun tviti/ivy--switch-project-other-window-action (project)
+(defun tviti/project-switch-project-other-window-action (project)
   (interactive)
-  (let ((projectile-switch-project-action 'projectile-dired-other-window))
-    (projectile-switch-project-by-name project)))
+  (let ((default-directory (project-root project)))
+    (dired-other-window default-directory)))
 
-(with-eval-after-load 'projectile
+(with-eval-after-load 'project
   (ivy-add-actions
-   'projectile-switch-project
-   '(("j" tviti/ivy--switch-project-other-window-action "other window")
-     ("J" tviti/ivy--switch-project-other-frame-action "other frame"))))
+   'project-switch-project
+   '(("j" tviti/project-switch-project-other-window-action "other window")
+     ("J" tviti/project-switch-project-other-frame-action "other frame"))))
  
 ;; (defun tviti/counsel-switch-tab-update-fn ()
 ;;   (let ((names (mapcar (lambda (x) (alist-get 'name x))
