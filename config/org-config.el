@@ -10,6 +10,8 @@
 (setq org-crypt-key nil)
 (setq org-tags-exclude-from-inheritance '("crypt"))
 
+(use-package org-ql)
+
 (use-package org-bullets)
 (add-hook 'org-mode-hook 'org-bullets-mode)
 
