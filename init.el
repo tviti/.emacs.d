@@ -67,6 +67,8 @@
 	      ("C-c C-c" . copilot-chat-send-message)
 	      ("C-c C-n" . copilot-chat-next-message)
 	      ("C-c C-p" . copilot-chat-previous-message)))
+(use-package pcre2el
+  :ensure t)
 
 ;;
 ;; Load custom configuration files
