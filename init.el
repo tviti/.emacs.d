@@ -77,6 +77,7 @@
 (add-to-list 'load-path (expand-file-name "config/" user-emacs-directory))
 (add-to-list 'load-path (expand-file-name "config/nix-flymake" user-emacs-directory))
 
+(setq epg-pinentry-mode 'loopback)
 (load-library "copilot-chat-config.el.gpg")
 
 ;; Configs we want loaded immediately
@@ -180,7 +181,6 @@
 ;;
 ;; Load a theme.
 ;;
-(require 'ruler-mode-config)
 (add-hook 'after-init-hook
 	  (lambda ()
 	    (load-theme 'spacemacs-light t)
