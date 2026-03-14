@@ -104,4 +104,4 @@ Temporary Items
 
 # End of https://www.gitignore.io/api/osx,elisp,emacs
 
-**/private/**
+**/private/**custom.el
