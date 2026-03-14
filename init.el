@@ -171,6 +171,8 @@
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 (load custom-file)
 
+(setq which-function-mode t) ;; Show the current function in the mode line
+
 ;;
 ;; Load a theme.
 ;;
