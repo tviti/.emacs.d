@@ -23,4 +23,13 @@
 ;; If OS is macOS, then I'm probably on a laptop, so use a slightly larger font.
 (set-face-attribute 'default nil :height 140)
 
+;; Doesn't work on windows, so we only enable it on macOS.
+(use-package vterm
+  :ensure t
+  :hook (vterm-mode . (lambda ()
+			(setq-local global-hl-line-mode nil)  ;; Causes flickering
+			(evil-collection-init '(vterm))))
+  :hook (vterm-copy-mode . (lambda()
+			     (call-interactively 'hl-line-mode))))
+
 (provide 'macos-config)
