@@ -26,6 +26,12 @@
 (require 'use-package-ensure)
 (setq use-package-always-ensure t)
 
+;; Load this early so that the shell env is active during init
+(use-package exec-path-from-shell
+  :init
+  (exec-path-from-shell-initialize)
+  (exec-path-from-shell-copy-envs '("LIBRARY_PATH" "INFOPATH" "CPATH" "MANPATH" "PYTHONPATH")))
+
 (use-package magit-annex)
 
 (use-package csv-mode)
@@ -182,8 +188,3 @@
  (concat
    "-o ControlPath=/tmp/ssh-ControlPath-%%r@%%h:%%p "
    "-o ControlMaster=auto -o ControlPersist=yes"))
-
-(use-package exec-path-from-shell
-  :init
-  (exec-path-from-shell-initialize)
-  (exec-path-from-shell-copy-envs '("LIBRARY_PATH" "INFOPATH" "CPATH" "MANPATH" "PYTHONPATH")))
