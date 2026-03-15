@@ -161,7 +161,7 @@
 ;;
 ;; Load a theme.
 ;;
-(add-hook 'after-init-hook (lambda () (load-theme 'spacemacs-light t)))
+(add-hook 'after-init-hook (lambda () (load-theme tviti/theme t)))
 
 ;;
 ;; Tramp setup

@@ -31,4 +31,11 @@
   :hook (vterm-copy-mode . (lambda()
 			     (call-interactively 'hl-line-mode))))
 
+
+;; Set the theme based on the system theme.
+(setq tviti/theme (if (eq (frame-parameter nil 'ns-system-appearance) 'dark)
+		    'spacemacs-dark
+		  'spacemacs-light))
+  
+
 (provide 'macos-config)
