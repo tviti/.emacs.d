@@ -63,6 +63,7 @@ included for call signature compatibility, but is otherwise ignored."
        "tell application \"System Events\" to tell appearance preferences to set dark mode to not dark mode")))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; netCDF interactions ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;
 (require 'transient)

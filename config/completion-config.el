@@ -17,13 +17,13 @@
 ;; SLIME won't actually use the ivy backend ootb. Per abo-abo: "Looks like SLIME
 ;; is really old school, and doesn't obey the completion-in-region-function
 ;; API. We can make it work with advice":
-(use-package slime)
 (defun ora-slime-completion-in-region (_fn completions start end)
   (funcall completion-in-region-function start end completions))
 
-(advice-add
- 'slime-display-or-scroll-completions
- :around #'ora-slime-completion-in-region)
+(with-eval-after-load 'slime
+  (advice-add
+   'slime-display-or-scroll-completions
+   :around #'ora-slime-completion-in-region))
 
 ;; Keybindings setup. Only keybindings that replace external functionality
 ;; should be placed here. The proper place for opponent's keybindings is

@@ -3,9 +3,14 @@
 A git repo to track my emacs config, and simplify installation/synchronization
 across multiple machines.
 
-Note that my local `.emacs.d directory` and `init.el` on my laptop have probably
-accumulated some cruft over the years (this probably still has crap from when I
-was an undergraduate running a `matlab` interpreter remotely over `tramp`, and
-trying to synchronize an `org-mode` calendar with an `iCal` calendar with a
-google calendar...), and so could probably stand to be cleaned up a little (one
-of these days...)
+## Conventions
+
+### Package loading
+
+Top-level `use-package` declarations live in `init.el`. Config files that use
+symbols from a package should `(require 'package-name)` at the top of the
+file — this lets linters (e.g. `flymake-elisp`) resolve symbols when checking
+files in isolation, and makes each file's dependencies explicit.
+
+Since `use-package-always-ensure t` is set globally, individual `use-package`
+forms should omit `:ensure t`.

@@ -25,7 +25,6 @@
 
 ;; Doesn't work on windows, so we only enable it on macOS.
 (use-package vterm
-  :ensure t
   :hook (vterm-mode . (lambda ()
 			(setq-local global-hl-line-mode nil)  ;; Causes flickering
 			(evil-collection-init '(vterm))))

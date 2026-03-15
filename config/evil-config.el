@@ -43,7 +43,7 @@
 
   (evil-set-initial-state 'Info-mode 'normal))
 
-(eval-after-load 'evil-mode
+(with-eval-after-load 'evil
   (tviti/evil-Info-mode-setup))
 
 (with-eval-after-load 'ess-r-mode

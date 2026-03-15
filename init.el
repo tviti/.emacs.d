@@ -39,15 +39,13 @@
 
 (use-package direnv)
 
+(use-package nix-mode)
+
 (use-package undo-tree
   :config
   (global-undo-tree-mode))
 
-(use-package tex
-  :ensure auctex)
-
 (use-package copilot
-  :ensure t
   :hook (prog-mode . copilot-mode)
   :bind (:map copilot-completion-map
               ("<tab>" . copilot-accept-completion)
@@ -57,8 +55,7 @@
               ("C-n" . copilot-next-completion)
               ("C-p" . copilot-previous-completion)))
 
-(use-package pcre2el
-  :ensure t)
+(use-package pcre2el)
 
 ;;
 ;; Load custom configuration files
@@ -83,6 +80,8 @@
 (require 'evil-config)
 (require 'global-keys)
 (require 'literate-config)
+;; linter-config must precede lsp-config (tviti/setup-latex-lsp references tviti/linter)
+(require 'linter-config)
 (require 'lsp-config)
 (require 'matlab-config)
 (require 'org-config)
@@ -93,10 +92,6 @@
 (require 'spacelike-config)
 ;;(require 'feeds-config)
 (require 'tramp-config)
-
-;; This should be one of the last things loaded, since it uses mode-hooks for
-;; toggling linters.
-(require 'linter-config)
 
 ;;
 ;; Misc configurations
@@ -161,7 +156,7 @@
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 (load custom-file)
 
-(setq which-function-mode t) ;; Show the current function in the mode line
+(which-function-mode 1) ;; Show the current function in the mode line
 
 ;;
 ;; Load a theme.

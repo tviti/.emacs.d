@@ -1,7 +1,7 @@
 ;; General facilities for literate programming. The goal here is to implement an
 ;; interface that exposes common literate programming tasks, while abstracting
 ;; away the host language.
-(use-package transient)
+(require 'transient)
 (use-package polymode)
 (require 'org)
 
