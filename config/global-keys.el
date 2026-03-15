@@ -2,7 +2,6 @@
 
 ;; Global keybindings
 (global-set-key (kbd "\C-c ;") #'comment-region)
-(global-set-key (kbd "\C-u \C-c ;") #'uncomment-region)
 
 ;; Default to using ibuffer
 (global-set-key (kbd "C-x C-b") #'ibuffer)
