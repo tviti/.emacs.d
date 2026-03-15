@@ -118,7 +118,7 @@
     (kbd "<leader>o") #'tviti/org-map
     (kbd "<leader>O") #'org-capture))
 
-(with-eval-after-load 'projectile-config
+(with-eval-after-load 'project-config
   (defun tviti/project-switch-project-dired ()
     "Switch to a project and open its root directory in dired."
     (interactive)

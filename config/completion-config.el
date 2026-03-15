@@ -44,14 +44,6 @@
 ;;
 ;; ivy + emacs 27's tab-bar mode
 ;;
-;; (defun tviti/ivy-switch-tab-action (tab-name)
-;;   "Switch to TAB-NAME or, if TAB-NAME does not name a tab, then create a new tab
-;; with that name."
-;;   (if (member tab-name (mapcar (lambda (x) (alist-get 'name x))
-;; 			       (tab-bar-tabs)))
-;;       (tab-bar-switch-to-tab tab-name)
-;;     (tab-bar-new-tab)
-;;     (tab-bar-rename-tab tab-name)))
 
 (defun tviti/ivy-switch-tab-action (tab-name)
   "Switch to TAB-NAME or, if TAB-NAME does not name a tab, then create a new tab
@@ -142,34 +134,4 @@ BUFFER may be a string or nil."
    '(("j" tviti/project-switch-project-other-window-action "other window")
      ("J" tviti/project-switch-project-other-frame-action "other frame"))))
  
-;; (defun tviti/counsel-switch-tab-update-fn ()
-;;   (let ((names (mapcar (lambda (x) (alist-get 'name x))
-;; 		       (tab-bar-tabs)))
-;; 	(selection (ivy-state-current ivy-last)))
-;;     (when (member selection names)
-;;       (save-excursion ;; Prevents point jumping to (point-min) on tab switch
-;; 	(tab-bar-switch-to-tab selection)))))
-
-;; (defun tviti/counsel-switch-tab ()
-;;   ""
-;;   (interactive)
-;;   (let* ((ivy-update-fns-alist
-;; 	  '((tviti/ivy-switch-tab . tviti/counsel-switch-tab-update-fn)))
-;; 	 (starting-tab (tab-bar--current-tab))
-;; 	 (res))
-;;     (unwind-protect
-;; 	(setq res (tviti/ivy-switch-tab))
-;;       (tab-bar-switch-to-tab (if res
-;; 				 res
-;; 			       (alist-get 'name starting-tab))))))
-
-;;;;;;;;;;;;;;
-;; ido-mode ;;
-;;;;;;;;;;;;;;
-
-;; (require 'ido)
-;; (setq ido-enable-flex-matching t)
-;; (setq ido-everywhere t)
-;; (ido-mode t)
-
 (provide 'completion-config)

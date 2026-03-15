@@ -42,7 +42,6 @@
 (use-package undo-tree
   :config
   (global-undo-tree-mode))
-;;(global-undo-tree-mode)
 
 (use-package tex
   :ensure auctex)
@@ -58,16 +57,6 @@
               ("C-n" . copilot-next-completion)
               ("C-p" . copilot-previous-completion)))
 
-(use-package copilot-chat
-  :ensure t
-  :vc (:url "https://github.com/chep/copilot-chat.el.git"
-	    :rev :newest
-	    :branch "master"))
-;  :bind (:map copilot-chat-mode-map
-;	      ("C-c C-c" . copilot-chat-send-message)
-;	      ("C-c C-n" . copilot-chat-next-message)
-;	      ("C-c C-p" . copilot-chat-previous-message)))
-
 (use-package pcre2el
   :ensure t)
 
@@ -77,8 +66,9 @@
 (add-to-list 'load-path (expand-file-name "config/" user-emacs-directory))
 (add-to-list 'load-path (expand-file-name "config/nix-flymake" user-emacs-directory))
 
-(setq epg-pinentry-mode 'loopback)
-(load-library "copilot-chat-config.el.gpg")
+;; MCP config for copilot-chat.el
+;; (setq epg-pinentry-mode 'loopback)
+;; (load-library "copilot-chat-config.el.gpg")
 
 ;; Configs we want loaded immediately
 (menu-bar-mode 0)
@@ -87,18 +77,16 @@
 
 (require 'user-globals)
 (require 'user-functions)
-;; (require 'latex-mode-config)
+(require 'latex-mode-config)
 (require 'completion-config)
 (require 'eshell-config)
-;;(require 'ess-config)
 (require 'evil-config)
 (require 'global-keys)
-(require 'julia-config)
 (require 'literate-config)
 (require 'lsp-config)
 (require 'matlab-config)
 (require 'org-config)
-(require 'projectile-config)
+(require 'project-config)
 (require 'python-config)
 (require 'ruler-mode-config)
 (require 'slime-config)
@@ -119,9 +107,6 @@
 (blink-cursor-mode 0)
 (global-hl-line-mode 1)
 (winner-mode 1) ;; Enables window state undo/redo
-
-;; Enable the eyebrowse-mode "window manager"
-;; (eyebrowse-mode t)
 
 ;; Make dired report human-readable file sizes
 (setq dired-listing-switches "-alhFSL")

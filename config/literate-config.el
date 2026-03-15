@@ -71,12 +71,6 @@ ORG-BODY."
   (interactive)
   (tviti/literate-with-host
    (polymode-eval-region-or-chunk)
-   (org-babel-execute-src-block-maybe)))
-
-(defun tviti/literate-eval-chunk ()
-  (interactive)
-  (tviti/literate-with-host
-   (polymode-eval-region-or-chunk)
    (let ((type (car (org-element-at-point))))
 	 (cond
 	  ((eq type 'headline)

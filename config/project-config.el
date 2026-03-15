@@ -15,4 +15,4 @@
 
 (global-set-key (kbd "C-c p") project-command-map)
 
-(provide 'projectile-config)
+(provide 'project-config)

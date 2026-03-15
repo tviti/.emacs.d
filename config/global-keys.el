@@ -2,7 +2,7 @@
 
 ;; Global keybindings
 (global-set-key (kbd "\C-c ;") #'comment-region)
-(local-set-key (kbd "\C-u \C-c ;") #'uncomment-region)
+(global-set-key (kbd "\C-u \C-c ;") #'uncomment-region)
 
 ;; Default to using ibuffer
 (global-set-key (kbd "C-x C-b") #'ibuffer)
@@ -21,9 +21,6 @@
 (define-key 'tviti/magit-map (kbd "C-s m") #'magit-stage-modified)
 (define-key 'tviti/magit-map (kbd "l") #'magit-log-buffer-file)
 (define-key 'tviti/magit-map (kbd "p") #'magit-push)
-(with-eval-after-load 'eyebrowse
-  (define-key magit-mode-map eyebrowse-keymap-prefix nil)) ;; Conflicts w/ eyebrowse
-
 (with-eval-after-load 'magit-annex
   (define-key 'tviti/magit-map (kbd "a") #'magit-annex-dispatch))
 
@@ -144,11 +141,6 @@
 (define-key 'tviti/hawaiian-map (kbd "I") (lambda () (interactive) (insert ?Ī)))
 (define-key 'tviti/hawaiian-map (kbd "O") (lambda () (interactive) (insert ?Ō)))
 (define-key 'tviti/hawaiian-map (kbd "U") (lambda () (interactive) (insert ?Ū)))
-
-;; "Free up" conflicts between Shell-mode and eyebrowse
-;; TODO: These are local, not GLOBAL keybindings!
-(with-eval-after-load 'eyebrowse
-  (define-key shell-mode-map eyebrowse-keymap-prefix nil))
 
 (global-set-key (kbd "C-c w") #'tviti/evil-window)
 

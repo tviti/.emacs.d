@@ -6,20 +6,20 @@
 ;; (setq matlab-mode-install-path "/Users/taylor/.emacs.d/matlab-emacs")
 
 ;; shell mode keybindings
-;; (add-hook 'matlab-shell-mode-hook
-;; 	  (lambda () (local-set-key (kbd "\C-c a") 'matlab-shell-close-figures)))
-;; (add-hook 'matlab-shell-mode-hook
-;; 	  (lambda () (local-set-key (kbd "\C-c o") 'matlab-shell-close-current-figure)))
-;; (add-hook 'matlab-shell-mode-hook
-;; 	  (lambda () (local-set-key (kbd "\C-c v") 'matlab-shell-clear-all)))
+(add-hook 'matlab-shell-mode-hook
+	  (lambda () (local-set-key (kbd "\C-c a") 'matlab-shell-close-figures)))
+(add-hook 'matlab-shell-mode-hook
+	  (lambda () (local-set-key (kbd "\C-c o") 'matlab-shell-close-current-figure)))
+(add-hook 'matlab-shell-mode-hook
+	  (lambda () (local-set-key (kbd "\C-c v") 'matlab-shell-clear-all)))
 
 ;; editor mode keybindings
-;; (add-hook 'matlab-mode-hook
-;; 	  (lambda () (local-set-key (kbd "\C-c a") 'matlab-shell-close-figures)))
-;; (add-hook 'matlab-mode-hook
-;; 	  (lambda () (local-set-key (kbd "\C-c \C-c") 'matlab-shell-run-cell)))
-;; (add-hook 'matlab-mode-hook
-;; 	  (lambda () (local-set-key (kbd "\C-c v") 'matlab-shell-clear-all)))
+(add-hook 'matlab-mode-hook
+	  (lambda () (local-set-key (kbd "\C-c a") 'matlab-shell-close-figures)))
+(add-hook 'matlab-mode-hook
+	  (lambda () (local-set-key (kbd "\C-c \C-c") 'matlab-shell-run-cell)))
+(add-hook 'matlab-mode-hook
+	  (lambda () (local-set-key (kbd "\C-c v") 'matlab-shell-clear-all)))
 
 ;; change comment string to be compatible with matlab IDE
 (setq matlab-comment-region-s "% ")
@@ -36,19 +36,17 @@
   (add-to-list 'mlint-programs "maci64/mlint")
   (add-to-list 'mlint-programs "maca64/mlint"))
 
-;(defun tviti/M-shell-mode-setup ()
-;  "Apply configuration for `M-shell-mode'."
-;  (define-key matlab-shell-mode-map (kbd "C-c C-n") #'comint-next-input))
+(defun tviti/M-shell-mode-setup ()
+  "Apply configuration for `matlab-shell-mode'."
+  (define-key matlab-shell-mode-map (kbd "C-c C-n") #'comint-next-input))
 
 ;; Don't use company for completions, since the company style menu is a little
 ;; bit of a context switch from the ivy menu.
 (custom-set-variables
  '(matlab-shell-tab-use-company nil))
 
-;(define-key matlab-shell-mode-map (kbd "C-M-i") #'matlab-shell-tab)
-
 (add-hook 'matlab-mode-hook #'tviti/matlab-mode-setup)
-(add-hook 'M-shell-mode #'tviti/M-shell-mode-setup)
+(add-hook 'matlab-shell-mode-hook #'tviti/M-shell-mode-setup)
 
 (with-eval-after-load 'ob-octave
   ;; (defun org-babel-edit-prep:matlab (info)

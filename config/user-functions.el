@@ -210,7 +210,7 @@ At the moment, this only works on a single file at a time."
     (when project
       (dired-other-frame project))))
 
-(with-eval-after-load 'projectile-config
+(with-eval-after-load 'project-config
   (define-key project-command-map (kbd "5") #'tviti/project-switch-project-other-frame))
 
 (provide 'user-functions)

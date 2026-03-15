@@ -31,31 +31,12 @@
    (org . t)))
 
 ;; Configure the export backends
-;; (eval-after-load "org"
-;;   (progn
-;;     '(require 'ox-gfm nil t)))
-;;(with-eval-after-load 'org
-;;  (use-package ox-gfm))
 (add-to-list 'org-export-backends 'md)
 
 ;; (require 'ox-bibtex) ; For bibtex citations
 
 (add-hook 'org-babel-after-execute-hook
 	  (lambda () (org-redisplay-inline-images)))
-
-;; Force org-babel to use python3
-;; (setq org-babel-python-command "python3")
-
-;; Make org-babel and elpy play nicely together see
-;; https://necromuralist.github.io/posts/org-babel-ipython-and-elpy-conflict/
-;; (add-hook 'org-mode-hook
-;; 	  (lambda ()
-;; 	    (setq python-shell-interpreter "ipython"
-;; 		  python-shell-interpreter-args "-i --simple-prompt")))
-
-;; Experimental: julia code blocks via the abandoned ob-julia.el
-;; (setq inferior-julia-program-name "/usr/local/bin/julia")
-;; (load-file (concat (file-name-directory load-file-name) "./ob-julia.el"))
 
 (add-hook 'org-mode-hook 'turn-on-auto-fill)
 
