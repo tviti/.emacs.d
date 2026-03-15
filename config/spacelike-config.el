@@ -56,6 +56,7 @@ spaceline-segments.el"
 (with-eval-after-load 'org
   (setq org-clock-mode-line-total 'today))
 
-(spaceline-compile)
+;; Make sure the modeline is recompiled when a theme is loaded
+(add-hook 'enable-theme-functions (lambda (x) (spaceline-compile)))
 
 (provide 'spacelike-config)

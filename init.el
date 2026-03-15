@@ -161,10 +161,7 @@
 ;;
 ;; Load a theme.
 ;;
-(add-hook 'after-init-hook
-	  (lambda ()
-	    (load-theme 'spacemacs-light t)
-	    (tviti/ruler-match-theme)))
+(add-hook 'after-init-hook (lambda () (load-theme 'spacemacs-light t)))
 
 ;;
 ;; Tramp setup
