@@ -32,6 +32,8 @@
   (exec-path-from-shell-initialize)
   (exec-path-from-shell-copy-envs '("LIBRARY_PATH" "INFOPATH" "CPATH" "MANPATH" "PYTHONPATH")))
 
+(use-package spacemacs-theme)
+
 (use-package magit)
 (use-package magit-annex)
 
@@ -56,6 +58,8 @@
               ("C-p" . copilot-previous-completion)))
 
 (use-package pcre2el)
+
+(use-package slime)
 
 ;;
 ;; Load custom configuration files
@@ -108,8 +112,8 @@
 
 ;; Enable line number and relative line numbering using the new built in system
 ;; (requires Emacs >= 26.1)
-(add-hook 'prog-mode-hook (lambda () (display-line-numbers-mode)
-			    (setq display-line-numbers 'relative)))
+(add-hook 'prog-mode-hook (lambda () (setq display-line-numbers-type 'relative)
+				      (display-line-numbers-mode)))
 
 ;; Store bookmarks in a different directory
 (setq bookmark-default-file (expand-file-name "bookmarks" user-emacs-directory))
