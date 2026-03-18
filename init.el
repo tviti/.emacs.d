@@ -37,6 +37,8 @@
 (use-package magit)
 (use-package magit-annex)
 
+(use-package markdown-mode)
+
 (use-package csv-mode)
 
 (use-package direnv)
