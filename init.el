@@ -164,6 +164,9 @@
 
 (which-function-mode 1) ;; Show the current function in the mode line
 
+;; Helps to make it a little more obvious which window is active
+(setq-default cursor-in-non-selected-windows nil)
+
 ;;
 ;; Load a theme.
 ;;
