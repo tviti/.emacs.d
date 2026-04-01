@@ -178,6 +178,11 @@ included for call signature compatibility, but is otherwise ignored."
     ("j" "down" evil-window-down)
     ("k" "up" evil-window-up)
     ("l" "right" evil-window-right)]
+   ["Windmove"
+    ("H" "left" windmove-swap-states-left)
+    ("J" "down" windmove-swap-states-down)
+    ("K" "up" windmove-swap-states-up)
+    ("L" "right" windmove-swap-states-right)]
    ["Height"
     ("-" "decrease height" evil-window-decrease-height)
     ("+" "increase height" evil-window-increase-height)
