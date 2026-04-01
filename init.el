@@ -98,7 +98,7 @@
 (require 'spacelike-config)
 ;;(require 'feeds-config)
 (require 'tramp-config)
-
+(require 'mouse-config)
 ;;
 ;; Misc configurations
 ;;
