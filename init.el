@@ -62,6 +62,10 @@
 
 (use-package slime)
 
+(use-package julia-mode)
+
+(use-package julia-repl)
+
 ;;
 ;; Load custom configuration files
 ;;
