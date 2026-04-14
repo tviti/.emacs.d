@@ -108,8 +108,10 @@
 ;; (require 'copilot-chat)
 ;; (global-set-key (kbd "C-c t") #'copilot-chat-transient)
 (require 'copilot)
+(require 'gptel)
 
 (global-set-key (kbd "C-c a s") #'copilot-complete)
+(global-set-key (kbd "C-c a t") #'gptel-menu)
 
 ;; misc keybindings
 (global-set-key (kbd "C-c W") #'whitespace-mode)

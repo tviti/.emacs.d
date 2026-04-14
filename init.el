@@ -68,6 +68,9 @@
 
 (use-package julia-repl)
 
+(use-package gptel)
+(use-package gptel-agent)
+
 ;;
 ;; Load custom configuration files
 ;;
@@ -80,16 +83,17 @@
 
 ;; Configs we want loaded immediately
 (menu-bar-mode 0)
+(require 'user-globals)
 (if (string= system-type "darwin")
     (require 'macos-config))
 
-(require 'user-globals)
 (require 'user-functions)
 (require 'latex-mode-config)
 (require 'completion-config)
 (require 'eshell-config)
 (require 'evil-config)
 (require 'global-keys)
+(require 'gptel-config)
 (require 'literate-config)
 ;; linter-config must precede lsp-config (tviti/setup-latex-lsp references tviti/linter)
 (require 'linter-config)
