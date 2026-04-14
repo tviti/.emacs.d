@@ -93,7 +93,7 @@ acceptable filename string, complete with file extension."
     ("F" "format buffer" eglot-format-buffer)]
    ["xref"
     ("x" "find refs" xref-find-references)
-    ("d" "find defs" xref-find-definitions)]
+    ("d" "find defs" xref-find-definitions-other-window)]
    ["Misc"
     ("a" "code actions" eglot-code-actions)
     ("b" "diagnostics" flymake-show-buffer-diagnostics)]
