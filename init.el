@@ -16,7 +16,8 @@
 
 ;; Pick a font + size
 (add-to-list 'default-frame-alist
-	     '(font . "Iosevka-14"))
+	     '(font . "JetBrains mono-14"))
+	     ;; '(font . "Iosevka-14"))
 
 ;; Drop straight into server mode, so that the the email daemon(s) can update
 ;; the index can be updated using emacsclient.
@@ -33,6 +34,7 @@
   (exec-path-from-shell-copy-envs '("LIBRARY_PATH" "INFOPATH" "CPATH" "MANPATH" "PYTHONPATH")))
 
 (use-package spacemacs-theme)
+(use-package solarized-theme)
 
 (use-package magit)
 (use-package magit-annex)
