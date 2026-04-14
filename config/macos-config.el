@@ -32,12 +32,22 @@
 			     (call-interactively 'hl-line-mode))))
 
 
-;; Set the theme based on the system theme.
+;; Set the theme based on the system theme and update it automatically.
 (require 'spacemacs-theme)
 (require 'solarized-theme)
-(setq tviti/theme (if (eq ns-system-appearance 'dark)
-		    'solarized-dark ;;'spacemacs-dark
-		  'solarized-light)) ;; 'spacemacs-light))
+
+(defun tviti/update-theme-from-system (appearance)
+  "Update the Emacs theme based on the macOS system appearance."
+  (let* ((new-theme (if (eq appearance 'dark)
+                        'solarized-dark
+                      'solarized-light)))
+    (unless (eq tviti/theme new-theme)
+      (when tviti/theme
+        (disable-theme tviti/theme))
+      (setq tviti/theme new-theme)
+      (load-theme new-theme t))))
+
+(add-to-list 'ns-system-appearance-change-functions 'tviti/update-theme-from-system)
   
 
 (provide 'macos-config)
