@@ -56,7 +56,17 @@ spaceline-segments.el"
 (with-eval-after-load 'org
   (setq org-clock-mode-line-total 'today))
 
+
+(defun tviti/spaceline-compile ()
+  "After-theme-load cleanup for spaceline."
+  ;; With some fonts, spaceline tends to mess up the vertical alignment of the
+  ;; over/underline. It's easier to just remove it instead of trying to fix
+  ;; it, and the effect isn't very noticable anyways.
+  (spaceline-compile)
+  (set-face-attribute 'mode-line nil :overline nil :underline nil)
+  (set-face-attribute 'mode-line-inactive nil :overline nil :underline nil))
+
 ;; Make sure the modeline is recompiled when a theme is loaded
-(add-hook 'enable-theme-functions (lambda (x) (spaceline-compile)))
+(add-hook 'enable-theme-functions (lambda (x) (tviti/spaceline-compile)))
 
 (provide 'spacelike-config)
