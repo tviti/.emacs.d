@@ -33,9 +33,11 @@
 
 
 ;; Set the theme based on the system theme.
-(setq tviti/theme (if (eq (frame-parameter nil 'ns-system-appearance) 'dark)
-		    'spacemacs-dark
-		  'spacemacs-light))
+(require 'spacemacs-theme)
+(require 'solarized-theme)
+(setq tviti/theme (if (eq ns-system-appearance 'dark)
+		    'solarized-dark ;;'spacemacs-dark
+		  'solarized-light)) ;; 'spacemacs-light))
   
 
 (provide 'macos-config)
