@@ -1,9 +1,3 @@
-(use-package matlab-mode)
-;(matlab-cedet-setup)
-
-;; Uncomment these two lines to run a remote MATLAB session from MBP
-;; (setq matlab-shell-command "/Applications/MATLAB_R2015a.app/bin/matlab")
-;; (setq matlab-mode-install-path "/Users/taylor/.emacs.d/matlab-emacs")
 
 ;; change comment string to be compatible with matlab IDE
 (setq matlab-comment-region-s "% ")
@@ -35,14 +29,6 @@
 (add-hook 'matlab-shell-mode-hook #'tviti/M-shell-mode-setup)
 
 (with-eval-after-load 'ob-octave
-  ;; (defun org-babel-edit-prep:matlab (info)
-  ;;   ;; Enable mlint and the debugger, by assigning a temporary file to the
-  ;;   ;; `org-edit-special' buffer. MATLAB and mlint are fussy about hyphenated
-  ;;   ;; filenames, so we avoid using `org-babel-temp-file' for this.
-  ;;   (set-visited-file-name (make-temp-file "octave_" nil ".m" (buffer-string)))
-  ;;   ;; ;; Save to trigger mlint.
-  ;;   (save-buffer))
-
   ;; Hacked to suppress input lines in result blocks when using matlab-mode.
   (defun org-babel-octave-evaluate-session
       (session body result-type &optional matlabp)

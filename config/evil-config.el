@@ -1,25 +1,18 @@
 ;; Fix related to https://github.com/emacs-evil/evil-collection/issues/60
 (setq evil-want-keybinding nil)
 
-; (require 'undo-tree)
-; (global-undo-tree-mode)
-
 (use-package evil)
 (evil-mode 1)
 
 (require 'user-globals)
 
-;; Move all elements of evil-emacs-state-modes to evil-motion-state-modes
-;; (setq evil-motion-state-modes (append evil-emacs-state-modes evil-motion-state-modes))
-;; (setq evil-emacs-state-modes nil)
+
 
 ;; Enable evil where it normally wouldn't be enabled
 (use-package evil-collection)
 (add-to-list 'evil-collection-key-blacklist (key-description tviti/evil-leader))
 (evil-collection-init '(ediff ibuffer package-menu dired magit bookmark slime mu4e))
 
-;; (with-eval-after-load 'magit
-;;   (require 'evil-magit)
 
 ;; Not sure why, but evil-collection-init won't actually load
 ;; evil-collection-pdf, so we do it like so instead.
@@ -29,8 +22,6 @@
 (use-package evil-org)
 (add-hook 'org-mode-hook 'evil-org-mode)
 (evil-org-set-key-theme '(navigation insert textobjects additional calendar))
-;(use-package evil-org-agenda)
-;(evil-org-agenda-set-keys)
 
 ;; Make Info mode more evil
 (defun tviti/evil-Info-mode-setup ()
@@ -98,7 +89,6 @@
 
   (kbd "<leader>i") #'imenu
   (kbd "<leader>e") #'eshell
-  ;; (kbd "<leader>s") #'shell
 
   (kbd "<leader>x") #'Control-X-prefix)
 

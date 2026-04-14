@@ -23,63 +23,22 @@
 ;; the index can be updated using emacsclient.
 (server-start)
 
-;; Load packages
-(require 'use-package-ensure)
-(setq use-package-always-ensure t)
-
-;; Load this early so that the shell env is active during init
-(use-package exec-path-from-shell
-  :init
-  (exec-path-from-shell-initialize)
-  (exec-path-from-shell-copy-envs '("LIBRARY_PATH" "INFOPATH" "CPATH" "MANPATH" "PYTHONPATH")))
-
-(use-package spacemacs-theme)
-(use-package solarized-theme)
-
-(use-package magit)
-(use-package magit-annex)
-
-(use-package markdown-mode)
-
-(use-package csv-mode)
-
-(use-package direnv)
-
-(use-package nix-mode)
-
-(use-package undo-tree
-  :config
-  (global-undo-tree-mode))
-
-(use-package copilot
-  :hook (prog-mode . copilot-mode)
-  :config (setq copilot-idle-delay nil)
-  :bind (:map copilot-completion-map
-              ("<tab>" . copilot-accept-completion)
-              ("TAB" . copilot-accept-completion)
-              ("C-<tab>" . copilot-accept-completion-by-word)
-              ("C-TAB" . copilot-accept-completion-by-word)))
-
-(use-package pcre2el)
-
-(use-package slime)
-
-(use-package julia-mode)
-
-(use-package julia-repl)
-
-(use-package gptel)
-(use-package gptel-agent)
-
 ;;
-;; Load custom configuration files
+;; Orchestrator: load custom configuration files
 ;;
+;; Ensure user-emacs-directory points to this repository when loading init.el directly
+(when (and (or (not (boundp 'user-emacs-directory))
+               (string= user-emacs-directory "~/.emacs.d/"))
+           (or load-file-name buffer-file-name))
+  (setq user-emacs-directory
+        (expand-file-name (file-name-directory (or load-file-name buffer-file-name)))))
+
 (add-to-list 'load-path (expand-file-name "config/" user-emacs-directory))
+;; Ensure nix-flymake submodule is on load-path (needed for config/nix-flymake/nix-flymake.el)
 (add-to-list 'load-path (expand-file-name "config/nix-flymake" user-emacs-directory))
 
-;; MCP config for copilot-chat.el
-;; (setq epg-pinentry-mode 'loopback)
-;; (load-library "copilot-chat-config.el.gpg")
+;; Load package declarations (centralized use-package manifest)
+(require 'packages)
 
 ;; Configs we want loaded immediately
 (menu-bar-mode 0)
@@ -88,12 +47,14 @@
     (require 'macos-config))
 
 (require 'user-functions)
-(require 'latex-mode-config)
+(require 'spacelike-config)
 (require 'completion-config)
-(require 'eshell-config)
 (require 'evil-config)
 (require 'global-keys)
-(require 'gptel-config)
+(require 'latex-mode-config)
+(require 'eshell-config)
+;; Optional: gptel config may be private/unchecked — load if available
+(require 'gptel-config nil 'noerror)
 (require 'literate-config)
 ;; linter-config must precede lsp-config (tviti/setup-latex-lsp references tviti/linter)
 (require 'linter-config)
@@ -104,7 +65,6 @@
 (require 'python-config)
 (require 'ruler-mode-config)
 (require 'slime-config)
-(require 'spacelike-config)
 ;;(require 'feeds-config)
 (require 'tramp-config)
 (require 'mouse-config)
@@ -169,7 +129,7 @@
 
 ;; Don't pollute this file with vars set using the customization interface
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
-(load custom-file)
+(load custom-file 'noerror 'nomessage)
 
 (which-function-mode 1) ;; Show the current function in the mode line
 

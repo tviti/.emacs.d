@@ -3,8 +3,6 @@
 ;;;;;;;;;;;;;;
 ;; ivy-mode ;;
 ;;;;;;;;;;;;;;
-(use-package ivy)
-(use-package counsel)
 
 ;; Configuration for the ivy/counsel/swiper trifecta
 (ivy-mode 1)

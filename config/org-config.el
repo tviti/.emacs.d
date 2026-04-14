@@ -33,8 +33,6 @@
 ;; Configure the export backends
 (add-to-list 'org-export-backends 'md)
 
-;; (require 'ox-bibtex) ; For bibtex citations
-
 (add-hook 'org-babel-after-execute-hook
 	  (lambda () (org-redisplay-inline-images)))
 
@@ -43,8 +41,6 @@
 ;; Get syntax highlighting in code blocks
 (setq org-src-fontify-natively t
       org-src-tab-acts-natively t)
-
-;; (setq org-agenda-fles "~/org")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Appointments and reminders ;;
@@ -83,18 +79,11 @@
 (defun tviti/org-insert-time-range (dt)
   "Returns an active time range at point from now till DT minutes."
   (let* ((date-input (org-read-date t t))
-	 (date (format-time-string (cdr org-time-stamp-formats) date-input))
-         ;; (shifted (concat (substring date 0 -1)
-	 ;; 		  (format " +%sm" dt)
-	 ;; 		  (substring date -1))))
-	 (shifted (format-time-string (cdr org-time-stamp-formats)
-				      (time-add date-input (seconds-to-time (* dt 60))))))
-    (format "%s--%s" date shifted)))
+         (date (format-time-string (cdr org-time-stamp-formats) date-input))
+         (shifted (format-time-string (cdr org-time-stamp-formats)
+                                      (time-add date-input (seconds-to-time (* dt 60))))))
+     (format "%s--%s" date shifted)))
 
-;(let ((fn (concat org-directory "/capture-templates.el")))
-; (with-temp-buffer
-;   (insert-file-contents-literally fn)
-;   (setq org-capture-templates (doct (eval (read (buffer-string)))))))
 
 ;; WORKAROUND:Incremental refile completion doesn't work with ivy-mode (see
 ;; https://github.com/abo-abo/swiper/issues/1254 and

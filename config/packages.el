@@ -1,0 +1,90 @@
+;; Package Manifest
+;; This file centralizes all package declarations to minimize entropy.
+;; Configuration for these packages is managed in their respective files in config/
+
+(require 'use-package)
+(setq use-package-always-ensure t)
+
+(use-package exec-path-from-shell
+  :ensure t
+  :config
+  (exec-path-from-shell-initialize)
+  (exec-path-from-shell-copy-envs '("LIBRARY_PATH" "INFOPATH" "CPATH" "MANPATH" "PYTHONPATH")))
+
+(use-package spacemacs-theme :ensure t)
+(use-package solarized-theme :ensure t)
+
+(use-package magit :ensure t)
+(use-package magit-annex :ensure t)
+
+(use-package markdown-mode :ensure t)
+
+(use-package csv-mode :ensure t)
+
+(use-package direnv :ensure t)
+
+(use-package nix-mode :ensure t)
+
+(use-package undo-tree
+  :ensure t
+  :config
+  (global-undo-tree-mode))
+
+(use-package copilot
+  :ensure t
+  :hook (prog-mode . copilot-mode)
+  :config (setq copilot-idle-delay nil)
+  :bind (:map copilot-completion-map
+              ("<tab>" . copilot-accept-completion)
+              ("TAB" . copilot-accept-completion)
+              ("C-<tab>" . copilot-accept-completion-by-word)
+              ("C-TAB" . copilot-accept-completion-by-word)))
+
+(use-package pcre2el :ensure t)
+
+(use-package slime :ensure t)
+
+(use-package julia-mode :ensure t)
+
+(use-package julia-repl :ensure t)
+
+(use-package gptel :ensure t)
+(use-package gptel-agent :ensure t)
+
+;; Language modes
+(use-package matlab-mode :ensure t)
+(use-package tex :ensure auctex)
+(use-package reftex :ensure t)
+(use-package polymode :ensure t)
+
+;; UI enhancements
+(use-package which-key :ensure t)
+(use-package highlight-numbers :ensure t)
+(use-package rainbow-delimiters :ensure t)
+(use-package spaceline :ensure t)
+
+;; Evil/Vim
+(use-package evil :ensure t)
+(use-package evil-collection :ensure t)
+(use-package evil-org :ensure t)
+(use-package flyspell-correct-ivy :ensure t)
+
+;; Completion
+(use-package ivy :ensure t)
+(use-package counsel :ensure t)
+(use-package bash-completion :ensure t)
+
+;; Org-mode ecosystem
+(use-package org-ql :ensure t)
+(use-package org-bullets :ensure t)
+(use-package ox-gfm :ensure t)
+(use-package htmlize :ensure t)
+(use-package doct :ensure t)
+
+;; PDF tools
+(use-package pdf-tools :ensure t)
+
+;; Snippets
+(use-package yasnippet :ensure t)
+
+(provide 'packages)

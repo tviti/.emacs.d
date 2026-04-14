@@ -2,7 +2,6 @@
 ;; from https://github.com/szermatt/emacs-bash-completion/issues/13
 (require 'eshell)
 (require 'pcomplete)
-(use-package bash-completion)
 
 (setq eshell-default-completion-function 'eshell-bash-completion)
 

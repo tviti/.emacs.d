@@ -2,7 +2,6 @@
 ;; interface that exposes common literate programming tasks, while abstracting
 ;; away the host language.
 (require 'transient)
-(use-package polymode)
 (require 'org)
 
 (defmacro tviti/literate-with-host (&optional poly-body org-body)
