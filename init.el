@@ -16,9 +16,17 @@
 (package-initialize)
 
 ;; Pick a font + size
-(add-to-list 'default-frame-alist
-	     '(font . "JetBrains mono-14"))
-	     ;; '(font . "Iosevka-14"))
+;; (set-face-attribute 'default nil :font "JetBrains mono-11")
+(set-face-attribute 'default nil
+  :family "JetBrains mono"
+  :height 130  ; 16pt at 10pt = 160 (adjust 150-180 to preference)
+  :weight 'regular)
+(setq-default line-spacing 0.2) ;; Adjust fraction of line height
+;; (setq line-spacing 0.5) ;; Adjust fraction of line height
+;; (add-to-list 'default-frame-alist
+;; 	     '(font . "JetBrains mono-14"))
+;; '(font . "Iosevka-14"))
+
 
 ;; Drop straight into server mode, so that the the email daemon(s) can update
 ;; the index can be updated using emacsclient.

@@ -12,7 +12,7 @@
 ;;
 (require 'spaceline-config)
 (setq powerline-default-separator 'slant)
-(setq powerline-height 20) ;; Give it some more breathing room
+;; (setq powerline-height 20) ;; Give it some more breathing room
 (spaceline-spacemacs-theme)
 
 ;; Change the color of the mode line based on the input mode (insert, normal, or

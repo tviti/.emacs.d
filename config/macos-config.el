@@ -20,9 +20,6 @@
 (with-eval-after-load 'counsel
   (setq counsel-locate-cmd 'counsel-locate-cmd-mdfind))
 
-;; If OS is macOS, then I'm probably on a laptop, so use a slightly larger font.
-(set-face-attribute 'default nil :height 140)
-
 ;; Doesn't work on windows, so we only enable it on macOS.
 (require 'vterm)
 (add-hook 'vterm-mode-hook (lambda ()
