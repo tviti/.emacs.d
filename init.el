@@ -137,9 +137,15 @@
 (setq-default cursor-in-non-selected-windows nil)
 
 ;;
-;; Load a theme.
-;;
-(add-hook 'after-init-hook (lambda () (load-theme tviti/theme t)))
+;; Load a theme (after init completes).
+(defun tviti/load-theme ()
+  "Load theme based on system type.
+On macOS, sync with system appearance; otherwise use default theme."
+  (if (string= system-type "darwin")
+      (tviti/update-theme-from-system ns-system-appearance)
+    (load-theme tviti/theme t)))
+
+(add-hook 'after-init-hook #'tviti/load-theme)
 
 ;;
 ;; Tramp setup

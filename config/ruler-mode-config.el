@@ -32,9 +32,8 @@
   (set-face-attribute 'ruler-mode-current-column nil :foreground
 		      (face-attribute 'font-lock-warning-face :foreground)))
 
-;; (add-hook 'after-init-hook #'tviti/ruler-match-theme)
-
 ;; Make sure the ruler is re-styled when the theme is changed.
-(add-hook 'enable-theme-functions (lambda (x) (tviti/ruler-match-theme)))
+(add-hook 'after-init-hook (lambda () (setq ruler-mode-initial-display nil)))
+(add-hook 'window-setup-hook #'tviti/ruler-match-theme)
 
 (provide 'ruler-mode-config)
