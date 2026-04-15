@@ -10,17 +10,17 @@
 (setq org-crypt-key nil)
 (setq org-tags-exclude-from-inheritance '("crypt"))
 
-(use-package org-ql)
+(require 'org-ql)
 
-(use-package org-bullets)
+(require 'org-bullets)
 (add-hook 'org-mode-hook 'org-bullets-mode)
 
 ;; Enable inline todo items
 (require 'org-inlinetask)
 
-(use-package ox-gfm)
+(require 'ox-gfm)
 
-(use-package htmlize)
+(require 'htmlize)
 
 ;; Configure the languages for source blocks
 (org-babel-do-load-languages
@@ -74,7 +74,7 @@
 			   (,(org-agenda-files t) . (:maxlevel . 3))))
 
 ;; Load the capture templates
-(use-package doct)
+(require 'doct)
 
 (defun tviti/org-insert-time-range (dt)
   "Returns an active time range at point from now till DT minutes."

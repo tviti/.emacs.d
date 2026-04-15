@@ -1,5 +1,5 @@
 ;; User defined globals
-(require 'spacemacs-theme)
+(setq evil-want-keybinding nil)
 
 (defvar tviti/sync-dir "~/Sync"
   "A synchronized directory.")

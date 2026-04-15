@@ -24,16 +24,15 @@
 (set-face-attribute 'default nil :height 140)
 
 ;; Doesn't work on windows, so we only enable it on macOS.
-(use-package vterm
-  :hook (vterm-mode . (lambda ()
-			(setq-local global-hl-line-mode nil)  ;; Causes flickering
-			(evil-collection-init '(vterm))))
-  :hook (vterm-copy-mode . (lambda()
-			     (call-interactively 'hl-line-mode))))
+(require 'vterm)
+(add-hook 'vterm-mode-hook (lambda ()
+			  (setq-local global-hl-line-mode nil)  ;; Causes flickering
+			  (evil-collection-init '(vterm))))
+(add-hook 'vterm-copy-mode-hook (lambda()
+			     (call-interactively 'hl-line-mode)))
 
 
 ;; Set the theme based on the system theme and update it automatically.
-(require 'spacemacs-theme)
 (require 'solarized-theme)
 
 (defun tviti/update-theme-from-system (appearance)
@@ -48,6 +47,8 @@
       (load-theme new-theme t))))
 
 (add-to-list 'ns-system-appearance-change-functions 'tviti/update-theme-from-system)
-  
 
+;; Load initial theme based on current system appearance
+(tviti/update-theme-from-system ns-system-appearance)
+  
 (provide 'macos-config)

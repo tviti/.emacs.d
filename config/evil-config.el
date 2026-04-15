@@ -1,15 +1,12 @@
 ;; Fix related to https://github.com/emacs-evil/evil-collection/issues/60
-(setq evil-want-keybinding nil)
+;; evil-want-keybinding must be set before evil loads (done in init.el)
 
-(use-package evil)
 (evil-mode 1)
 
 (require 'user-globals)
 
 
-
 ;; Enable evil where it normally wouldn't be enabled
-(use-package evil-collection)
 (add-to-list 'evil-collection-key-blacklist (key-description tviti/evil-leader))
 (evil-collection-init '(ediff ibuffer package-menu dired magit bookmark slime mu4e))
 
@@ -19,7 +16,6 @@
 (with-eval-after-load 'pdf-tools (evil-collection-pdf-setup))
  
 ;; Make org-mode more evil. Config is per the README.md
-(use-package evil-org)
 (add-hook 'org-mode-hook 'evil-org-mode)
 (evil-org-set-key-theme '(navigation insert textobjects additional calendar))
 
@@ -49,7 +45,6 @@
   (evil-collection-xref-setup))
 
 ;; Override "z=" binding for ispell-word to use the flyspell-correct pkg
-(use-package flyspell-correct-ivy)
 (define-key evil-normal-state-map [remap ispell-word] #'flyspell-correct-wrapper)
 
 ;;
@@ -59,7 +54,10 @@
 
 ;; SPC as leader will be shadowed by certain mode-maps. Clear these bindings.
 (with-eval-after-load 'magit-mode
-  (define-key magit-mode-map tviti/evil-leader nil))
+   (define-key magit-mode-map tviti/evil-leader nil))
+
+(with-eval-after-load 'dired
+   (define-key dired-mode-map tviti/evil-leader nil))
 
 (with-eval-after-load 'magit-stash
   (define-key magit-stash-mode-map tviti/evil-leader nil))

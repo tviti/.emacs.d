@@ -40,6 +40,8 @@
               ("C-<tab>" . copilot-accept-completion-by-word)
               ("C-TAB" . copilot-accept-completion-by-word)))
 
+(unless (eq system-type 'windows)
+  (use-package vterm :ensure t))
 (use-package pcre2el :ensure t)
 
 (use-package slime :ensure t)
