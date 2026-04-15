@@ -46,6 +46,6 @@
 (add-to-list 'ns-system-appearance-change-functions 'tviti/update-theme-from-system)
 
 ;; Load initial theme based on current system appearance
-(tviti/update-theme-from-system ns-system-appearance)
+(add-hook 'after-init-hook (lambda () (tviti/update-theme-from-system ns-system-appearance)))
   
 (provide 'macos-config)
