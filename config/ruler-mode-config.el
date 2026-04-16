@@ -34,6 +34,6 @@
 
 ;; Make sure the ruler is re-styled when the theme is changed.
 (add-hook 'after-init-hook (lambda () (setq ruler-mode-initial-display nil)))
-(add-hook 'window-setup-hook #'tviti/ruler-match-theme)
+(add-hook 'enable-theme-functions (lambda (_theme) (tviti/ruler-match-theme)))
 
 (provide 'ruler-mode-config)
