@@ -52,8 +52,10 @@
 ;; Configs we want loaded immediately
 (menu-bar-mode 0)
 (require 'user-globals)
-(if (string= system-type "darwin")
-    (require 'macos-config))
+(cond ((string= system-type "darwin") (require 'macos-config))
+      (t (require 'solarized-theme)
+	 (setq tviti/theme 'solarized-dark)
+	 (add-hook 'after-init-hook (lambda () (load-theme tviti/theme)))))
 
 (require 'user-functions)
 (require 'spacelike-config)
