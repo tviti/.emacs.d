@@ -104,12 +104,8 @@
 (global-set-key (kbd "C-c n e") #'nix-eshell)
 (global-set-key (kbd "C-c n s") #'nix-shell)
 
-;; ;; Copilot packages
-;; (require 'copilot-chat)
-;; (global-set-key (kbd "C-c t") #'copilot-chat-transient)
-(require 'copilot)
+;; Copilot packages
 (require 'gptel)
-
 (global-set-key (kbd "C-c a s") #'copilot-complete)
 (global-set-key (kbd "C-c a t") #'gptel-menu)
 

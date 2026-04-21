@@ -30,7 +30,9 @@
 
 ;; Drop straight into server mode, so that the the email daemon(s) can update
 ;; the index can be updated using emacsclient.
-(server-start)
+(require 'server)
+(unless (server-running-p)
+    (server-start))
 
 ;;
 ;; Orchestrator: load custom configuration files
@@ -43,6 +45,7 @@
         (expand-file-name (file-name-directory (or load-file-name buffer-file-name)))))
 
 (add-to-list 'load-path (expand-file-name "config/" user-emacs-directory))
+(add-to-list 'load-path (expand-file-name "private/" user-emacs-directory))
 ;; Ensure nix-flymake submodule is on load-path (needed for config/nix-flymake/nix-flymake.el)
 (add-to-list 'load-path (expand-file-name "config/nix-flymake" user-emacs-directory))
 
@@ -64,8 +67,6 @@
 (require 'global-keys)
 (require 'latex-mode-config)
 (require 'eshell-config)
-;; Optional: gptel config may be private/unchecked — load if available
-(require 'gptel-config nil 'noerror)
 (require 'literate-config)
 ;; linter-config must precede lsp-config (tviti/setup-latex-lsp references tviti/linter)
 (require 'linter-config)
@@ -79,6 +80,7 @@
 ;;(require 'feeds-config)
 (require 'tramp-config)
 (require 'mouse-config)
+(require 'private-config nil t)
 ;;
 ;; Misc configurations
 ;;

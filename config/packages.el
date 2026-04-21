@@ -30,16 +30,6 @@
   :config
   (global-undo-tree-mode))
 
-(use-package copilot
-  :ensure t
-  :hook (prog-mode . copilot-mode)
-  :config (setq copilot-idle-delay nil)
-  :bind (:map copilot-completion-map
-              ("<tab>" . copilot-accept-completion)
-              ("TAB" . copilot-accept-completion)
-              ("C-<tab>" . copilot-accept-completion-by-word)
-              ("C-TAB" . copilot-accept-completion-by-word)))
-
 (unless (eq system-type 'windows)
   (use-package vterm :ensure t))
 (use-package pcre2el :ensure t)

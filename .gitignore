@@ -17,6 +17,7 @@ eln-cache/
 copilot-chat/
 config/copilot-chat-config.el.gpg
 request/
+private
 
 # Created by https://www.gitignore.io/api/osx,elisp,emacs
 # Edit at https://www.gitignore.io/?templates=osx,elisp,emacs
