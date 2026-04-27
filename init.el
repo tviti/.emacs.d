@@ -134,6 +134,8 @@
 (when (>= emacs-major-version 27)
   (setq tab-bar-show nil))
 
+(tab-bar-mode 1)
+
 ;; ASK before exiting!
 (setq confirm-kill-emacs #'yes-or-no-p)
 
