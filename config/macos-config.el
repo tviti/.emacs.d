@@ -35,8 +35,8 @@
 (defun tviti/update-theme-from-system (appearance)
   "Update the Emacs theme based on the macOS system appearance."
   (let* ((new-theme (if (eq appearance 'dark)
-                        'solarized-dark
-                      'solarized-light)))
+                        'solarized-selenized-dark
+                      'solarized-selenized-light)))
     (unless (eq tviti/theme new-theme)
       (when tviti/theme
         (disable-theme tviti/theme))

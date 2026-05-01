@@ -106,8 +106,15 @@
 
 ;; Copilot packages
 (require 'gptel)
-(global-set-key (kbd "C-c a s") #'copilot-complete)
-(global-set-key (kbd "C-c a t") #'gptel-menu)
+(define-prefix-command #'tviti/gptel-map)
+(global-set-key (kbd "C-c a") #'tviti/gptel-map)
+(define-key 'tviti/gptel-map (kbd "s") #'copilot-complete)
+(define-key 'tviti/gptel-map (kbd "c") #'gptel)
+(define-key 'tviti/gptel-map (kbd "a") #'gptel-add)
+(define-key 'tviti/gptel-map (kbd "C-k") #'gptel-abort)
+(define-key 'tviti/gptel-map (kbd "r") #'gptel-rewrite)
+(define-key 'tviti/gptel-map (kbd "t") #'gptel-menu)
+(define-key 'tviti/gptel-map (kbd "f") #'tviti/ivy-gptel-add-file)
 
 ;; misc keybindings
 (global-set-key (kbd "C-c W") #'whitespace-mode)

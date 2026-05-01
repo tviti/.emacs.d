@@ -118,4 +118,9 @@
   (define-key evil-motion-state-map (kbd "<leader>p") project-prefix-map)
   (define-key project-prefix-map "p" #'tviti/project-switch-project-dired))
 
+(with-eval-after-load 'gptel
+  (evil-define-key '(normal visual motion) 'global
+    (kbd "<leader>a") #'tviti/gptel-map))
+
+
 (provide 'evil-config)
