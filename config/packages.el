@@ -5,11 +5,12 @@
 (require 'use-package)
 (setq use-package-always-ensure t)
 
-(use-package exec-path-from-shell
-  :ensure t
-  :config
-  (exec-path-from-shell-initialize)
-  (exec-path-from-shell-copy-envs '("LIBRARY_PATH" "INFOPATH" "CPATH" "MANPATH" "PYTHONPATH")))
+(when (string= system-type "darwin")
+  (use-package exec-path-from-shell
+    :ensure t
+    :config
+    (exec-path-from-shell-initialize)
+    (exec-path-from-shell-copy-envs '("LIBRARY_PATH" "INFOPATH" "CPATH" "MANPATH" "PYTHONPATH" "NIX_PATH"))))
 
 (use-package spacemacs-theme :ensure t)
 (use-package solarized-theme :ensure t)
