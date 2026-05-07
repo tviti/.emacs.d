@@ -69,6 +69,7 @@
 (require 'org-config)
 (require 'project-config)
 (require 'python-config)
+(require 'julia-config)
 (require 'ruler-mode-config)
 (require 'slime-config)
 ;;(require 'feeds-config)
