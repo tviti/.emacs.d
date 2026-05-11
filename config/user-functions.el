@@ -50,18 +50,6 @@ included for call signature compatibility, but is otherwise ignored."
   (start-process "nyxt-browser"
 		 nil tviti/nyxt-browser-command url))
 
-(defun tviti/mac-port-p ()
-  "Check if the running Emacs instance is Mitsuhara Yamamoto's mac-port."
-  (when (and (eq window-system 'mac) (boundp 'mac-carbon-version-string))
-    t))
-
-(defun tviti/macos-dark-toggle ()
-  "Toggle between light/dark mode on macOS."
-  (interactive)
-  (if (tviti/mac-port-p)
-      (mac-osa-script
-       "tell application \"System Events\" to tell appearance preferences to set dark mode to not dark mode")))
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; netCDF interactions ;;
