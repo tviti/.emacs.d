@@ -186,7 +186,6 @@ included for call signature compatibility, but is otherwise ignored."
     ("x" "extended command" counsel-M-x)
     ("c" "delete" evil-window-delete)]])
 
-
 (defun tviti/magit-annex-kill-key (files &optional args)
   "Copy the sha key for the selected files to the kill ring.
 At the moment, this only works on a single file at a time."
@@ -203,6 +202,14 @@ At the moment, this only works on a single file at a time."
          (project (completing-read "Switch to project: " projects)))
     (when project
       (dired-other-frame project))))
+
+(defun tviti/load-light-theme ()
+  (interactive)
+  (load-theme tviti/light-theme))
+
+(defun tviti/load-dark-theme ()
+  (interactive)
+  (load-theme tviti/dark-theme))
 
 (with-eval-after-load 'project-config
   (define-key project-command-map (kbd "5") #'tviti/project-switch-project-other-frame))
