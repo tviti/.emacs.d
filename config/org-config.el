@@ -51,20 +51,6 @@
 (add-hook 'org-agenda-mode-hook
 	  (lambda () (org-agenda-to-appt)))
 
-;; Define a notification function for creating GUI notifications
-(if (string= system-type "darwin")
-    (when (tviti/mac-port-p) ;; mac-osa-script is mac-port specific
-    (setq appt-disp-window-function
-	  (lambda (min-to-app new-time appt-msg)
-	    ;; Retain original functionality
-	    (appt-disp-window min-to-app new-time appt-msg)
-	    ;; Create a native macOS desktop notification via applescript
-	    (let ((title "SOMETHING IS HAPPENING!?!?")
-		  (sound-name "Ring"))
-	      (mac-osa-script
-	       (format "display notification \"%s\" with title \"%s\" sound name \"%s\""
-	      	       appt-msg title sound-name)))))))
-
 ;;;;;;;;;;;;;;;;;;;;;;;
 ;; org-capture setup ;;
 ;;;;;;;;;;;;;;;;;;;;;;;
