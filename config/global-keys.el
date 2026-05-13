@@ -96,14 +96,6 @@
   (define-key 'tviti/counsel-map (kbd "c e") #'counsel-evil-marks)
   (evil-global-set-key 'normal (kbd "M-\"") #'counsel-evil-registers))
 
-;; nix-mode keybindings
-(require 'nix-mode)
-(global-set-key (kbd "C-c n u") #'nix-shell-unpack)
-(global-set-key (kbd "C-c n c") #'nix-shell-configure)
-(global-set-key (kbd "C-c n b") #'nix-shell-build)
-(global-set-key (kbd "C-c n e") #'nix-eshell)
-(global-set-key (kbd "C-c n s") #'nix-shell)
-
 ;; Copilot packages
 (require 'gptel)
 (define-prefix-command #'tviti/gptel-map)

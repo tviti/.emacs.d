@@ -81,7 +81,7 @@ acceptable filename string, complete with file extension."
 ;;
 ;; Misc. keybindings
 ;;
-(transient-define-prefix tviti/linter-nav ()
+(transient-define-prefix tviti/lsp-menu ()
   :transient-suffix 'transient--do-stay
   :transient-non-suffix 'transient--do-warn
   [["Errors"
@@ -100,6 +100,6 @@ acceptable filename string, complete with file extension."
    ["Help"
     ("h" "eglot help" eldoc-doc-buffer)]])
 
-(define-key eglot-mode-map (kbd "C-c f") #'tviti/linter-nav)
+(define-key eglot-mode-map (kbd "C-c n") #'tviti/lsp-menu)
 
 (provide 'lsp-config)
