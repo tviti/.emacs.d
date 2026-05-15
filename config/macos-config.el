@@ -37,11 +37,10 @@
   (let* ((new-theme (if (eq appearance 'dark)
                         tviti/dark-theme
                       tviti/light-theme)))
-    (unless (eq tviti/theme new-theme)
       (when tviti/theme
         (disable-theme tviti/theme))
       (setq tviti/theme new-theme)
-      (load-theme new-theme t))))
+      (load-theme new-theme t)))
 
 (add-to-list 'ns-system-appearance-change-functions 'tviti/update-theme-from-system)
 
