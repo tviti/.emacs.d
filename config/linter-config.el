@@ -36,6 +36,7 @@ PROG-MODE-P to turn on/off flyspell `prog-mode'."
 					       'elisp-flymake-checkdoc t)))
 (add-hook 'LaTeX-mode-hook (lambda () (tviti/linter-on :prog-mode-p nil)))
 
+(require 'nix-mode)
 (with-eval-after-load 'nix-mode
   (add-hook 'nix-mode-hook (lambda ()
 			     (add-hook 'flymake-diagnostic-functions #'nix-flymake nil t)
