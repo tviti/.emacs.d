@@ -99,13 +99,13 @@
 ;; Copilot packages
 (require 'gptel)
 (define-prefix-command #'tviti/gptel-map)
-(global-set-key (kbd "C-c a") #'tviti/gptel-map)
+(global-set-key (kbd "C-c g") #'tviti/gptel-map)
 (define-key 'tviti/gptel-map (kbd "s") #'copilot-complete)
-(define-key 'tviti/gptel-map (kbd "c") #'gptel)
+(define-key 'tviti/gptel-map (kbd "g") #'gptel)
 (define-key 'tviti/gptel-map (kbd "a") #'gptel-add)
 (define-key 'tviti/gptel-map (kbd "C-k") #'gptel-abort)
 (define-key 'tviti/gptel-map (kbd "r") #'gptel-rewrite)
-(define-key 'tviti/gptel-map (kbd "t") #'gptel-menu)
+(define-key 'tviti/gptel-map (kbd "m") #'gptel-menu)
 (define-key 'tviti/gptel-map (kbd "f") #'tviti/ivy-gptel-add-file)
 
 ;; misc keybindings

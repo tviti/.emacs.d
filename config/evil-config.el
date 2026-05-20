@@ -120,7 +120,7 @@
 
 (with-eval-after-load 'gptel
   (evil-define-key '(normal visual motion) 'global
-    (kbd "<leader>a") #'tviti/gptel-map))
+    (kbd "<leader>g") #'tviti/gptel-map))
 
 (with-eval-after-load 'lsp-config
   (evil-define-key '(normal visual motion) 'global
