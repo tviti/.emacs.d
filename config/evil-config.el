@@ -126,5 +126,8 @@
   (evil-define-key '(normal visual motion) 'global
     (kbd "<leader>n") #'tviti/lsp-menu))
 
+(evil-define-key '(normal visual motion) 'global
+  (kbd "<leader>[") #'speedbar-get-focus)
+
 
 (provide 'evil-config)
