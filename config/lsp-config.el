@@ -96,10 +96,13 @@ acceptable filename string, complete with file extension."
     ("d" "find defs" xref-find-definitions-other-window)]
    ["Misc"
     ("a" "code actions" eglot-code-actions)
-    ("b" "diagnostics" flymake-show-buffer-diagnostics)]
-   ["Help"
-    ("h" "eglot help" eldoc-doc-buffer)]])
-
+    ("b" "diagnostics" flymake-show-buffer-diagnostics)
+    ("h" "eglot help" eldoc-doc-buffer)]
+   ["Server"
+    ("c" "connect" eglot)
+    ("R" "reconnect" eglot-reconnect)
+    ("DEL" "shutdown" eglot-shutdown)]])
+    
 (define-key eglot-mode-map (kbd "C-c n") #'tviti/lsp-menu)
 
 (provide 'lsp-config)
