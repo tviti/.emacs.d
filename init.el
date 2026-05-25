@@ -133,7 +133,7 @@
 ;; ASK before exiting!
 (setq confirm-kill-emacs #'yes-or-no-p)
 
-(desktop-save-mode 1)
+(desktop-save-mode -1)
 (setq ring-bell-function 'ignore)
 
 ;; Don't pollute this file with vars set using the customization interface
