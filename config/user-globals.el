@@ -11,7 +11,7 @@
   "Key to use as `evil-mode''s leader-key.")
 
 (defvar tviti/theme 'solarized-selenized-dark)
-(defvar tviti/light-theme 'solarized-selenized-light)
+(defvar tviti/light-theme 'solarized-selenized-dark)
 (defvar tviti/dark-theme 'solarized-selenized-dark)
 
 (provide 'user-globals)

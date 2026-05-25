@@ -12,8 +12,14 @@
     (exec-path-from-shell-initialize)
     (exec-path-from-shell-copy-envs '("LIBRARY_PATH" "INFOPATH" "CPATH" "MANPATH" "PYTHONPATH" "NIX_PATH"))))
 
+;; Themes
 (use-package spacemacs-theme :ensure t)
 (use-package solarized-theme :ensure t)
+(use-package gruvbox-theme :ensure t)
+(use-package zenburn-theme :ensure t)
+(use-package doom-themes :ensure t)
+(use-package kaolin-themes :ensure t)
+(use-package ef-themes :ensure t)
 
 (use-package magit :ensure t)
 (use-package magit-annex :ensure t)
