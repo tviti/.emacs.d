@@ -12,6 +12,7 @@ bookmarks
 projectile-bookmarks.eld
 projects
 org-persist/
+persist/
 eln-cache/
 .cache/
 copilot-chat/
@@ -115,4 +116,3 @@ Temporary Items
 # End of https://www.gitignore.io/api/osx,elisp,emacs
 
 custom.el
-

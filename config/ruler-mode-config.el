@@ -15,13 +15,13 @@
 (add-hook 'find-file-hook (lambda () (ruler-mode 1)))
 
 (defun tviti/ruler-match-theme ()
-  "Set ruler faces to better match the currently active theme."
+  "Set ruler faces to better match the currently active theme. If a theme
+DOES include `ruler-mode' styles, then this function may conflict with
+those face settings."
   (set-face-attribute 'ruler-mode-default nil :background
 		      (face-attribute 'default :background))
   (set-face-attribute 'ruler-mode-default nil :foreground
 		      (face-attribute 'line-number :foreground))
-  (set-face-attribute 'ruler-mode-default nil :box
-		      (face-attribute 'vertical-border :foreground))
 
   (set-face-attribute 'ruler-mode-column-number nil :foreground
 		      (face-attribute 'line-number :foreground))

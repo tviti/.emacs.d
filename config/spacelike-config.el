@@ -11,7 +11,7 @@
 ;; Powerline configuration
 ;;
 (require 'spaceline-config)
-(setq powerline-default-separator 'slant)
+(setq powerline-default-separator 'utf-8)
 ;; (setq powerline-height 20) ;; Give it some more breathing room
 (spaceline-spacemacs-theme)
 
