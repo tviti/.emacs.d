@@ -1,5 +1,6 @@
 (require 'cl-lib)
 (require 'nix-flymake)
+(require 'flyspell)
 
 ;; Use flyspell mode in text-mode buffers (e.g. org-mode), but NOT in
 ;; change-log-mode or log-edit-mode. Taken from
