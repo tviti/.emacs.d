@@ -20,7 +20,7 @@
   :family "JetBrains mono"
   :height 150  ; 16pt at 10pt = 160 (adjust 150-180 to preference)
   :weight 'regular)
-(setq-default line-spacing 0.2) ;; Adjust fraction of line height
+(setq-default line-spacing 1) ;; Adjust fraction of line height
 
 ;; Drop straight into server mode, so that the the email daemon(s) can update
 ;; the index can be updated using emacsclient.

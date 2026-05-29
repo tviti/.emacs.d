@@ -37,6 +37,7 @@
   (use-package vterm :ensure t))
 (use-package pcre2el :ensure t)
 
+;; LLM assisted development
 (use-package gptel :ensure t
   :vc (:rev :newest)
   :config
@@ -45,6 +46,7 @@
 	      (define-key gptel-context-buffer-mode-map (kbd "C-c C-n") #'gptel-context-next)
 	      (define-key gptel-context-buffer-mode-map (kbd "C-c C-p") #'gptel-context-previous))))
 (use-package gptel-agent :ensure t)
+(use-package agent-shell :ensure t)
 
 ;; Language modes
 (use-package matlab-mode :ensure t)
