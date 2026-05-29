@@ -51,16 +51,26 @@ spaceline-segments.el"
   (setq org-clock-mode-line-total 'today))
 
 
+(defun tviti/spaceline-normalize-modeline-faces (&optional frame)
+  "Make spaceline modelines render consistently on terminal FRAMEs.
+  With some fonts, spaceline tends to mess up the vertical alignment of
+  the over/underline. It's easier to just remove it instead of trying to
+  fix it, and the effect isn't very noticable anyways."
+  (when (and frame (not (display-graphic-p frame)))
+    (dolist (face '(mode-line mode-line-active mode-line-inactive
+                     mode-line-highlight
+                     powerline-active0 powerline-active1 powerline-active2
+                     powerline-inactive0 powerline-inactive1 powerline-inactive2))
+      (set-face-attribute face frame :box nil :overline nil :underline nil))))
+
 (defun tviti/spaceline-compile ()
   "After-theme-load cleanup for spaceline."
-  ;; With some fonts, spaceline tends to mess up the vertical alignment of the
-  ;; over/underline. It's easier to just remove it instead of trying to fix
-  ;; it, and the effect isn't very noticable anyways.
   (spaceline-compile)
-  (set-face-attribute 'mode-line nil :overline nil :underline nil)
-  (set-face-attribute 'mode-line-inactive nil :overline nil :underline nil))
+  (dolist (frame (frame-list))
+    (tviti/spaceline-normalize-modeline-faces frame)))
 
 ;; Make sure the modeline is recompiled when a theme is loaded
-(add-hook 'enable-theme-functions (lambda (x) (tviti/spaceline-compile)))
+(add-hook 'after-make-frame-functions #'tviti/spaceline-normalize-modeline-faces)
+(add-hook 'enable-theme-functions (lambda (_theme) (tviti/spaceline-compile)))
 
 (provide 'spacelike-config)
