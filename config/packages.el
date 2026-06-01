@@ -20,6 +20,8 @@
 (use-package doom-themes :ensure t)
 (use-package kaolin-themes :ensure t)
 (use-package ef-themes :ensure t)
+(use-package dracula-theme :ensure t)
+(use-package kanagawa-themes :ensure t)
 
 (use-package magit :ensure t)
 (use-package magit-annex :ensure t)

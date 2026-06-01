@@ -22,6 +22,8 @@ those face settings."
 		      (face-attribute 'default :background))
   (set-face-attribute 'ruler-mode-default nil :foreground
 		      (face-attribute 'line-number :foreground))
+  (set-face-attribute 'ruler-mode-default nil :box
+		      (face-attribute 'default :background))
 
   (set-face-attribute 'ruler-mode-column-number nil :foreground
 		      (face-attribute 'line-number :foreground))
