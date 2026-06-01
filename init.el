@@ -18,7 +18,7 @@
 ;; Pick a font + size
 (set-face-attribute 'default nil
   :family "JetBrains mono"
-  :height 150  ; 16pt at 10pt = 160 (adjust 150-180 to preference)
+  :height 115  ; 16pt at 10pt = 160 (adjust 150-180 to preference)
   :weight 'regular)
 (setq-default line-spacing 1) ;; Adjust fraction of line height
 

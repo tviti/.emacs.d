@@ -10,8 +10,8 @@
 (defvar tviti/evil-leader (kbd "SPC")
   "Key to use as `evil-mode''s leader-key.")
 
-(defvar tviti/theme 'solarized-selenized-dark)
-(defvar tviti/light-theme 'solarized-selenized-dark)
-(defvar tviti/dark-theme 'solarized-selenized-dark)
+(defvar tviti/theme 'nord)
+(defvar tviti/light-theme 'nord)
+(defvar tviti/dark-theme 'nord)
 
 (provide 'user-globals)

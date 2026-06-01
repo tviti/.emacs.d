@@ -22,6 +22,10 @@
 (use-package ef-themes :ensure t)
 (use-package dracula-theme :ensure t)
 (use-package kanagawa-themes :ensure t)
+(use-package nord-theme :ensure t)
+(use-package catppuccin-theme :ensure t)
+(use-package tokyo-night :ensure t)
+(use-package darcula-theme :ensure t)
 
 (use-package magit :ensure t)
 (use-package magit-annex :ensure t)
