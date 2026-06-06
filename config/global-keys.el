@@ -143,4 +143,10 @@
 
 (global-set-key (kbd "C-c w") #'tviti/evil-window)
 
+;; Keybindings to take-back from evil
+(with-eval-after-load 'evil
+  (define-key evil-normal-state-map (kbd "M-.") nil)
+  (define-key evil-motion-state-map (kbd "M-.") nil)
+  (define-key evil-insert-state-map (kbd "M-.") nil))
+
 (provide 'global-keys)
