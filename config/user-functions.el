@@ -205,11 +205,15 @@ At the moment, this only works on a single file at a time."
 
 (defun tviti/load-light-theme ()
   (interactive)
-  (load-theme tviti/light-theme))
+  (load-theme tviti/light-theme)
+  (disable-theme tviti/theme)
+  (setq tviti/theme tviti/light-theme))
 
 (defun tviti/load-dark-theme ()
   (interactive)
-  (load-theme tviti/dark-theme))
+  (load-theme tviti/dark-theme)
+  (disable-theme tviti/theme)
+  (setq tviti/theme tviti/dark-theme))
 
 (with-eval-after-load 'project-config
   (define-key project-command-map (kbd "5") #'tviti/project-switch-project-other-frame))
